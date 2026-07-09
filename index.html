@@ -498,8 +498,32 @@
       catPanels[tab.dataset.cat].classList.add('active');
       subnavs[tab.dataset.cat].classList.remove('hidden');
       polyVisible = (tab.dataset.cat === 'polytopes');
+      setHashPart('cat', tab.dataset.cat);
     });
   });
+
+  // ---- URL hash state: #lang=en&cat=curves&shape=sphere&view=section, kept in sync with the UI so
+  // any state (language + category + shape + hypersphere view) is bookmarkable/shareable, and restored
+  // on load. Uses replaceState (not pushState) so every click doesn't flood browser history.
+  function getHashState() {
+    var out = {};
+    var raw = location.hash.replace(/^#/, '');
+    raw.split('&').forEach(function (pair) {
+      if (!pair) return;
+      var kv = pair.split('=');
+      if (kv.length === 2) out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+    });
+    return out;
+  }
+  var hashApplyInProgress = false;
+  function setHashPart(key, value) {
+    if (hashApplyInProgress) return; // don't rewrite the hash while we're programmatically applying it on load
+    var state = getHashState();
+    state[key] = value;
+    var order = ['lang', 'cat', 'shape', 'view', 'dir', 'p', 'q', 'worms'];
+    var parts = order.filter(function (k) { return state[k] !== undefined; }).map(function (k) { return k + '=' + encodeURIComponent(state[k]); });
+    try { history.replaceState(null, '', '#' + parts.join('&')); } catch (err) { /* some embedding contexts restrict the History API; the app still works without a synced URL */ }
+  }
 
 var I18N = {
 ro: {
@@ -1159,7 +1183,7 @@ star600:"Sternskelett (600v)",
     document.dispatchEvent(new CustomEvent('app:langchange', { detail: { lang: currentLang } }));
   }
   if (document.getElementById('lang-select')) {
-    document.getElementById('lang-select').addEventListener('change', function (e) { applyLanguage(e.target.value); });
+    document.getElementById('lang-select').addEventListener('change', function (e) { applyLanguage(e.target.value); setHashPart('lang', e.target.value); });
   }
   applyLanguage(currentLang);
 
@@ -1173,6 +1197,16 @@ star600:"Sternskelett (600v)",
   // same element via the svgEl.__pinching flag: once a 2nd pointer is detected, that flag goes true
   // and the drag handler (which must check it) bails out for the duration of the pinch, so a 2-finger
   // gesture is never misread as a jittery 1-finger drag.
+  // Converts a screen-space (clientX,clientY) into this SVG's OWN user-space coordinates, reading the
+  // CURRENT viewBox live (so it stays correct after zooming/panning, unlike a fixed-dimension assumption).
+  function screenToSvgXY(el, clientX, clientY) {
+    var rect = el.getBoundingClientRect();
+    var vb = el.getAttribute('viewBox').trim().split(/\s+/).map(Number);
+    if (rect.width === 0 || rect.height === 0) return [vb[0], vb[1]];
+    var fracX = (clientX - rect.left) / rect.width, fracY = (clientY - rect.top) / rect.height;
+    return [vb[0] + fracX * vb[2], vb[1] + fracY * vb[3]];
+  }
+
   function attachZoom(svgEl) {
     var vb = svgEl.getAttribute('viewBox').trim().split(/\s+/).map(Number);
     var home = { x: vb[0], y: vb[1], w: vb[2], h: vb[3] };
@@ -1414,6 +1448,7 @@ star600:"Sternskelett (600v)",
         Array.prototype.slice.call(obliqCard.querySelectorAll('[data-dir]')).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
         var t = parseFloat(slider.value) / 1000;
         renderObliq(-1 + 2 * t);
+        setHashPart('dir', obliqDir);
       });
     });
 
@@ -1689,6 +1724,8 @@ star600:"Sternskelett (600v)",
         secondCutCard.style.display = 'none';
         ringEl.setAttribute('points', '');
         obliqPaths = [];
+        faceG.innerHTML = '';
+        faceEls = [];
         renderObliq(0);
         return;
       }
@@ -1771,9 +1808,9 @@ star600:"Sternskelett (600v)",
     circleSlider.addEventListener('input', updateSecondCut);
 
     var circleProfileSvg = document.getElementById('circle-profile-svg');
-    function setW2FromClientX(clientX) {
-      var rect = circleProfileSvg.getBoundingClientRect();
-      var svgX = (clientX - rect.left) * (220 / rect.width);
+    function setW2FromClientX(clientX, clientY) {
+      var xy = screenToSvgXY(circleProfileSvg, clientX, clientY != null ? clientY : 0);
+      var svgX = xy[0];
       var w2n = Math.max(-1, Math.min(1, (svgX - 15) / 190 * 2 - 1));
       var t2 = (w2n + 1) / 2;
       circleSlider.value = Math.round(t2 * 1000);
@@ -1783,12 +1820,12 @@ star600:"Sternskelett (600v)",
     circleProfileSvg.addEventListener('pointerdown', function (e) {
       if (circleProfileSvg.__pinching) return;
       draggingW2Point = true;
-      setW2FromClientX(e.clientX);
+      setW2FromClientX(e.clientX, e.clientY);
       if (circleProfileSvg.setPointerCapture) { try { circleProfileSvg.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     circleProfileSvg.addEventListener('pointermove', function (e) {
       if (!draggingW2Point || circleProfileSvg.__pinching) return;
-      setW2FromClientX(e.clientX);
+      setW2FromClientX(e.clientX, e.clientY);
     });
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (evt) {
       circleProfileSvg.addEventListener(evt, function () { draggingW2Point = false; });
@@ -1796,9 +1833,9 @@ star600:"Sternskelett (600v)",
     attachZoom(circleProfileSvg);
 
     // ---- drag the point directly on the profile graph (2D pointer gesture, snapped to the 1D curve) ----
-    function setWFromClientX(clientX) {
-      var rect = profileSvg.getBoundingClientRect();
-      var svgX = (clientX - rect.left) * (300 / rect.width);
+    function setWFromClientX(clientX, clientY) {
+      var xy = screenToSvgXY(profileSvg, clientX, clientY != null ? clientY : 0);
+      var svgX = xy[0];
       var wn = wForX(svgX, current.wMin, current.wMax);
       var t = (wn - current.wMin) / (current.wMax - current.wMin);
       slider.value = Math.round(t * 1000);
@@ -1808,12 +1845,12 @@ star600:"Sternskelett (600v)",
     profileSvg.addEventListener('pointerdown', function (e) {
       if (profileSvg.__pinching) return;
       draggingPoint = true;
-      setWFromClientX(e.clientX);
+      setWFromClientX(e.clientX, e.clientY);
       if (profileSvg.setPointerCapture) { try { profileSvg.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     profileSvg.addEventListener('pointermove', function (e) {
       if (!draggingPoint || profileSvg.__pinching) return;
-      setWFromClientX(e.clientX);
+      setWFromClientX(e.clientX, e.clientY);
     });
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (evt) {
       profileSvg.addEventListener(evt, function () { draggingPoint = false; });
@@ -1885,9 +1922,8 @@ star600:"Sternskelett (600v)",
       var HIT_R = 26;
       el.addEventListener('pointerdown', function (e) {
         if (el.__pinching) return;
-        var rect = el.getBoundingClientRect();
-        var scaleX = 220 / rect.width, scaleY = 190 / rect.height;
-        var localX = (e.clientX - rect.left) * scaleX, localY = (e.clientY - rect.top) * scaleY;
+        var xy = screenToSvgXY(el, e.clientX, e.clientY);
+        var localX = xy[0], localY = xy[1];
         var mp = getMarkerScreenPos();
         var d = Math.hypot(localX - mp[0], localY - mp[1]);
         mode = d <= HIT_R ? 'point' : 'orbit';
@@ -1907,10 +1943,8 @@ star600:"Sternskelett (600v)",
       el.addEventListener('pointermove', function (e) {
         if (!dragging || el.__pinching) return;
         if (mode === 'point') {
-          var rect = el.getBoundingClientRect();
-          var scaleX = 220 / rect.width, scaleY = 190 / rect.height;
-          var localX = (e.clientX - rect.left) * scaleX, localY = (e.clientY - rect.top) * scaleY;
-          findAndApplyNearest(localX, localY);
+          var xy = screenToSvgXY(el, e.clientX, e.clientY);
+          findAndApplyNearest(xy[0], xy[1]);
         } else {
           var dx = e.clientX - lastX, dy = e.clientY - lastY;
           lastX = e.clientX; lastY = e.clientY;
@@ -2177,9 +2211,8 @@ star600:"Sternskelett (600v)",
     var WORMS_HIT_R = 24;
     wormsSvg.addEventListener('pointerdown', function (e) {
       if (wormsSvg.__pinching) return;
-      var rect = wormsSvg.getBoundingClientRect();
-      var scaleX = 220 / rect.width, scaleY = 190 / rect.height;
-      var localX = (e.clientX - rect.left) * scaleX, localY = (e.clientY - rect.top) * scaleY;
+      var xy = screenToSvgXY(wormsSvg, e.clientX, e.clientY);
+      var localX = xy[0], localY = xy[1];
       var bestIdx = -1, bestD = Infinity;
       wormMarkerEls.forEach(function (m, idx) {
         if (parseFloat(m.getAttribute('opacity')) <= 0) return;
@@ -2213,10 +2246,8 @@ star600:"Sternskelett (600v)",
     wormsSvg.addEventListener('pointermove', function (e) {
       if (!wormsDragging || wormsSvg.__pinching) return;
       if (wormsDragMode === 'point') {
-        var rect = wormsSvg.getBoundingClientRect();
-        var scaleX = 220 / rect.width, scaleY = 190 / rect.height;
-        var localX = (e.clientX - rect.left) * scaleX, localY = (e.clientY - rect.top) * scaleY;
-        dragWormToLocal(localX, localY);
+        var xy = screenToSvgXY(wormsSvg, e.clientX, e.clientY);
+        dragWormToLocal(xy[0], xy[1]);
       } else {
         var dx = e.clientX - wormsLastX, dy = e.clientY - wormsLastY;
         wormsLastX = e.clientX; wormsLastY = e.clientY;
@@ -2241,6 +2272,7 @@ star600:"Sternskelett (600v)",
     wormsNSelect.addEventListener('change', function () {
       rebuildWorms(parseInt(wormsNSelect.value, 10));
       renderWorms();
+      setHashPart('worms', wormsNSelect.value);
     });
 
     function setSphereView(view) {
@@ -2255,6 +2287,7 @@ star600:"Sternskelett (600v)",
       else if (view === 'tori') renderTori();
       else if (view === 'worms') renderWorms();
       else projectAndDraw();
+      setHashPart('view', view);
     }
     Array.prototype.slice.call(sphereViewToggle.querySelectorAll('.pill')).forEach(function (btn) {
       btn.addEventListener('click', function () { setSphereView(btn.dataset.view); });
@@ -2271,6 +2304,8 @@ star600:"Sternskelett (600v)",
         update();
         sphereViewToggle.style.display = pill.dataset.shape === 'sphere' ? '' : 'none';
         setSphereView('section');
+        setHashPart('cat', 'curves');
+        setHashPart('shape', pill.dataset.shape);
       });
     });
 
@@ -2934,6 +2969,8 @@ star600:"Sternskelett (600v)",
       sel.addEventListener('change', function () {
         duoP = parseInt(duoPSelect.value, 10); duoQ = parseInt(duoQSelect.value, 10);
         loadShape('duoCustom'); render();
+        setHashPart('p', duoP);
+        setHashPart('q', duoQ);
       });
     });
 
@@ -2944,6 +2981,8 @@ star600:"Sternskelett (600v)",
         duoControls.style.display = pill.dataset.shape === 'duoCustom' ? '' : 'none';
         loadShape(pill.dataset.shape);
         render();
+        setHashPart('cat', 'polytopes');
+        setHashPart('shape', pill.dataset.shape);
       });
     });
 
@@ -2970,6 +3009,52 @@ star600:"Sternskelett (600v)",
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || POLY[currentPolyKey].corp;
     });
   })(); } catch (e) { console.error('polytope init failed', e); }
+
+  // ---- Restore state from the URL hash, if present (bookmarkable/shareable deep links) ----
+  (function restoreFromHash() {
+    var state = getHashState();
+    if (Object.keys(state).length === 0) return;
+    hashApplyInProgress = true;
+    try {
+      if (state.lang && I18N[state.lang]) {
+        var sel = document.getElementById('lang-select');
+        if (sel) sel.value = state.lang;
+        applyLanguage(state.lang);
+      }
+      if (state.cat) {
+        var tabEl = document.querySelector('.tab[data-cat="' + state.cat + '"]');
+        if (tabEl) tabEl.click();
+      }
+      if (state.shape) {
+        var pillEl = document.querySelector('.pill[data-shape="' + state.shape + '"]');
+        if (pillEl) pillEl.click();
+      }
+      if (state.view) {
+        var viewBtn = document.querySelector('#sphere-view-toggle .pill[data-view="' + state.view + '"]');
+        if (viewBtn) viewBtn.click();
+      }
+      if (state.dir) {
+        var dirBtn = document.querySelector('#obliq-card [data-dir="' + state.dir + '"]');
+        if (dirBtn) dirBtn.click();
+      }
+      if (state.p && state.q) {
+        var pSel = document.getElementById('duo-p-select'), qSel = document.getElementById('duo-q-select');
+        if (pSel && qSel && pSel.querySelector('option[value="' + state.p + '"]') && qSel.querySelector('option[value="' + state.q + '"]')) {
+          pSel.value = state.p; qSel.value = state.q;
+          pSel.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+      if (state.worms) {
+        var wSel = document.getElementById('worms-n-select');
+        if (wSel && wSel.querySelector('option[value="' + state.worms + '"]')) {
+          wSel.value = state.worms;
+          wSel.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    } finally {
+      hashApplyInProgress = false;
+    }
+  })();
 })();
 </script>
 </body>
