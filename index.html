@@ -259,6 +259,7 @@
         <div class="card">
           <p class="card-label"><span data-i18n="card.wholeBody">Whole body + current cross-section</span> <span class="drag-hint" data-i18n="hint.dragRotate">— drag to rotate</span></p>
           <svg class="diagram orbitable" id="curve-render-svg" viewBox="0 0 220 190" aria-hidden="true">
+            <polygon id="curve-ring-infinite" fill="rgba(224,32,44,0.08)" stroke="rgba(224,32,44,0.35)" stroke-width="1.5" stroke-dasharray="5 4" style="display:none;"/>
             <g id="curve-faces"></g>
             <g id="curve-mesh"></g>
             <polygon id="curve-ring" fill="rgba(224,196,131,0.30)" stroke="#e0c483" stroke-width="2" stroke-linejoin="round"/>
@@ -569,7 +570,7 @@ sphere:"Hipersferă — r(w) = √(R² − w²). Secțiunea e o sferă 3D obișn
 cone:"Hipercon — r(w) = R·(1 − w/h). Secțiunea e o bilă plină care se micșorează liniar de la bază (rază R) până la vârf (punct).",
 cylinder:"Hipercilindru — r(w) = R, constant. O bilă 3D extrudată de-a lungul axei a 4-a, ca un cilindru obișnuit cu o dimensiune în plus.",
 bicone:"Hiperbicon — r(w) = R·(1 − |w|). Două hiperconuri unite prin bază: bila e maximă la mijloc (w=0), se strânge spre punct la ambele capete.",
-piramida:"Piramida Centrului STRING — planul cunoașterii. Aceeași formulă liniară ca la Hipercon, dar secțiunea nu mai e o bilă, e un pătrat: baza largă e ce se știe deja, vârful îngust e cunoașterea rar atinsă. Linia roșie e planul curent — granița dintre cunoscut și necunoscut. Științe, Prospectivă, Creativitate, Ficțiune: patru moduri de a împinge planul mai sus.",
+piramida:"Piramida Centrului STRING — planul cunoașterii, poziționat implicit la o treime de la bază: baza largă e ce se știe deja, vârful îngust e cunoașterea rar atinsă, restul rămâne de descoperit. Linia roșie plină e planul curent; conturul punctat arată că planul, spre deosebire de piramidă, nu se oprește nicăieri. Științe, Prospectivă, Creativitate, Ficțiune: patru moduri de a împinge planul mai sus.",
 spherinder:"Hipercilindru sferic (spherinder) — r(w) = R, constant. Spre deosebire de toate celelalte forme curbate de-aici, nu se strânge spre un punct la capete — rămâne aceeași bilă tot drumul, apoi se oprește brusc într-un capac plat (o bilă întreagă, nu un punct). E bilă × interval, exact ca un cilindru obișnuit dar cu bilă 3D în loc de disc 2D.",
 elipsoid:"Hiperelipsoid — hipersfera „întinsă” inegal. Secțiunea 3D nu mai e o bilă perfectă: 2 din cele 3 axe spațiale ale secțiunii au rază diferită (1,3R orizontal, 0,7R adâncime) — nu toate formele „rotunde” din 4D sunt simetrice pe toate axele. Forma secțiunii rămâne constantă; doar mărimea generală se strânge spre poli, ca la o hipersferă obișnuită.",
 obliq:"Secțiuni oblice ale teseractului — aceeași formă (teseractul din categoria Politopuri), tăiată din alt unghi. Perpendicular pe o axă (față-întâi, cum am făcut peste tot până acum) dă mereu un cub. Perpendicular pe o direcție de colț dă secvența cea mai bogată: punct→tetraedru→tetraedru trunchiat→octaedru (exact la mijloc)→înapoi.",
@@ -660,7 +661,7 @@ sphere:"Hypersphere — r(w) = √(R² − w²). The cross-section is an ordinar
 cone:"Hypercone — r(w) = R·(1 − w/h). The cross-section is a solid ball that shrinks linearly from the base (radius R) to the apex (a point).",
 cylinder:"Hypercylinder — r(w) = R, constant. A 3D ball extruded along the 4th axis, like an ordinary cylinder with one extra dimension.",
 bicone:"Hyperbicone — r(w) = R·(1 − |w|). Two hypercones joined at the base: the ball is largest in the middle (w=0), shrinking to a point at both ends.",
-piramida:"The STRING Center's Pyramid — the plane of knowledge. The same linear formula as the Hypercone, but the cross-section is no longer a ball, it's a square: the wide base is what's already known, the narrow apex is rarely-reached knowledge. The red line is the current plane — the boundary between known and unknown. Science, Foresight, Creativity, Fiction: four ways to push the plane higher.",
+piramida:"The STRING Center's Pyramid — the plane of knowledge, positioned by default one third of the way from the base: the wide base is what's already known, the narrow apex is rarely-reached knowledge, the rest remains to be discovered. The solid red line is the current plane; the dashed outline shows that the plane, unlike the pyramid, doesn't stop anywhere. Science, Foresight, Creativity, Fiction: four ways to push the plane higher.",
 spherinder:"Spherical hypercylinder (spherinder) — r(w) = R, constant. Unlike every other curved shape here, it doesn't shrink to a point at the ends — it stays the same ball the whole way, then stops abruptly in a flat cap (a whole ball, not a point). It's ball × interval, exactly like an ordinary cylinder but with a 3D ball instead of a 2D disc.",
 elipsoid:"Hyperellipsoid — the hypersphere “stretched” unevenly. The 3D cross-section is no longer a perfect ball: 2 of the cross-section's 3 spatial axes have different radii (1.3R horizontal, 0.7R depth) — not all “round” shapes in 4D are symmetric on every axis. The cross-section's shape stays constant; only the overall size shrinks toward the poles, as with an ordinary hypersphere.",
 obliq:"Oblique cross-sections of the tesseract — the same shape (the tesseract from the Polytopes category), cut from a different angle. Perpendicular to an axis (face-first, as done everywhere else so far) always gives a cube. Perpendicular to a corner direction gives the richest sequence: point→tetrahedron→truncated tetrahedron→octahedron (exactly at the middle)→back.",
@@ -752,7 +753,7 @@ sphere:"Hypersphère — r(w) = √(R² − w²). La section est une sphère 3D 
 cone:"Hypercône — r(w) = R·(1 − w/h). La section est une boule pleine qui rétrécit linéairement de la base (rayon R) jusqu'au sommet (un point).",
 cylinder:"Hypercylindre — r(w) = R, constant. Une boule 3D extrudée le long du 4e axe, comme un cylindre ordinaire avec une dimension de plus.",
 bicone:"Hyperbicône — r(w) = R·(1 − |w|). Deux hypercônes joints par la base : la boule est maximale au milieu (w=0), se réduisant à un point aux deux extrémités.",
-piramida:"La Pyramide du Centre STRING — le plan de la connaissance. La même formule linéaire que l'Hypercône, mais la section n'est plus une boule, c'est un carré : la base large est ce qui est déjà connu, le sommet étroit est la connaissance rarement atteinte. La ligne rouge est le plan actuel — la frontière entre le connu et l'inconnu. Sciences, Prospective, Créativité, Fiction : quatre façons de pousser le plan plus haut.",
+piramida:"La Pyramide du Centre STRING — le plan de la connaissance, positionné par défaut au tiers depuis la base : la base large est ce qui est déjà connu, le sommet étroit est la connaissance rarement atteinte, le reste reste à découvrir. La ligne rouge pleine est le plan actuel ; le contour en pointillés montre que le plan, contrairement à la pyramide, ne s'arrête nulle part. Sciences, Prospective, Créativité, Fiction : quatre façons de pousser le plan plus haut.",
 spherinder:"Hypercylindre sphérique (spherinder) — r(w) = R, constant. Contrairement à toutes les autres formes courbes ici, il ne rétrécit pas vers un point aux extrémités — il reste la même boule tout du long, puis s'arrête brusquement dans un capuchon plat (une boule entière, pas un point). C'est boule × intervalle, exactement comme un cylindre ordinaire mais avec une boule 3D au lieu d'un disque 2D.",
 elipsoid:"Hyperellipsoïde — l'hypersphère « étirée » inégalement. La section 3D n'est plus une boule parfaite : 2 des 3 axes spatiaux de la section ont un rayon différent (1,3R horizontal, 0,7R en profondeur) — toutes les formes « rondes » en 4D ne sont pas symétriques sur tous les axes. La forme de la section reste constante ; seule la taille globale rétrécit vers les pôles, comme pour une hypersphère ordinaire.",
 obliq:"Sections obliques du tesseract — la même forme (le tesseract de la catégorie Polytopes), coupée sous un autre angle. Perpendiculaire à un axe (face d'abord, comme fait partout ailleurs jusqu'ici) donne toujours un cube. Perpendiculaire à une direction de sommet donne la séquence la plus riche : point→tétraèdre→tétraèdre tronqué→octaèdre (exactement au milieu)→retour.",
@@ -844,7 +845,7 @@ sphere:"Ipersfera — r(w) = √(R² − w²). La sezione è una normale sfera 3
 cone:"Ipercono — r(w) = R·(1 − w/h). La sezione è una palla piena che si restringe linearmente dalla base (raggio R) fino all'apice (un punto).",
 cylinder:"Ipercilindro — r(w) = R, costante. Una palla 3D estrusa lungo il 4° asse, come un cilindro normale con una dimensione in più.",
 bicone:"Iperbicono — r(w) = R·(1 − |w|). Due iperconi uniti per la base: la palla è massima al centro (w=0), restringendosi a un punto a entrambe le estremità.",
-piramida:"La Piramide del Centro STRING — il piano della conoscenza. La stessa formula lineare dell'Ipercono, ma la sezione non è più una palla, è un quadrato: la base larga è ciò che già si sa, l'apice stretto è la conoscenza raramente raggiunta. La linea rossa è il piano attuale — il confine tra il conosciuto e lo sconosciuto. Scienze, Prospettiva, Creatività, Fantascienza: quattro modi per spingere il piano più in alto.",
+piramida:"La Piramide del Centro STRING — il piano della conoscenza, posizionato di default a un terzo dalla base: la base larga è ciò che già si sa, l'apice stretto è la conoscenza raramente raggiunta, il resto resta da scoprire. La linea rossa continua è il piano attuale; il contorno tratteggiato mostra che il piano, a differenza della piramide, non si ferma da nessuna parte. Scienze, Prospettiva, Creatività, Fantascienza: quattro modi per spingere il piano più in alto.",
 spherinder:"Ipercilindro sferico (spherinder) — r(w) = R, costante. A differenza di tutte le altre forme curve qui presenti, non si restringe a un punto alle estremità — rimane la stessa palla per tutto il percorso, poi si ferma bruscamente in un tappo piatto (una palla intera, non un punto). È palla × intervallo, esattamente come un cilindro normale ma con una palla 3D invece di un disco 2D.",
 elipsoid:"Iperellissoide — l'ipersfera “allungata” in modo diseguale. La sezione 3D non è più una palla perfetta: 2 dei 3 assi spaziali della sezione hanno raggio diverso (1,3R orizzontale, 0,7R in profondità) — non tutte le forme “rotonde” in 4D sono simmetriche su tutti gli assi. La forma della sezione rimane costante; solo la dimensione generale si restringe verso i poli, come in un'ipersfera normale.",
 obliq:"Sezioni oblique del tesseratto — la stessa forma (il tesseratto della categoria Politopi), tagliata da un'altra angolazione. Perpendicolare a un asse (prima la faccia, come fatto ovunque finora) dà sempre un cubo. Perpendicolare a una direzione di vertice dà la sequenza più ricca: punto→tetraedro→tetraedro troncato→ottaedro (esattamente a metà)→ritorno.",
@@ -936,7 +937,7 @@ sphere:"Hiperesfera — r(w) = √(R² − w²). La sección es una esfera 3D or
 cone:"Hipercono — r(w) = R·(1 − w/h). La sección es una bola sólida que se reduce linealmente desde la base (radio R) hasta el vértice (un punto).",
 cylinder:"Hipercilindro — r(w) = R, constante. Una bola 3D extruida a lo largo del 4º eje, como un cilindro ordinario con una dimensión extra.",
 bicone:"Hiperbicono — r(w) = R·(1 − |w|). Dos hiperconos unidos por la base: la bola es máxima en el medio (w=0), reduciéndose a un punto en ambos extremos.",
-piramida:"La Pirámide del Centro STRING — el plano del conocimiento. La misma fórmula lineal que el Hipercono, pero la sección ya no es una bola, es un cuadrado: la base ancha es lo que ya se sabe, el vértice estrecho es el conocimiento raramente alcanzado. La línea roja es el plano actual — la frontera entre lo conocido y lo desconocido. Ciencias, Prospectiva, Creatividad, Ficción: cuatro formas de empujar el plano más alto.",
+piramida:"La Pirámide del Centro STRING — el plano del conocimiento, posicionado por defecto a un tercio desde la base: la base ancha es lo que ya se sabe, el vértice estrecho es el conocimiento raramente alcanzado, el resto queda por descubrir. La línea roja continua es el plano actual; el contorno discontinuo muestra que el plano, a diferencia de la pirámide, no se detiene en ningún lugar. Ciencias, Prospectiva, Creatividad, Ficción: cuatro formas de empujar el plano más alto.",
 spherinder:"Hipercilindro esférico (spherinder) — r(w) = R, constante. A diferencia de todas las demás formas curvas aquí, no se reduce a un punto en los extremos — permanece la misma bola todo el camino, luego se detiene bruscamente en una tapa plana (una bola entera, no un punto). Es bola × intervalo, exactamente como un cilindro ordinario pero con una bola 3D en lugar de un disco 2D.",
 elipsoid:"Hiperelipsoide — la hiperesfera “estirada” de forma desigual. La sección 3D ya no es una bola perfecta: 2 de los 3 ejes espaciales de la sección tienen radio diferente (1,3R horizontal, 0,7R en profundidad) — no todas las formas “redondas” en 4D son simétricas en todos los ejes. La forma de la sección permanece constante; solo el tamaño general se reduce hacia los polos, como en una hiperesfera ordinaria.",
 obliq:"Secciones oblicuas del teseracto — la misma forma (el teseracto de la categoría Politopos), cortada desde otro ángulo. Perpendicular a un eje (cara primero, como se ha hecho en todo lo demás hasta ahora) siempre da un cubo. Perpendicular a una dirección de vértice da la secuencia más rica: punto→tetraedro→tetraedro truncado→octaedro (exactamente en el medio)→vuelta.",
@@ -1028,7 +1029,7 @@ sphere:"Hiperesfera — r(w) = √(R² − w²). A secção é uma esfera 3D com
 cone:"Hipercone — r(w) = R·(1 − w/h). A secção é uma bola sólida que encolhe linearmente da base (raio R) até ao vértice (um ponto).",
 cylinder:"Hipercilindro — r(w) = R, constante. Uma bola 3D extrudida ao longo do 4º eixo, como um cilindro comum com uma dimensão extra.",
 bicone:"Hiperbicone — r(w) = R·(1 − |w|). Dois hiperconos unidos pela base: a bola é máxima no meio (w=0), encolhendo até um ponto em ambas as extremidades.",
-piramida:"A Pirâmide do Centro STRING — o plano do conhecimento. A mesma fórmula linear do Hipercone, mas a secção já não é uma bola, é um quadrado: a base larga é o que já se sabe, o vértice estreito é o conhecimento raramente alcançado. A linha vermelha é o plano atual — a fronteira entre o conhecido e o desconhecido. Ciências, Prospetiva, Criatividade, Ficção: quatro formas de empurrar o plano mais alto.",
+piramida:"A Pirâmide do Centro STRING — o plano do conhecimento, posicionado por padrão a um terço da base: a base larga é o que já se sabe, o vértice estreito é o conhecimento raramente alcançado, o resto fica por descobrir. A linha vermelha contínua é o plano atual; o contorno tracejado mostra que o plano, ao contrário da pirâmide, não para em lado nenhum. Ciências, Prospetiva, Criatividade, Ficção: quatro formas de empurrar o plano mais alto.",
 spherinder:"Hipercilindro esférico (spherinder) — r(w) = R, constante. Ao contrário de todas as outras formas curvas aqui, não encolhe até um ponto nas extremidades — permanece a mesma bola o caminho todo, depois para abruptamente numa tampa plana (uma bola inteira, não um ponto). É bola × intervalo, exatamente como um cilindro comum mas com uma bola 3D em vez de um disco 2D.",
 elipsoid:"Hiperelipsoide — a hiperesfera “esticada” de forma desigual. A secção 3D já não é uma bola perfeita: 2 dos 3 eixos espaciais da secção têm raio diferente (1,3R horizontal, 0,7R em profundidade) — nem todas as formas “redondas” em 4D são simétricas em todos os eixos. A forma da secção permanece constante; só o tamanho geral encolhe em direção aos polos, como numa hiperesfera comum.",
 obliq:"Secções oblíquas do teseracto — a mesma forma (o teseracto da categoria Politopos), cortada de outro ângulo. Perpendicular a um eixo (face primeiro, como feito em todo o resto até agora) dá sempre um cubo. Perpendicular a uma direção de vértice dá a sequência mais rica: ponto→tetraedro→tetraedro truncado→octaedro (exatamente no meio)→volta.",
@@ -1120,7 +1121,7 @@ sphere:"Hypersphäre — r(w) = √(R² − w²). Der Querschnitt ist eine gewö
 cone:"Hyperkegel — r(w) = R·(1 − w/h). Der Querschnitt ist eine massive Kugel, die linear von der Basis (Radius R) bis zur Spitze (ein Punkt) schrumpft.",
 cylinder:"Hyperzylinder — r(w) = R, konstant. Eine 3D-Kugel, entlang der 4. Achse extrudiert, wie ein gewöhnlicher Zylinder mit einer zusätzlichen Dimension.",
 bicone:"Hyperbikegel — r(w) = R·(1 − |w|). Zwei Hyperkegel an der Basis verbunden: Die Kugel ist in der Mitte (w=0) am größten und schrumpft an beiden Enden zu einem Punkt.",
-piramida:"Die Pyramide des STRING-Zentrums — die Ebene des Wissens. Dieselbe lineare Formel wie beim Hyperkegel, aber der Querschnitt ist keine Kugel mehr, sondern ein Quadrat: Die breite Basis ist das bereits Bekannte, die schmale Spitze ist selten erreichtes Wissen. Die rote Linie ist die aktuelle Ebene — die Grenze zwischen Bekanntem und Unbekanntem. Wissenschaft, Zukunftsforschung, Kreativität, Fiktion: vier Wege, die Ebene höher zu schieben.",
+piramida:"Die Pyramide des STRING-Zentrums — die Ebene des Wissens, standardmäßig bei einem Drittel von der Basis positioniert: Die breite Basis ist das bereits Bekannte, die schmale Spitze ist selten erreichtes Wissen, der Rest bleibt zu entdecken. Die durchgezogene rote Linie ist die aktuelle Ebene; die gestrichelte Kontur zeigt, dass die Ebene, anders als die Pyramide, nirgendwo endet. Wissenschaft, Zukunftsforschung, Kreativität, Fiktion: vier Wege, die Ebene höher zu schieben.",
 spherinder:"Sphärischer Hyperzylinder (Spherinder) — r(w) = R, konstant. Anders als alle anderen gekrümmten Formen hier schrumpft er an den Enden nicht zu einem Punkt — er bleibt den ganzen Weg dieselbe Kugel und stoppt dann abrupt in einer flachen Kappe (eine ganze Kugel, kein Punkt). Es ist Kugel × Intervall, genau wie ein gewöhnlicher Zylinder, aber mit einer 3D-Kugel statt einer 2D-Scheibe.",
 elipsoid:"Hyperellipsoid — die ungleichmäßig „gedehnte” Hypersphäre. Der 3D-Querschnitt ist keine perfekte Kugel mehr: 2 der 3 räumlichen Achsen des Querschnitts haben unterschiedliche Radien (1,3R horizontal, 0,7R in der Tiefe) — nicht alle „runden” Formen in 4D sind auf allen Achsen symmetrisch. Die Form des Querschnitts bleibt konstant; nur die Gesamtgröße schrumpft zu den Polen hin, wie bei einer gewöhnlichen Hypersphäre.",
 obliq:"Schräge Querschnitte des Tesserakts — dieselbe Form (der Tesserakt aus der Kategorie Polytope), aus einem anderen Winkel geschnitten. Senkrecht zu einer Achse (Fläche zuerst, wie bisher überall sonst) ergibt immer einen Würfel. Senkrecht zu einer Eckrichtung ergibt die reichhaltigste Sequenz: Punkt→Tetraeder→gestutzter Tetraeder→Oktaeder (genau in der Mitte)→zurück.",
@@ -1296,10 +1297,10 @@ star600:"Sternskelett (600v)",
         text: 'Hiperbicon — r(w) = R·(1 − |w|). Două hiperconuri unite prin bază: bila e maximă la mijloc (w=0), se strânge spre punct la ambele capete.'
       },
       piramida: {
-        corp: 'Piramidă STRING', formula: 'R(1−w/h)', wMin: 0, wMax: 1, tickStart: 'bază', tickEnd: 'vârf', isSquare: true,
+        corp: 'Piramidă STRING', formula: 'R(1−w/h)', wMin: 0, wMax: 1, tickStart: 'bază', tickEnd: 'vârf', isSquare: true, defaultT: 1 / 3,
         rFunc: function (wn) { return Math.max(0, 1 - wn); },
         meshFn: buildPyramidMesh, ringFn: pyramidRingPoints3D, facesFn: pyramidFaces3D,
-        text: 'Piramida Centrului STRING — planul cunoașterii. Aceeași formulă liniară ca la Hipercon, dar secțiunea nu mai e o bilă, e un pătrat: baza largă e ce se știe deja, vârful îngust e cunoașterea rar atinsă. Linia roșie e planul curent — granița dintre cunoscut și necunoscut. Științe, Prospectivă, Creativitate, Ficțiune: patru moduri de a împinge planul mai sus.'
+        text: 'Piramida Centrului STRING — planul cunoașterii, poziționat implicit la o treime de la bază: baza largă e ce se știe deja, vârful îngust e cunoașterea rar atinsă, restul rămâne de descoperit. Linia roșie plină e planul curent; conturul punctat arată că planul, spre deosebire de piramidă, nu se oprește nicăieri. Științe, Prospectivă, Creativitate, Ficțiune: patru moduri de a împinge planul mai sus.'
       },
       spherinder: {
         corp: 'Hipercilindru sferic', formula: 'R (constant)', wMin: -1, wMax: 1, tickStart: 'capăt', tickEnd: 'capăt',
@@ -1335,6 +1336,7 @@ star600:"Sternskelett (600v)",
     var svgEl = document.getElementById('curve-render-svg');
     var meshG = document.getElementById('curve-mesh');
     var ringEl = document.getElementById('curve-ring');
+    var ringInfiniteEl = document.getElementById('curve-ring-infinite');
     var secondCutCard = document.getElementById('second-cut-card');
     var obliqCard = document.getElementById('obliq-card');
 
@@ -1674,6 +1676,16 @@ star600:"Sternskelett (600v)",
         return (OX + rp[0] * SCALE).toFixed(2) + ',' + (OY + rp[1] * SCALE).toFixed(2);
       });
       ringEl.setAttribute('points', ringScreen.join(' '));
+      if (current.isSquare && ringPts.length === 4) {
+        var s = ringPts[0][1]; // shared height coordinate of the 4 ring corners
+        var INF_HALF = 1.8; // fixed half-width, always wider than the pyramid's own base (half-width 1) -- the plane doesn't shrink toward the apex the way the finite pyramid does, since "infinite" doesn't taper
+        var infPts = [[INF_HALF, s, INF_HALF], [INF_HALF, s, -INF_HALF], [-INF_HALF, s, -INF_HALF], [-INF_HALF, s, INF_HALF]];
+        var infScreen = infPts.map(function (p) {
+          var rp = rotate3(p, bx, by);
+          return (OX + rp[0] * SCALE).toFixed(2) + ',' + (OY + rp[1] * SCALE).toFixed(2);
+        });
+        ringInfiniteEl.setAttribute('points', infScreen.join(' '));
+      }
     }
 
     var dragging = false, lastX = 0, lastY = 0;
@@ -1718,11 +1730,12 @@ star600:"Sternskelett (600v)",
       cartFormula.textContent = current.formula;
       formulaTextEl.textContent = (I18N[currentLang] && I18N[currentLang].curves[currentKey]) || current.text;
       slider.min = 0; slider.max = 1000; slider.step = 1;
-      slider.value = current.wMin <= 0 && current.wMax >= 0 ? Math.round((0 - current.wMin) / (current.wMax - current.wMin) * 1000) : 0;
+      slider.value = current.defaultT !== undefined ? Math.round(current.defaultT * 1000) : (current.wMin <= 0 && current.wMax >= 0 ? Math.round((0 - current.wMin) / (current.wMax - current.wMin) * 1000) : 0);
       obliqCard.style.display = current.isOblique ? '' : 'none';
       if (current.isOblique) {
         secondCutCard.style.display = 'none';
         ringEl.setAttribute('points', '');
+        ringInfiniteEl.style.display = 'none';
         obliqPaths = [];
         faceG.innerHTML = '';
         faceEls = [];
@@ -1733,10 +1746,12 @@ star600:"Sternskelett (600v)",
         ringEl.setAttribute('fill', 'rgba(224,32,44,0.22)');
         ringEl.setAttribute('stroke', '#e0202c');
         secondCutCard.style.display = 'none';
+        ringInfiniteEl.style.display = '';
       } else {
         ringEl.setAttribute('fill', 'rgba(224,196,131,0.30)');
         ringEl.setAttribute('stroke', '#e0c483');
         secondCutCard.style.display = '';
+        ringInfiniteEl.style.display = 'none';
       }
       rebuildMeshGeometry();
     }
