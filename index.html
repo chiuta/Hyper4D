@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hyper4D</title>
 <style>
   :root {
@@ -512,7 +512,7 @@
     raw.split('&').forEach(function (pair) {
       if (!pair) return;
       var kv = pair.split('=');
-      if (kv.length === 2) out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      if (kv.length === 2) { try { out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]); } catch (err) { /* malformed %-escape in the hash: ignore this pair */ } }
     });
     return out;
   }
@@ -552,7 +552,7 @@ ui: {
 "hint.samePattern":"(același tipar, un nivel mai jos)",
 "cap.polA":"pol A","cap.polB":"pol B","cap.equator":"ecuator","cap.aroundHole":"în jurul găurii","cap.aroundTube":"în jurul tubului",
 "toggle.solidFaces":"Fețe pline","toggle.mystery":"Mod mister","toggle.showSecondCut":"Arată tăietura spre 2D",
-"label.howManyWorms":"Câți viermi?","label.speed":"Viteză","btn.pause":"Pauză",
+"label.howManyWorms":"Câți viermi?","label.speed":"Viteză","btn.pause":"Pauză","btn.play":"Redă",
 "cart.body":"Corp","cart.formula":"Formulă","cart.boundary":"Graniță","cart.currentW":"w curent","cart.visibleNow":"Vizibili acum",
 "cart.mode":"Mod","cart.worms":"Viermi","cart.zone":"Zonă","cart.hypervolume":"Hipervolum V₄",
 "text.doubleRotation":"Rotație dublă (4D), simultan în planurile <span class=\"mono\">XW</span> și <span class=\"mono\">YZ</span> — acoperă toate cele 4 dimensiuni fără suprapunere. Trage cu mouse-ul/degetul ca să rotești unghiul de vizualizare 3D, independent de rotația 4D. Puncte și muchii mai strălucitoare = mai aproape pe axa a 4-a.",
@@ -577,11 +577,11 @@ obliq:"Secțiuni oblice ale teseractului — aceeași formă (teseractul din cat
 net:"Desfășurarea teseractului — la fel cum poți desface un cub în 6 pătrate plate (o „cruce” 2D), teseractul se poate desface în 8 cuburi legate în 3D. Aranjarea de-aici (un cub central, 6 lipite pe fiecare față, plus unul suplimentar) e crucea clasică din pictura lui Salvador Dalí, Corpus Hypercubus. Nu e o proiecție sau o secțiune — e o desfacere: tăiat pe muchii potrivite, teseractul chiar se „despăturește” în exact acest aranjament 3D."
 },
 poly: {
-cell5:"5-cell — simplexul 4D. 5 vârfuri, 10 muchii, 10 fețe triunghiulare, 5 celule tetraedrice. Cel mai simplu politop regulat din 4D; autodual. (E și el o hiper-piramidă: peste un tetraedru.) Hipervolum exact (muchie=1.1547): V₄=(√5/24)·a⁴≈0.1656 — cel mai mic hipervolum dintre cele 6, la aceeași rază.",
+cell5:"5-cell — simplexul 4D. 5 vârfuri, 10 muchii, 10 fețe triunghiulare, 5 celule tetraedrice. Cel mai simplu politop regulat din 4D; autodual. (E și el o hiper-piramidă: peste un tetraedru.) Hipervolum exact (muchie=1.5811): V₄=(√5/96)·a⁴≈0.1456 — cel mai mic hipervolum dintre cele 6, la aceeași rază.",
 cell8:"8-cell (teseract) — 16 vârfuri, 32 muchii, 24 fețe pătrate, 8 celule cubice. Dualul lui e 16-cell. E și duoprismul 4×4 (pătrat×pătrat) — vezi grupul „Duoprisme”. Hipervolum exact (muchie=1): V₄=a⁴=1 — pur și simplu latura la puterea a 4-a, ca la un cub obișnuit.",
 cell16:"16-cell — dualul teseractului. 8 vârfuri, 24 muchii, 32 fețe triunghiulare, 16 celule tetraedrice. Hipervolum exact (muchie=1.4142): V₄=(1/6)·a⁴≈0.6667 — analogul 4D al formulei octaedrului (1/3 din cub). E și un „duoantiprism”: alternând vârfurile teseractului (păstrând doar cele cu număr par de semne minus — 8 din 16) obții exact acest 16-cell, verificat exact (24 muchii la distanța minimă). E singurul caz complet regulat dintr-o familie mai mare de antiprisme 4D p-q, majoritatea neregulate.",
 cell24:"24-cell — 24 vârfuri, 96 muchii, 96 fețe triunghiulare, 24 celule octaedrice. Autodual; nu are analog printre solidele platonice din 3D. Hipervolum exact (muchie=1): V₄=2·a⁴=2 — dublu față de teseract, la aceeași muchie.",
-cell600:"600-cell — 120 vârfuri, 720 muchii, 1200 fețe triunghiulare, 600 celule tetraedrice. Analogul 4D al icosaedrului. Dualul lui e 120-cell. Hipervolum exact (muchie=0.618): V₄=((25+8√5)/4)·a⁴≈1.5643.",
+cell600:"600-cell — 120 vârfuri, 720 muchii, 1200 fețe triunghiulare, 600 celule tetraedrice. Analogul 4D al icosaedrului. Dualul lui e 120-cell. Hipervolum exact (muchie=0.618): V₄=(25(2+√5)/4)·a⁴≈3.8627.",
 cell120:"120-cell — 600 vârfuri, 1200 muchii, 720 fețe pentagonale, 120 celule dodecaedrice. Cel mai complex politop regulat din 4D. Fețele pentagonale nu se randează plin (doar wireframe). Dualul lui e 600-cell. Hipervolum exact (muchie=0.270): V₄≈4.1926 — cel mai mare dintre cele 6, la aceeași rază (formulă cunoscută, cu 600 celule dodecaedrice greu de descompus manual).",
 duo33:"Duoprism 3×3 — produsul a două triunghiuri (P×Q). 9 vârfuri, 18 muchii, 9 fețe pătrate, 6 celule (prisme triunghiulare). Cel mai mic duoprism posibil.",
 duo35:"Duoprism 3×5 — produsul unui triunghi și unui pentagon. 15 vârfuri, 30 muchii, 15 fețe pătrate. Asimetric — arată clar că duoprismele P×Q nu trebuie să aibă P=Q.",
@@ -643,7 +643,7 @@ ui: {
 "hint.samePattern":"(same pattern, one level down)",
 "cap.polA":"pole A","cap.polB":"pole B","cap.equator":"equator","cap.aroundHole":"around the hole","cap.aroundTube":"around the tube",
 "toggle.solidFaces":"Solid faces","toggle.mystery":"Mystery mode","toggle.showSecondCut":"Show the cut toward 2D",
-"label.howManyWorms":"How many worms?","label.speed":"Speed","btn.pause":"Pause",
+"label.howManyWorms":"How many worms?","label.speed":"Speed","btn.pause":"Pause","btn.play":"Play",
 "cart.body":"Body","cart.formula":"Formula","cart.boundary":"Boundary","cart.currentW":"current w","cart.visibleNow":"Visible now",
 "cart.mode":"Mode","cart.worms":"Worms","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄",
 "text.doubleRotation":"Double rotation (4D), simultaneously in the <span class=\"mono\">XW</span> and <span class=\"mono\">YZ</span> planes — covers all 4 dimensions with no overlap. Drag with mouse/finger to rotate the 3D viewing angle, independent of the 4D rotation. Brighter points and edges = closer along the 4th axis.",
@@ -668,11 +668,11 @@ obliq:"Oblique cross-sections of the tesseract — the same shape (the tesseract
 net:"Unfolding the tesseract — just as you can unfold a cube into 6 flat squares (a 2D “cross”), the tesseract can be unfolded into 8 cubes joined in 3D. The arrangement here (one central cube, 6 attached to each face, plus one extra) is the classic cross from Salvador Dalí's painting, Corpus Hypercubus. It's not a projection or a cross-section — it's an unfolding: cut along the right edges, the tesseract genuinely “unfolds” into exactly this 3D arrangement."
 },
 poly: {
-cell5:"5-cell — the 4D simplex. 5 vertices, 10 edges, 10 triangular faces, 5 tetrahedral cells. The simplest regular polytope in 4D; self-dual. (It's also a hyperpyramid: over a tetrahedron.) Exact hypervolume (edge=1.1547): V₄=(√5/24)·a⁴≈0.1656 — the smallest hypervolume of the six, at the same radius.",
+cell5:"5-cell — the 4D simplex. 5 vertices, 10 edges, 10 triangular faces, 5 tetrahedral cells. The simplest regular polytope in 4D; self-dual. (It's also a hyperpyramid: over a tetrahedron.) Exact hypervolume (edge=1.5811): V₄=(√5/96)·a⁴≈0.1456 — the smallest hypervolume of the six, at the same radius.",
 cell8:"8-cell (tesseract) — 16 vertices, 32 edges, 24 square faces, 8 cubic cells. Its dual is the 16-cell. It's also the 4×4 duoprism (square×square) — see the “Duoprisms” group. Exact hypervolume (edge=1): V₄=a⁴=1 — simply the side to the 4th power, as with an ordinary cube.",
 cell16:"16-cell — the tesseract's dual. 8 vertices, 24 edges, 32 triangular faces, 16 tetrahedral cells. Exact hypervolume (edge=1.4142): V₄=(1/6)·a⁴≈0.6667 — the 4D analog of the octahedron's formula (1/3 of a cube). It's also a “duoantiprism”: alternating the tesseract's vertices (keeping only those with an even number of minus signs — 8 of 16) gives exactly this 16-cell, verified exactly (24 edges at the minimum distance). It's the only fully regular case in a larger family of 4D p-q antiprisms, mostly irregular.",
 cell24:"24-cell — 24 vertices, 96 edges, 96 triangular faces, 24 octahedral cells. Self-dual; has no analog among the 3D Platonic solids. Exact hypervolume (edge=1): V₄=2·a⁴=2 — double the tesseract, at the same edge length.",
-cell600:"600-cell — 120 vertices, 720 edges, 1200 triangular faces, 600 tetrahedral cells. The 4D analog of the icosahedron. Its dual is the 120-cell. Exact hypervolume (edge=0.618): V₄=((25+8√5)/4)·a⁴≈1.5643.",
+cell600:"600-cell — 120 vertices, 720 edges, 1200 triangular faces, 600 tetrahedral cells. The 4D analog of the icosahedron. Its dual is the 120-cell. Exact hypervolume (edge=0.618): V₄=(25(2+√5)/4)·a⁴≈3.8627.",
 cell120:"120-cell — 600 vertices, 1200 edges, 720 pentagonal faces, 120 dodecahedral cells. The most complex regular polytope in 4D. The pentagonal faces don't render solid (wireframe only). Its dual is the 600-cell. Exact hypervolume (edge=0.270): V₄≈4.1926 — the largest of the six, at the same radius (a known formula; the 600 dodecahedral cells are hard to decompose by hand).",
 duo33:"3×3 duoprism — the product of two triangles (P×Q). 9 vertices, 18 edges, 9 square faces, 6 cells (triangular prisms). The smallest possible duoprism.",
 duo35:"3×5 duoprism — the product of a triangle and a pentagon. 15 vertices, 30 edges, 15 square faces. Asymmetric — clearly shows that P×Q duoprisms need not have P=Q.",
@@ -735,7 +735,7 @@ ui: {
 "hint.samePattern":"(même schéma, un niveau plus bas)",
 "cap.polA":"pôle A","cap.polB":"pôle B","cap.equator":"équateur","cap.aroundHole":"autour du trou","cap.aroundTube":"autour du tube",
 "toggle.solidFaces":"Faces pleines","toggle.mystery":"Mode mystère","toggle.showSecondCut":"Montrer la coupe vers 2D",
-"label.howManyWorms":"Combien de vers ?","label.speed":"Vitesse","btn.pause":"Pause",
+"label.howManyWorms":"Combien de vers ?","label.speed":"Vitesse","btn.pause":"Pause","btn.play":"Lire",
 "cart.body":"Corps","cart.formula":"Formule","cart.boundary":"Frontière","cart.currentW":"w actuel","cart.visibleNow":"Visibles maintenant",
 "cart.mode":"Mode","cart.worms":"Vers","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄",
 "text.doubleRotation":"Double rotation (4D), simultanément dans les plans <span class=\"mono\">XW</span> et <span class=\"mono\">YZ</span> — couvre les 4 dimensions sans chevauchement. Glissez avec la souris/le doigt pour faire pivoter l'angle de vue 3D, indépendamment de la rotation 4D. Points et arêtes plus lumineux = plus proches sur le 4e axe.",
@@ -760,11 +760,11 @@ obliq:"Sections obliques du tesseract — la même forme (le tesseract de la cat
 net:"Dépliage du tesseract — tout comme on peut déplier un cube en 6 carrés plats (une « croix » 2D), le tesseract peut être déplié en 8 cubes joints en 3D. L'arrangement ici (un cube central, 6 attachés à chaque face, plus un supplémentaire) est la croix classique du tableau de Salvador Dalí, Corpus Hypercubus. Ce n'est ni une projection ni une section — c'est un dépliage : coupé le long des bonnes arêtes, le tesseract se « déplie » vraiment en exactement cet arrangement 3D."
 },
 poly: {
-cell5:"5-cellules — le simplexe 4D. 5 sommets, 10 arêtes, 10 faces triangulaires, 5 cellules tétraédriques. Le polytope régulier le plus simple en 4D ; auto-dual. (C'est aussi une hyperpyramide : sur un tétraèdre.) Hypervolume exact (arête=1,1547) : V₄=(√5/24)·a⁴≈0,1656 — le plus petit hypervolume des six, au même rayon.",
+cell5:"5-cellules — le simplexe 4D. 5 sommets, 10 arêtes, 10 faces triangulaires, 5 cellules tétraédriques. Le polytope régulier le plus simple en 4D ; auto-dual. (C'est aussi une hyperpyramide : sur un tétraèdre.) Hypervolume exact (arête=1,5811) : V₄=(√5/96)·a⁴≈0,1456 — le plus petit hypervolume des six, au même rayon.",
 cell8:"8-cellules (tesseract) — 16 sommets, 32 arêtes, 24 faces carrées, 8 cellules cubiques. Son dual est le 16-cellules. C'est aussi le duoprisme 4×4 (carré×carré) — voir le groupe « Duoprismes ». Hypervolume exact (arête=1) : V₄=a⁴=1 — simplement le côté à la puissance 4, comme pour un cube ordinaire.",
 cell16:"16-cellules — le dual du tesseract. 8 sommets, 24 arêtes, 32 faces triangulaires, 16 cellules tétraédriques. Hypervolume exact (arête=1,4142) : V₄=(1/6)·a⁴≈0,6667 — l'analogue 4D de la formule de l'octaèdre (1/3 d'un cube). C'est aussi un « duoantiprisme » : en alternant les sommets du tesseract (en gardant seulement ceux à nombre pair de signes moins — 8 sur 16), on obtient exactement ce 16-cellules, vérifié exactement (24 arêtes à la distance minimale). C'est le seul cas entièrement régulier d'une famille plus large d'antiprismes 4D p-q, majoritairement irréguliers.",
 cell24:"24-cellules — 24 sommets, 96 arêtes, 96 faces triangulaires, 24 cellules octaédriques. Auto-dual ; n'a pas d'analogue parmi les solides platoniciens 3D. Hypervolume exact (arête=1) : V₄=2·a⁴=2 — le double du tesseract, à la même longueur d'arête.",
-cell600:"600-cellules — 120 sommets, 720 arêtes, 1200 faces triangulaires, 600 cellules tétraédriques. L'analogue 4D de l'icosaèdre. Son dual est le 120-cellules. Hypervolume exact (arête=0,618) : V₄=((25+8√5)/4)·a⁴≈1,5643.",
+cell600:"600-cellules — 120 sommets, 720 arêtes, 1200 faces triangulaires, 600 cellules tétraédriques. L'analogue 4D de l'icosaèdre. Son dual est le 120-cellules. Hypervolume exact (arête=0,618) : V₄=(25(2+√5)/4)·a⁴≈3,8627.",
 cell120:"120-cellules — 600 sommets, 1200 arêtes, 720 faces pentagonales, 120 cellules dodécaédriques. Le polytope régulier le plus complexe en 4D. Les faces pentagonales ne se rendent pas pleines (fil de fer seulement). Son dual est le 600-cellules. Hypervolume exact (arête=0,270) : V₄≈4,1926 — le plus grand des six, au même rayon (formule connue ; les 600 cellules dodécaédriques sont difficiles à décomposer à la main).",
 duo33:"Duoprisme 3×3 — le produit de deux triangles (P×Q). 9 sommets, 18 arêtes, 9 faces carrées, 6 cellules (prismes triangulaires). Le plus petit duoprisme possible.",
 duo35:"Duoprisme 3×5 — le produit d'un triangle et d'un pentagone. 15 sommets, 30 arêtes, 15 faces carrées. Asymétrique — montre clairement que les duoprismes P×Q n'ont pas besoin d'avoir P=Q.",
@@ -827,7 +827,7 @@ ui: {
 "hint.samePattern":"(stesso schema, un livello più in basso)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"equatore","cap.aroundHole":"intorno al buco","cap.aroundTube":"intorno al tubo",
 "toggle.solidFaces":"Facce piene","toggle.mystery":"Modalità mistero","toggle.showSecondCut":"Mostra il taglio verso 2D",
-"label.howManyWorms":"Quanti vermi?","label.speed":"Velocità","btn.pause":"Pausa",
+"label.howManyWorms":"Quanti vermi?","label.speed":"Velocità","btn.pause":"Pausa","btn.play":"Riproduci",
 "cart.body":"Corpo","cart.formula":"Formula","cart.boundary":"Confine","cart.currentW":"w attuale","cart.visibleNow":"Visibili ora",
 "cart.mode":"Modalità","cart.worms":"Vermi","cart.zone":"Zona","cart.hypervolume":"Ipervolume V₄",
 "text.doubleRotation":"Doppia rotazione (4D), simultaneamente nei piani <span class=\"mono\">XW</span> e <span class=\"mono\">YZ</span> — copre tutte e 4 le dimensioni senza sovrapposizioni. Trascina con mouse/dito per ruotare l'angolo di visione 3D, indipendentemente dalla rotazione 4D. Punti e spigoli più luminosi = più vicini sul 4° asse.",
@@ -852,11 +852,11 @@ obliq:"Sezioni oblique del tesseratto — la stessa forma (il tesseratto della c
 net:"Sviluppo del tesseratto — proprio come si può sviluppare un cubo in 6 quadrati piatti (una “croce” 2D), il tesseratto può essere sviluppato in 8 cubi uniti in 3D. La disposizione qui (un cubo centrale, 6 attaccati a ogni faccia, più uno extra) è la croce classica del dipinto di Salvador Dalí, Corpus Hypercubus. Non è una proiezione né una sezione — è uno sviluppo: tagliato lungo gli spigoli giusti, il tesseratto si “sviluppa” davvero in esattamente questa disposizione 3D."
 },
 poly: {
-cell5:"5-cella — il simplesso 4D. 5 vertici, 10 spigoli, 10 facce triangolari, 5 celle tetraedriche. Il politopo regolare più semplice in 4D; autoduale. (È anche un'iperpiramide: su un tetraedro.) Ipervolume esatto (spigolo=1,1547): V₄=(√5/24)·a⁴≈0,1656 — il più piccolo ipervolume dei sei, allo stesso raggio.",
+cell5:"5-cella — il simplesso 4D. 5 vertici, 10 spigoli, 10 facce triangolari, 5 celle tetraedriche. Il politopo regolare più semplice in 4D; autoduale. (È anche un'iperpiramide: su un tetraedro.) Ipervolume esatto (spigolo=1,5811): V₄=(√5/96)·a⁴≈0,1456 — il più piccolo ipervolume dei sei, allo stesso raggio.",
 cell8:"8-cella (tesseratto) — 16 vertici, 32 spigoli, 24 facce quadrate, 8 celle cubiche. Il suo duale è la 16-cella. È anche il duoprisma 4×4 (quadrato×quadrato) — vedi il gruppo “Duoprismi”. Ipervolume esatto (spigolo=1): V₄=a⁴=1 — semplicemente il lato alla quarta potenza, come per un cubo normale.",
 cell16:"16-cella — il duale del tesseratto. 8 vertici, 24 spigoli, 32 facce triangolari, 16 celle tetraedriche. Ipervolume esatto (spigolo=1,4142): V₄=(1/6)·a⁴≈0,6667 — l'analogo 4D della formula dell'ottaedro (1/3 di un cubo). È anche un “duoantiprisma”: alternando i vertici del tesseratto (mantenendo solo quelli con un numero pari di segni meno — 8 su 16) si ottiene esattamente questa 16-cella, verificato esattamente (24 spigoli alla distanza minima). È l'unico caso completamente regolare in una famiglia più ampia di antiprismi 4D p-q, per lo più irregolari.",
 cell24:"24-cella — 24 vertici, 96 spigoli, 96 facce triangolari, 24 celle ottaedriche. Autoduale; non ha analogo tra i solidi platonici 3D. Ipervolume esatto (spigolo=1): V₄=2·a⁴=2 — doppio del tesseratto, alla stessa lunghezza di spigolo.",
-cell600:"600-cella — 120 vertici, 720 spigoli, 1200 facce triangolari, 600 celle tetraedriche. L'analogo 4D dell'icosaedro. Il suo duale è la 120-cella. Ipervolume esatto (spigolo=0,618): V₄=((25+8√5)/4)·a⁴≈1,5643.",
+cell600:"600-cella — 120 vertici, 720 spigoli, 1200 facce triangolari, 600 celle tetraedriche. L'analogo 4D dell'icosaedro. Il suo duale è la 120-cella. Ipervolume esatto (spigolo=0,618): V₄=(25(2+√5)/4)·a⁴≈3,8627.",
 cell120:"120-cella — 600 vertici, 1200 spigoli, 720 facce pentagonali, 120 celle dodecaedriche. Il politopo regolare più complesso in 4D. Le facce pentagonali non si rendono piene (solo wireframe). Il suo duale è la 600-cella. Ipervolume esatto (spigolo=0,270): V₄≈4,1926 — il più grande dei sei, allo stesso raggio (formula nota; le 600 celle dodecaedriche sono difficili da scomporre a mano).",
 duo33:"Duoprisma 3×3 — il prodotto di due triangoli (P×Q). 9 vertici, 18 spigoli, 9 facce quadrate, 6 celle (prismi triangolari). Il più piccolo duoprisma possibile.",
 duo35:"Duoprisma 3×5 — il prodotto di un triangolo e un pentagono. 15 vertici, 30 spigoli, 15 facce quadrate. Asimmetrico — mostra chiaramente che i duoprismi P×Q non devono avere P=Q.",
@@ -919,7 +919,7 @@ ui: {
 "hint.samePattern":"(mismo patrón, un nivel más abajo)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"ecuador","cap.aroundHole":"alrededor del agujero","cap.aroundTube":"alrededor del tubo",
 "toggle.solidFaces":"Caras sólidas","toggle.mystery":"Modo misterio","toggle.showSecondCut":"Mostrar el corte hacia 2D",
-"label.howManyWorms":"¿Cuántos gusanos?","label.speed":"Velocidad","btn.pause":"Pausa",
+"label.howManyWorms":"¿Cuántos gusanos?","label.speed":"Velocidad","btn.pause":"Pausa","btn.play":"Reproducir",
 "cart.body":"Cuerpo","cart.formula":"Fórmula","cart.boundary":"Frontera","cart.currentW":"w actual","cart.visibleNow":"Visibles ahora",
 "cart.mode":"Modo","cart.worms":"Gusanos","cart.zone":"Zona","cart.hypervolume":"Hipervolumen V₄",
 "text.doubleRotation":"Rotación doble (4D), simultáneamente en los planos <span class=\"mono\">XW</span> y <span class=\"mono\">YZ</span> — cubre las 4 dimensiones sin solapamiento. Arrastra con el ratón/dedo para rotar el ángulo de visión 3D, independientemente de la rotación 4D. Puntos y aristas más brillantes = más cerca en el 4º eje.",
@@ -944,11 +944,11 @@ obliq:"Secciones oblicuas del teseracto — la misma forma (el teseracto de la c
 net:"Despliegue del teseracto — igual que puedes desplegar un cubo en 6 cuadrados planos (una “cruz” 2D), el teseracto se puede desplegar en 8 cubos unidos en 3D. La disposición aquí (un cubo central, 6 unidos a cada cara, más uno extra) es la cruz clásica del cuadro de Salvador Dalí, Corpus Hypercubus. No es una proyección ni una sección — es un despliegue: cortado a lo largo de las aristas correctas, el teseracto realmente “se despliega” en exactamente esta disposición 3D."
 },
 poly: {
-cell5:"5-celda — el símplex 4D. 5 vértices, 10 aristas, 10 caras triangulares, 5 celdas tetraédricas. El politopo regular más simple en 4D; autodual. (También es una hiperpirámide: sobre un tetraedro.) Hipervolumen exacto (arista=1,1547): V₄=(√5/24)·a⁴≈0,1656 — el hipervolumen más pequeño de los seis, al mismo radio.",
+cell5:"5-celda — el símplex 4D. 5 vértices, 10 aristas, 10 caras triangulares, 5 celdas tetraédricas. El politopo regular más simple en 4D; autodual. (También es una hiperpirámide: sobre un tetraedro.) Hipervolumen exacto (arista=1,5811): V₄=(√5/96)·a⁴≈0,1456 — el hipervolumen más pequeño de los seis, al mismo radio.",
 cell8:"8-celda (teseracto) — 16 vértices, 32 aristas, 24 caras cuadradas, 8 celdas cúbicas. Su dual es la 16-celda. También es el duoprisma 4×4 (cuadrado×cuadrado) — ver el grupo “Duoprismas”. Hipervolumen exacto (arista=1): V₄=a⁴=1 — simplemente el lado a la 4ª potencia, como en un cubo ordinario.",
 cell16:"16-celda — el dual del teseracto. 8 vértices, 24 aristas, 32 caras triangulares, 16 celdas tetraédricas. Hipervolumen exacto (arista=1,4142): V₄=(1/6)·a⁴≈0,6667 — el análogo 4D de la fórmula del octaedro (1/3 de un cubo). También es un “duoantiprisma”: alternando los vértices del teseracto (manteniendo solo los que tienen un número par de signos menos — 8 de 16) se obtiene exactamente esta 16-celda, verificado exactamente (24 aristas a la distancia mínima). Es el único caso completamente regular de una familia más amplia de antiprismas 4D p-q, mayormente irregulares.",
 cell24:"24-celda — 24 vértices, 96 aristas, 96 caras triangulares, 24 celdas octaédricas. Autodual; no tiene análogo entre los sólidos platónicos 3D. Hipervolumen exacto (arista=1): V₄=2·a⁴=2 — el doble del teseracto, a la misma longitud de arista.",
-cell600:"600-celda — 120 vértices, 720 aristas, 1200 caras triangulares, 600 celdas tetraédricas. El análogo 4D del icosaedro. Su dual es la 120-celda. Hipervolumen exacto (arista=0,618): V₄=((25+8√5)/4)·a⁴≈1,5643.",
+cell600:"600-celda — 120 vértices, 720 aristas, 1200 caras triangulares, 600 celdas tetraédricas. El análogo 4D del icosaedro. Su dual es la 120-celda. Hipervolumen exacto (arista=0,618): V₄=(25(2+√5)/4)·a⁴≈3,8627.",
 cell120:"120-celda — 600 vértices, 1200 aristas, 720 caras pentagonales, 120 celdas dodecaédricas. El politopo regular más complejo en 4D. Las caras pentagonales no se renderizan sólidas (solo wireframe). Su dual es la 600-celda. Hipervolumen exacto (arista=0,270): V₄≈4,1926 — el más grande de los seis, al mismo radio (fórmula conocida; las 600 celdas dodecaédricas son difíciles de descomponer a mano).",
 duo33:"Duoprisma 3×3 — el producto de dos triángulos (P×Q). 9 vértices, 18 aristas, 9 caras cuadradas, 6 celdas (prismas triangulares). El duoprisma más pequeño posible.",
 duo35:"Duoprisma 3×5 — el producto de un triángulo y un pentágono. 15 vértices, 30 aristas, 15 caras cuadradas. Asimétrico — muestra claramente que los duoprismas P×Q no necesitan tener P=Q.",
@@ -1011,7 +1011,7 @@ ui: {
 "hint.samePattern":"(mesmo padrão, um nível mais abaixo)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"equador","cap.aroundHole":"à volta do buraco","cap.aroundTube":"à volta do tubo",
 "toggle.solidFaces":"Faces sólidas","toggle.mystery":"Modo mistério","toggle.showSecondCut":"Mostrar o corte para 2D",
-"label.howManyWorms":"Quantos vermes?","label.speed":"Velocidade","btn.pause":"Pausa",
+"label.howManyWorms":"Quantos vermes?","label.speed":"Velocidade","btn.pause":"Pausa","btn.play":"Reproduzir",
 "cart.body":"Corpo","cart.formula":"Fórmula","cart.boundary":"Fronteira","cart.currentW":"w atual","cart.visibleNow":"Visíveis agora",
 "cart.mode":"Modo","cart.worms":"Vermes","cart.zone":"Zona","cart.hypervolume":"Hipervolume V₄",
 "text.doubleRotation":"Rotação dupla (4D), simultaneamente nos planos <span class=\"mono\">XW</span> e <span class=\"mono\">YZ</span> — cobre as 4 dimensões sem sobreposição. Arraste com o rato/dedo para rodar o ângulo de visão 3D, independentemente da rotação 4D. Pontos e arestas mais brilhantes = mais próximos no 4º eixo.",
@@ -1036,11 +1036,11 @@ obliq:"Secções oblíquas do teseracto — a mesma forma (o teseracto da catego
 net:"Desdobramento do teseracto — tal como se pode desdobrar um cubo em 6 quadrados planos (uma “cruz” 2D), o teseracto pode ser desdobrado em 8 cubos unidos em 3D. A disposição aqui (um cubo central, 6 unidos a cada face, mais um extra) é a cruz clássica da pintura de Salvador Dalí, Corpus Hypercubus. Não é uma projeção nem uma secção — é um desdobramento: cortado ao longo das arestas certas, o teseracto realmente “desdobra-se” exatamente nesta disposição 3D."
 },
 poly: {
-cell5:"5-célula — o simplex 4D. 5 vértices, 10 arestas, 10 faces triangulares, 5 células tetraédricas. O politopo regular mais simples em 4D; autodual. (Também é uma hiperpirâmide: sobre um tetraedro.) Hipervolume exato (aresta=1,1547): V₄=(√5/24)·a⁴≈0,1656 — o menor hipervolume dos seis, ao mesmo raio.",
+cell5:"5-célula — o simplex 4D. 5 vértices, 10 arestas, 10 faces triangulares, 5 células tetraédricas. O politopo regular mais simples em 4D; autodual. (Também é uma hiperpirâmide: sobre um tetraedro.) Hipervolume exato (aresta=1,5811): V₄=(√5/96)·a⁴≈0,1456 — o menor hipervolume dos seis, ao mesmo raio.",
 cell8:"8-célula (teseracto) — 16 vértices, 32 arestas, 24 faces quadradas, 8 células cúbicas. O seu dual é a 16-célula. Também é o duoprisma 4×4 (quadrado×quadrado) — ver o grupo “Duoprismas”. Hipervolume exato (aresta=1): V₄=a⁴=1 — simplesmente o lado à 4ª potência, como num cubo comum.",
 cell16:"16-célula — o dual do teseracto. 8 vértices, 24 arestas, 32 faces triangulares, 16 células tetraédricas. Hipervolume exato (aresta=1,4142): V₄=(1/6)·a⁴≈0,6667 — o análogo 4D da fórmula do octaedro (1/3 de um cubo). Também é um “duoantiprisma”: alternando os vértices do teseracto (mantendo apenas os que têm um número par de sinais menos — 8 de 16) obtém-se exatamente esta 16-célula, verificado exatamente (24 arestas à distância mínima). É o único caso completamente regular numa família maior de antiprismas 4D p-q, maioritariamente irregulares.",
 cell24:"24-célula — 24 vértices, 96 arestas, 96 faces triangulares, 24 células octaédricas. Autodual; não tem análogo entre os sólidos platónicos 3D. Hipervolume exato (aresta=1): V₄=2·a⁴=2 — o dobro do teseracto, ao mesmo comprimento de aresta.",
-cell600:"600-célula — 120 vértices, 720 arestas, 1200 faces triangulares, 600 células tetraédricas. O análogo 4D do icosaedro. O seu dual é a 120-célula. Hipervolume exato (aresta=0,618): V₄=((25+8√5)/4)·a⁴≈1,5643.",
+cell600:"600-célula — 120 vértices, 720 arestas, 1200 faces triangulares, 600 células tetraédricas. O análogo 4D do icosaedro. O seu dual é a 120-célula. Hipervolume exato (aresta=0,618): V₄=(25(2+√5)/4)·a⁴≈3,8627.",
 cell120:"120-célula — 600 vértices, 1200 arestas, 720 faces pentagonais, 120 células dodecaédricas. O politopo regular mais complexo em 4D. As faces pentagonais não são renderizadas sólidas (apenas wireframe). O seu dual é a 600-célula. Hipervolume exato (aresta=0,270): V₄≈4,1926 — o maior dos seis, ao mesmo raio (fórmula conhecida; as 600 células dodecaédricas são difíceis de decompor à mão).",
 duo33:"Duoprisma 3×3 — o produto de dois triângulos (P×Q). 9 vértices, 18 arestas, 9 faces quadradas, 6 células (prismas triangulares). O menor duoprisma possível.",
 duo35:"Duoprisma 3×5 — o produto de um triângulo e um pentágono. 15 vértices, 30 arestas, 15 faces quadradas. Assimétrico — mostra claramente que os duoprismas P×Q não precisam de ter P=Q.",
@@ -1103,7 +1103,7 @@ ui: {
 "hint.samePattern":"(gleiches Muster, eine Ebene tiefer)",
 "cap.polA":"Pol A","cap.polB":"Pol B","cap.equator":"Äquator","cap.aroundHole":"um das Loch","cap.aroundTube":"um die Röhre",
 "toggle.solidFaces":"Volle Flächen","toggle.mystery":"Rätselmodus","toggle.showSecondCut":"Schnitt nach 2D zeigen",
-"label.howManyWorms":"Wie viele Würmer?","label.speed":"Geschwindigkeit","btn.pause":"Pause",
+"label.howManyWorms":"Wie viele Würmer?","label.speed":"Geschwindigkeit","btn.pause":"Pause","btn.play":"Abspielen",
 "cart.body":"Körper","cart.formula":"Formel","cart.boundary":"Grenze","cart.currentW":"aktuelles w","cart.visibleNow":"Jetzt sichtbar",
 "cart.mode":"Modus","cart.worms":"Würmer","cart.zone":"Zone","cart.hypervolume":"Hypervolumen V₄",
 "text.doubleRotation":"Doppelrotation (4D), gleichzeitig in den Ebenen <span class=\"mono\">XW</span> und <span class=\"mono\">YZ</span> — deckt alle 4 Dimensionen ohne Überlappung ab. Mit Maus/Finger ziehen, um den 3D-Blickwinkel zu drehen, unabhängig von der 4D-Rotation. Hellere Punkte und Kanten = näher auf der 4. Achse.",
@@ -1128,11 +1128,11 @@ obliq:"Schräge Querschnitte des Tesserakts — dieselbe Form (der Tesserakt aus
 net:"Abwicklung des Tesserakts — genau wie man einen Würfel in 6 flache Quadrate abwickeln kann (ein 2D-„Kreuz”), kann der Tesserakt in 8 miteinander verbundene Würfel in 3D abgewickelt werden. Die Anordnung hier (ein zentraler Würfel, 6 an jeder Fläche angebracht, plus ein zusätzlicher) ist das klassische Kreuz aus Salvador Dalís Gemälde Corpus Hypercubus. Es ist weder eine Projektion noch ein Querschnitt — es ist eine Abwicklung: entlang der richtigen Kanten geschnitten, „entfaltet” sich der Tesserakt tatsächlich genau in diese 3D-Anordnung."
 },
 poly: {
-cell5:"5-Zell — der 4D-Simplex. 5 Ecken, 10 Kanten, 10 Dreiecksflächen, 5 tetraedrische Zellen. Das einfachste reguläre Polytop in 4D; selbstdual. (Es ist auch eine Hyperpyramide: über einem Tetraeder.) Exaktes Hypervolumen (Kante=1,1547): V₄=(√5/24)·a⁴≈0,1656 — das kleinste Hypervolumen der sechs, beim gleichen Radius.",
+cell5:"5-Zell — der 4D-Simplex. 5 Ecken, 10 Kanten, 10 Dreiecksflächen, 5 tetraedrische Zellen. Das einfachste reguläre Polytop in 4D; selbstdual. (Es ist auch eine Hyperpyramide: über einem Tetraeder.) Exaktes Hypervolumen (Kante=1,5811): V₄=(√5/96)·a⁴≈0,1456 — das kleinste Hypervolumen der sechs, beim gleichen Radius.",
 cell8:"8-Zell (Tesserakt) — 16 Ecken, 32 Kanten, 24 quadratische Flächen, 8 Würfelzellen. Sein Dual ist das 16-Zell. Es ist auch das 4×4-Duoprisma (Quadrat×Quadrat) — siehe die Gruppe „Duoprismen”. Exaktes Hypervolumen (Kante=1): V₄=a⁴=1 — einfach die Seite hoch 4, wie bei einem gewöhnlichen Würfel.",
 cell16:"16-Zell — das Dual des Tesserakts. 8 Ecken, 24 Kanten, 32 Dreiecksflächen, 16 tetraedrische Zellen. Exaktes Hypervolumen (Kante=1,4142): V₄=(1/6)·a⁴≈0,6667 — das 4D-Analogon der Oktaederformel (1/3 eines Würfels). Es ist auch ein „Duoantiprisma”: Wechselt man die Ecken des Tesserakts ab (behält nur jene mit einer geraden Anzahl von Minuszeichen — 8 von 16), erhält man genau dieses 16-Zell, exakt verifiziert (24 Kanten beim Mindestabstand). Es ist der einzige vollständig reguläre Fall einer größeren Familie von 4D p-q-Antiprismen, meist unregelmäßig.",
 cell24:"24-Zell — 24 Ecken, 96 Kanten, 96 Dreiecksflächen, 24 oktaedrische Zellen. Selbstdual; hat kein Analogon unter den 3D-platonischen Körpern. Exaktes Hypervolumen (Kante=1): V₄=2·a⁴=2 — doppelt so groß wie der Tesserakt, bei gleicher Kantenlänge.",
-cell600:"600-Zell — 120 Ecken, 720 Kanten, 1200 Dreiecksflächen, 600 tetraedrische Zellen. Das 4D-Analogon des Ikosaeders. Sein Dual ist das 120-Zell. Exaktes Hypervolumen (Kante=0,618): V₄=((25+8√5)/4)·a⁴≈1,5643.",
+cell600:"600-Zell — 120 Ecken, 720 Kanten, 1200 Dreiecksflächen, 600 tetraedrische Zellen. Das 4D-Analogon des Ikosaeders. Sein Dual ist das 120-Zell. Exaktes Hypervolumen (Kante=0,618): V₄=(25(2+√5)/4)·a⁴≈3,8627.",
 cell120:"120-Zell — 600 Ecken, 1200 Kanten, 720 fünfeckige Flächen, 120 dodekaedrische Zellen. Das komplexeste reguläre Polytop in 4D. Die fünfeckigen Flächen werden nicht als Vollflächen gerendert (nur Drahtgitter). Sein Dual ist das 600-Zell. Exaktes Hypervolumen (Kante=0,270): V₄≈4,1926 — das größte der sechs, beim gleichen Radius (bekannte Formel; die 600 dodekaedrischen Zellen sind von Hand schwer zu zerlegen).",
 duo33:"3×3-Duoprisma — das Produkt zweier Dreiecke (P×Q). 9 Ecken, 18 Kanten, 9 quadratische Flächen, 6 Zellen (dreieckige Prismen). Das kleinstmögliche Duoprisma.",
 duo35:"3×5-Duoprisma — das Produkt eines Dreiecks und eines Fünfecks. 15 Ecken, 30 Kanten, 15 quadratische Flächen. Asymmetrisch — zeigt klar, dass P×Q-Duoprismen nicht P=Q haben müssen.",
@@ -1174,7 +1174,7 @@ star600:"Sternskelett (600v)",
 
   var currentLang = 'en';
   function applyLanguage(lang) {
-    currentLang = I18N[lang] ? lang : 'ro';
+    currentLang = Object.prototype.hasOwnProperty.call(I18N, lang) ? lang : 'ro';
     var dict = I18N[currentLang];
     Array.prototype.slice.call(document.querySelectorAll('[data-i18n]')).forEach(function (el) {
       var key = el.getAttribute('data-i18n');
@@ -2682,11 +2682,11 @@ star600:"Sternskelett (600v)",
   try { (function () {
     var duoP = 3, duoQ = 3;
     var POLY = {
-      cell5: { corp: '5-cell', vm: '5·10·10', hv: '0.1656', vgen: make5cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '5-cell — simplexul 4D. 5 vârfuri, 10 muchii, 10 fețe triunghiulare, 5 celule tetraedrice. Cel mai simplu politop regulat din 4D; autodual. (E și el o hiper-piramidă: peste un tetraedru.) Hipervolum exact (muchie=1.1547): V₄=(√5/24)·a⁴≈0.1656 — cel mai mic hipervolum dintre cele 6, la aceeași rază.' },
+      cell5: { corp: '5-cell', vm: '5·10·10', hv: '0.1456', vgen: make5cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '5-cell — simplexul 4D. 5 vârfuri, 10 muchii, 10 fețe triunghiulare, 5 celule tetraedrice. Cel mai simplu politop regulat din 4D; autodual. (E și el o hiper-piramidă: peste un tetraedru.) Hipervolum exact (muchie=1.5811): V₄=(√5/96)·a⁴≈0.1456 — cel mai mic hipervolum dintre cele 6, la aceeași rază.' },
       cell8: { corp: '8-cell', vm: '16·32·24', hv: '1.0000', vgen: make8cell, facesFn: function (v) { return tesseractFaces(v); }, info: '8-cell (teseract) — 16 vârfuri, 32 muchii, 24 fețe pătrate, 8 celule cubice. Dualul lui e 16-cell. E și duoprismul 4×4 (pătrat×pătrat) — vezi grupul „Duoprisme". Hipervolum exact (muchie=1): V₄=a⁴=1 — pur și simplu latura la puterea a 4-a, ca la un cub obișnuit.' },
       cell16: { corp: '16-cell', vm: '8·24·32', hv: '0.6667', vgen: make16cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '16-cell — dualul teseractului. 8 vârfuri, 24 muchii, 32 fețe triunghiulare, 16 celule tetraedrice. Hipervolum exact (muchie=1.4142): V₄=(1/6)·a⁴≈0.6667 — analogul 4D al formulei octaedrului (1/3 din cub). E și un „duoantiprism": alternând vârfurile teseractului (păstrând doar cele cu număr par de semne minus — 8 din 16) obții exact acest 16-cell, verificat exact (24 muchii la distanța minimă). E singurul caz complet regulat dintr-o familie mai mare de antiprisme 4D p-q, majoritatea neregulate.' },
       cell24: { corp: '24-cell', vm: '24·96·96', hv: '2.0000', vgen: make24cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '24-cell — 24 vârfuri, 96 muchii, 96 fețe triunghiulare, 24 celule octaedrice. Autodual; nu are analog printre solidele platonice din 3D. Hipervolum exact (muchie=1): V₄=2·a⁴=2 — dublu față de teseract, la aceeași muchie.' },
-      cell600: { corp: '600-cell', vm: '120·720·1200', hv: '1.5643', vgen: make600cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '600-cell — 120 vârfuri, 720 muchii, 1200 fețe triunghiulare, 600 celule tetraedrice. Analogul 4D al icosaedrului. Dualul lui e 120-cell. Hipervolum exact (muchie=0.618): V₄=((25+8√5)/4)·a⁴≈1.5643.' },
+      cell600: { corp: '600-cell', vm: '120·720·1200', hv: '3.8627', vgen: make600cell, facesFn: function (v, e) { return findTriangleFaces(v, e); }, info: '600-cell — 120 vârfuri, 720 muchii, 1200 fețe triunghiulare, 600 celule tetraedrice. Analogul 4D al icosaedrului. Dualul lui e 120-cell. Hipervolum exact (muchie=0.618): V₄=(25(2+√5)/4)·a⁴≈3.8627.' },
       cell120: { corp: '120-cell', vm: '600·1200·720', hv: '4.1926', vgen: make120cell, facesFn: null, info: '120-cell — 600 vârfuri, 1200 muchii, 720 fețe pentagonale, 120 celule dodecaedrice. Cel mai complex politop regulat din 4D. Fețele pentagonale nu se randează plin (doar wireframe). Dualul lui e 600-cell. Hipervolum exact (muchie=0.270): V₄≈4.1926 — cel mai mare dintre cele 6, la aceeași rază (formulă cunoscută, cu 600 celule dodecaedrice greu de descompus manual).' },
 
       duo33: { corp: '3,3-duoprism', vm: '9·18·9', vgen: function () { return makeDuoprismVerts(3, 3); }, edgesFn: duoprismEdgesFor(3, 3), facesFn: duoprismFacesFor(3, 3), info: 'Duoprism 3×3 — produsul a două triunghiuri (P×Q). 9 vârfuri, 18 muchii, 9 fețe pătrate, 6 celule (prisme triunghiulare). Cel mai mic duoprism posibil.' },
@@ -2877,7 +2877,8 @@ star600:"Sternskelett (600v)",
     function setPlaying(p) {
       playing = p;
       playBtn.setAttribute('aria-pressed', String(p));
-      playLabel.textContent = p ? 'Pauză' : 'Redă';
+      var uiP = (I18N[currentLang] || I18N.ro).ui;
+      playLabel.textContent = p ? (uiP['btn.pause'] || 'Pause') : (uiP['btn.play'] || 'Play');
       playBtn.querySelector('svg').innerHTML = p
         ? '<rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>'
         : '<path d="M7 4 L19 12 L7 20 Z"/>';
@@ -3020,6 +3021,7 @@ star600:"Sternskelett (600v)",
     }
     requestAnimationFrame(loop);
     document.addEventListener('app:langchange', function () {
+      setPlaying(playing);
       infoText.textContent = getPolyInfoText(currentPolyKey, POLY[currentPolyKey]) + (currentTier === 'veryDense' ? ' ' + ((I18N[currentLang] || I18N.ro).ui['text.autopausedDense']) : '');
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || POLY[currentPolyKey].corp;
     });
@@ -3031,7 +3033,7 @@ star600:"Sternskelett (600v)",
     if (Object.keys(state).length === 0) return;
     hashApplyInProgress = true;
     try {
-      if (state.lang && I18N[state.lang]) {
+      if (state.lang && Object.prototype.hasOwnProperty.call(I18N, state.lang)) {
         var sel = document.getElementById('lang-select');
         if (sel) sel.value = state.lang;
         applyLanguage(state.lang);
@@ -3066,6 +3068,8 @@ star600:"Sternskelett (600v)",
           wSel.dispatchEvent(new Event('change', { bubbles: true }));
         }
       }
+    } catch (err) {
+      console.warn('hash restore failed', err);
     } finally {
       hashApplyInProgress = false;
     }
