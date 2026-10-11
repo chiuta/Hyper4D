@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'  'sha256-6NrOwltZH/fzCoYi2219jxKgPO2VNqQ4ICnI+9/0sgY='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Hyper4D</title>
 <style>
   :root {
@@ -130,6 +130,7 @@
   .cartus-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-dim); margin: 0 0 3px; }
   .cartus-value { font-size: 14px; color: var(--brass-bright); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+  p.keys-hint { margin-top: 12px; font-size: 11px; color: var(--paper-dim); line-height: 1.5; }
   footer.note { margin-top: 16px; font-size: 11px; color: var(--paper-dim); line-height: 1.5; }
 
   @media (max-width: 480px) {
@@ -466,15 +467,17 @@
     <p class="formula" id="proj-explainer" data-i18n="text.projPerspectiveExplainer">Perspective: the 4th axis (w) has a vanishing point — closer cells look bigger, like ordinary 3D perspective. No 4D→3D projection can preserve distances, angles, AND volumes all at once (same as with 2D maps) — perspective chooses to show “depth” naturally, at the cost of distorting real sizes.</p>
     <p class="formula" data-i18n="text.doubleRotation">Double rotation (4D), simultaneously in the <span class="mono">XW</span> and <span class="mono">YZ</span> planes — covers all 4 dimensions with no overlap. Drag with mouse/finger to rotate the 3D viewing angle, independent of the 4D rotation. Brighter points and edges = closer along the 4th axis.<span class="mono">XW</span> și <span class="mono">YZ</span> — acoperă toate cele 4 dimensiuni fără suprapunere. Trage cu mouse-ul/degetul ca să rotești unghiul de vizualizare 3D, independent de rotația 4D. Puncte și muchii mai strălucitoare = mai aproape pe axa a 4-a.</p>
     <p class="formula" id="poly-info-text">—</p>
+    <p class="formula" id="poly-euler"></p>
     <div class="cartus mono">
       <div class="cartus-cell"><p class="cartus-label" data-i18n="cart.body">Body</p><p class="cartus-value" id="cartus-poly-corp">8-cell</p></div>
-      <div class="cartus-cell"><p class="cartus-label">V·M·F</p><p class="cartus-value" id="cartus-poly-vm">16·32·24</p></div>
+      <div class="cartus-cell"><p class="cartus-label" data-i18n="cart.vef">V·M·F</p><p class="cartus-value" id="cartus-poly-vm">16·32·24</p></div>
       <div class="cartus-cell"><p class="cartus-label" data-i18n="cart.hypervolume">Hypervolume V₄</p><p class="cartus-value" id="cartus-poly-hv">1.0000</p></div>
       <div class="cartus-cell"><p class="cartus-label">∠XW</p><p class="cartus-value" id="cartus-xw">0°</p></div>
       <div class="cartus-cell"><p class="cartus-label">∠YZ</p><p class="cartus-value" id="cartus-yz">0°</p></div>
     </div>
   </section>
 
+  <p class="note keys-hint" data-i18n="text.keys">Keys: P or Space = pause/play · ← → = previous/next shape (Polytopes)</p>
   </main>
 
   <footer class="note" data-i18n="footer.note">Offline tool, no external dependencies. R normalized to 1; all polytopes normalized to the same circumradius, for direct visual comparison.</footer>
@@ -558,7 +561,7 @@ ui: {
 "toggle.solidFaces":"Fețe pline","toggle.mystery":"Mod mister","toggle.showSecondCut":"Arată tăietura spre 2D",
 "label.howManyWorms":"Câți viermi?","label.speed":"Viteză","btn.pause":"Pauză","btn.play":"Redă",
 "cart.body":"Corp","cart.formula":"Formulă","cart.boundary":"Graniță","cart.currentW":"w curent","cart.visibleNow":"Vizibili acum",
-"cart.mode":"Mod","cart.worms":"Viermi","cart.zone":"Zonă","cart.hypervolume":"Hipervolum V₄",
+"cart.mode":"Mod","cart.worms":"Viermi","cart.zone":"Zonă","cart.hypervolume":"Hipervolum V₄","cart.vef":"V·M·F","text.euler":"Verificare Euler: vârfuri − muchii + fețe − celule","text.eulerNote":"Pentru orice politop convex 4D rezultatul este 0; vârfurile și muchiile sunt numărate din geometria desenată.","text.eulerDuo":"În cartuș, F numără doar fețele pătrate; aici sunt incluse și fețele poligonale ale celor două baze (P și Q).","text.keys":"Taste: P sau Spațiu = pauză/redare · ← → = forma anterioară/următoare (la Politopi)",
 "text.doubleRotation":"Rotație dublă (4D), simultan în planurile <span class=\"mono\">XW</span> și <span class=\"mono\">YZ</span> — acoperă toate cele 4 dimensiuni fără suprapunere. Trage cu mouse-ul/degetul ca să rotești unghiul de vizualizare 3D, independent de rotația 4D. Puncte și muchii mai strălucitoare = mai aproape pe axa a 4-a.",
 "text.projPerspectiveExplainer":"Perspectivă: axa a 4-a (w) are punct de fugă — celulele mai apropiate par mai mari, ca-n perspectiva 3D obișnuită. Nicio proiecție 4D→3D nu poate păstra simultan distanțele, unghiurile ȘI volumele (la fel ca la hărțile din 2D) — perspectiva alege să arate „adâncimea” natural, cu prețul distorsionării mărimilor reale.",
 "text.gluedExplainer":"Bila A = emisfera w≥0 a lui S³ (proiectată pe (x,y,z), pierzând w). Bila B = emisfera w≤0, la fel. Suprafețele lor — ambele câte o sferă S² obișnuită — <em>sunt aceeași</em> graniță comună: exact secțiunea de la ecuator (w=0) din vizualizarea „Secțiune”, adică sfera de rază maximă R. Punctul galben marchează o poziție pe această graniță — aceeași poziție pe amândouă, pt că e un singur punct, văzut din ambele bile.",
@@ -649,7 +652,7 @@ ui: {
 "toggle.solidFaces":"Solid faces","toggle.mystery":"Mystery mode","toggle.showSecondCut":"Show the cut toward 2D",
 "label.howManyWorms":"How many worms?","label.speed":"Speed","btn.pause":"Pause","btn.play":"Play",
 "cart.body":"Body","cart.formula":"Formula","cart.boundary":"Boundary","cart.currentW":"current w","cart.visibleNow":"Visible now",
-"cart.mode":"Mode","cart.worms":"Worms","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄",
+"cart.mode":"Mode","cart.worms":"Worms","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄","cart.vef":"V·E·F","text.euler":"Euler check: vertices − edges + faces − cells","text.eulerNote":"For every convex 4D polytope the result is 0; vertices and edges are counted from the drawn geometry.","text.eulerDuo":"The cartouche's F counts only the square faces; here the polygonal faces of the P and Q bases are included too.","text.keys":"Keys: P or Space = pause/play · ← → = previous/next shape (Polytopes)",
 "text.doubleRotation":"Double rotation (4D), simultaneously in the <span class=\"mono\">XW</span> and <span class=\"mono\">YZ</span> planes — covers all 4 dimensions with no overlap. Drag with mouse/finger to rotate the 3D viewing angle, independent of the 4D rotation. Brighter points and edges = closer along the 4th axis.",
 "text.projPerspectiveExplainer":"Perspective: the 4th axis (w) has a vanishing point — closer cells look bigger, like ordinary 3D perspective. No 4D→3D projection can preserve distances, angles, AND volumes all at once (same as with 2D maps) — perspective chooses to show “depth” naturally, at the cost of distorting real sizes.",
 "text.gluedExplainer":"Ball A = the w≥0 hemisphere of S³ (projected onto (x,y,z), losing w). Ball B = the w≤0 hemisphere, likewise. Their surfaces — each an ordinary S² sphere — <em>are the same</em> shared boundary: exactly the equatorial (w=0) cross-section from the “Cross-section” view, i.e. the sphere of maximum radius R. The yellow point marks a position on this boundary — the same position on both, since it's a single point, seen from both balls.",
@@ -741,7 +744,7 @@ ui: {
 "toggle.solidFaces":"Faces pleines","toggle.mystery":"Mode mystère","toggle.showSecondCut":"Montrer la coupe vers 2D",
 "label.howManyWorms":"Combien de vers ?","label.speed":"Vitesse","btn.pause":"Pause","btn.play":"Lire",
 "cart.body":"Corps","cart.formula":"Formule","cart.boundary":"Frontière","cart.currentW":"w actuel","cart.visibleNow":"Visibles maintenant",
-"cart.mode":"Mode","cart.worms":"Vers","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄",
+"cart.mode":"Mode","cart.worms":"Vers","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄","cart.vef":"S·A·F","text.euler":"Vérification d'Euler : sommets − arêtes + faces − cellules","text.eulerNote":"Pour tout polytope convexe 4D, le résultat est 0 ; sommets et arêtes sont comptés à partir de la géométrie dessinée.","text.eulerDuo":"Dans le cartouche, F ne compte que les faces carrées ; ici, les faces polygonales des bases P et Q sont incluses.","text.keys":"Touches : P ou Espace = pause/lecture · ← → = forme précédente/suivante (Polytopes)",
 "text.doubleRotation":"Double rotation (4D), simultanément dans les plans <span class=\"mono\">XW</span> et <span class=\"mono\">YZ</span> — couvre les 4 dimensions sans chevauchement. Glissez avec la souris/le doigt pour faire pivoter l'angle de vue 3D, indépendamment de la rotation 4D. Points et arêtes plus lumineux = plus proches sur le 4e axe.",
 "text.projPerspectiveExplainer":"Perspective : le 4e axe (w) a un point de fuite — les cellules plus proches paraissent plus grandes, comme en perspective 3D ordinaire. Aucune projection 4D→3D ne peut préserver simultanément les distances, les angles ET les volumes (comme pour les cartes 2D) — la perspective choisit de montrer la « profondeur » naturellement, au prix de distordre les tailles réelles.",
 "text.gluedExplainer":"Boule A = l'hémisphère w≥0 de S³ (projeté sur (x,y,z), en perdant w). Boule B = l'hémisphère w≤0, de même. Leurs surfaces — chacune une sphère S² ordinaire — <em>sont la même</em> frontière commune : exactement la section équatoriale (w=0) de la vue « Section », c'est-à-dire la sphère de rayon maximal R. Le point jaune marque une position sur cette frontière — la même position sur les deux, puisque c'est un seul point, vu depuis les deux boules.",
@@ -833,7 +836,7 @@ ui: {
 "toggle.solidFaces":"Facce piene","toggle.mystery":"Modalità mistero","toggle.showSecondCut":"Mostra il taglio verso 2D",
 "label.howManyWorms":"Quanti vermi?","label.speed":"Velocità","btn.pause":"Pausa","btn.play":"Riproduci",
 "cart.body":"Corpo","cart.formula":"Formula","cart.boundary":"Confine","cart.currentW":"w attuale","cart.visibleNow":"Visibili ora",
-"cart.mode":"Modalità","cart.worms":"Vermi","cart.zone":"Zona","cart.hypervolume":"Ipervolume V₄",
+"cart.mode":"Modalità","cart.worms":"Vermi","cart.zone":"Zona","cart.hypervolume":"Ipervolume V₄","cart.vef":"V·S·F","text.euler":"Verifica di Euler: vertici − spigoli + facce − celle","text.eulerNote":"Per ogni politopo convesso 4D il risultato è 0; vertici e spigoli sono contati dalla geometria disegnata.","text.eulerDuo":"Nel cartiglio F conta solo le facce quadrate; qui sono incluse anche le facce poligonali delle basi P e Q.","text.keys":"Tasti: P o Spazio = pausa/riproduci · ← → = forma precedente/successiva (Politopi)",
 "text.doubleRotation":"Doppia rotazione (4D), simultaneamente nei piani <span class=\"mono\">XW</span> e <span class=\"mono\">YZ</span> — copre tutte e 4 le dimensioni senza sovrapposizioni. Trascina con mouse/dito per ruotare l'angolo di visione 3D, indipendentemente dalla rotazione 4D. Punti e spigoli più luminosi = più vicini sul 4° asse.",
 "text.projPerspectiveExplainer":"Prospettiva: il 4° asse (w) ha un punto di fuga — le celle più vicine sembrano più grandi, come nella normale prospettiva 3D. Nessuna proiezione 4D→3D può preservare simultaneamente distanze, angoli E volumi (come con le mappe 2D) — la prospettiva sceglie di mostrare la “profondità” in modo naturale, al costo di distorcere le dimensioni reali.",
 "text.gluedExplainer":"Palla A = l'emisfero w≥0 di S³ (proiettato su (x,y,z), perdendo w). Palla B = l'emisfero w≤0, allo stesso modo. Le loro superfici — ciascuna una normale sfera S² — <em>sono lo stesso</em> confine comune: esattamente la sezione equatoriale (w=0) della vista “Sezione”, cioè la sfera di raggio massimo R. Il punto giallo segna una posizione su questo confine — la stessa posizione su entrambe, poiché è un unico punto, visto da entrambe le palle.",
@@ -925,7 +928,7 @@ ui: {
 "toggle.solidFaces":"Caras sólidas","toggle.mystery":"Modo misterio","toggle.showSecondCut":"Mostrar el corte hacia 2D",
 "label.howManyWorms":"¿Cuántos gusanos?","label.speed":"Velocidad","btn.pause":"Pausa","btn.play":"Reproducir",
 "cart.body":"Cuerpo","cart.formula":"Fórmula","cart.boundary":"Frontera","cart.currentW":"w actual","cart.visibleNow":"Visibles ahora",
-"cart.mode":"Modo","cart.worms":"Gusanos","cart.zone":"Zona","cart.hypervolume":"Hipervolumen V₄",
+"cart.mode":"Modo","cart.worms":"Gusanos","cart.zone":"Zona","cart.hypervolume":"Hipervolumen V₄","cart.vef":"V·A·C","text.euler":"Comprobación de Euler: vértices − aristas + caras − celdas","text.eulerNote":"Para todo politopo convexo 4D el resultado es 0; los vértices y las aristas se cuentan a partir de la geometría dibujada.","text.eulerDuo":"En el cartucho, F cuenta solo las caras cuadradas; aquí se incluyen también las caras poligonales de las bases P y Q.","text.keys":"Teclas: P o Espacio = pausa/reproducir · ← → = forma anterior/siguiente (Politopos)",
 "text.doubleRotation":"Rotación doble (4D), simultáneamente en los planos <span class=\"mono\">XW</span> y <span class=\"mono\">YZ</span> — cubre las 4 dimensiones sin solapamiento. Arrastra con el ratón/dedo para rotar el ángulo de visión 3D, independientemente de la rotación 4D. Puntos y aristas más brillantes = más cerca en el 4º eje.",
 "text.projPerspectiveExplainer":"Perspectiva: el 4º eje (w) tiene un punto de fuga — las celdas más cercanas parecen más grandes, como en la perspectiva 3D ordinaria. Ninguna proyección 4D→3D puede preservar simultáneamente distancias, ángulos Y volúmenes (igual que con los mapas 2D) — la perspectiva elige mostrar la “profundidad” de forma natural, al precio de distorsionar los tamaños reales.",
 "text.gluedExplainer":"Bola A = el hemisferio w≥0 de S³ (proyectado sobre (x,y,z), perdiendo w). Bola B = el hemisferio w≤0, igualmente. Sus superficies — cada una una esfera S² ordinaria — <em>son la misma</em> frontera común: exactamente la sección ecuatorial (w=0) de la vista “Sección”, es decir, la esfera de radio máximo R. El punto amarillo marca una posición en esta frontera — la misma posición en ambas, ya que es un único punto, visto desde ambas bolas.",
@@ -1017,7 +1020,7 @@ ui: {
 "toggle.solidFaces":"Faces sólidas","toggle.mystery":"Modo mistério","toggle.showSecondCut":"Mostrar o corte para 2D",
 "label.howManyWorms":"Quantos vermes?","label.speed":"Velocidade","btn.pause":"Pausa","btn.play":"Reproduzir",
 "cart.body":"Corpo","cart.formula":"Fórmula","cart.boundary":"Fronteira","cart.currentW":"w atual","cart.visibleNow":"Visíveis agora",
-"cart.mode":"Modo","cart.worms":"Vermes","cart.zone":"Zona","cart.hypervolume":"Hipervolume V₄",
+"cart.mode":"Modo","cart.worms":"Vermes","cart.zone":"Zona","cart.hypervolume":"Hipervolume V₄","cart.vef":"V·A·F","text.euler":"Verificação de Euler: vértices − arestas + faces − células","text.eulerNote":"Para qualquer politopo convexo 4D o resultado é 0; os vértices e as arestas são contados a partir da geometria desenhada.","text.eulerDuo":"No cartucho, F conta apenas as faces quadradas; aqui incluem-se também as faces poligonais das bases P e Q.","text.keys":"Teclas: P ou Espaço = pausa/reproduzir · ← → = forma anterior/seguinte (Politopos)",
 "text.doubleRotation":"Rotação dupla (4D), simultaneamente nos planos <span class=\"mono\">XW</span> e <span class=\"mono\">YZ</span> — cobre as 4 dimensões sem sobreposição. Arraste com o rato/dedo para rodar o ângulo de visão 3D, independentemente da rotação 4D. Pontos e arestas mais brilhantes = mais próximos no 4º eixo.",
 "text.projPerspectiveExplainer":"Perspetiva: o 4º eixo (w) tem um ponto de fuga — as células mais próximas parecem maiores, como na perspetiva 3D comum. Nenhuma projeção 4D→3D pode preservar simultaneamente distâncias, ângulos E volumes (tal como nos mapas 2D) — a perspetiva escolhe mostrar a “profundidade” naturalmente, ao custo de distorcer os tamanhos reais.",
 "text.gluedExplainer":"Bola A = o hemisfério w≥0 de S³ (projetado em (x,y,z), perdendo w). Bola B = o hemisfério w≤0, da mesma forma. As suas superfícies — cada uma uma esfera S² comum — <em>são a mesma</em> fronteira comum: exatamente a secção equatorial (w=0) da vista “Secção”, ou seja, a esfera de raio máximo R. O ponto amarelo marca uma posição nesta fronteira — a mesma posição em ambas, já que é um único ponto, visto a partir de ambas as bolas.",
@@ -1109,7 +1112,7 @@ ui: {
 "toggle.solidFaces":"Volle Flächen","toggle.mystery":"Rätselmodus","toggle.showSecondCut":"Schnitt nach 2D zeigen",
 "label.howManyWorms":"Wie viele Würmer?","label.speed":"Geschwindigkeit","btn.pause":"Pause","btn.play":"Abspielen",
 "cart.body":"Körper","cart.formula":"Formel","cart.boundary":"Grenze","cart.currentW":"aktuelles w","cart.visibleNow":"Jetzt sichtbar",
-"cart.mode":"Modus","cart.worms":"Würmer","cart.zone":"Zone","cart.hypervolume":"Hypervolumen V₄",
+"cart.mode":"Modus","cart.worms":"Würmer","cart.zone":"Zone","cart.hypervolume":"Hypervolumen V₄","cart.vef":"E·K·F","text.euler":"Euler-Probe: Ecken − Kanten + Flächen − Zellen","text.eulerNote":"Für jedes konvexe 4D-Polytop ergibt sich 0; Ecken und Kanten werden aus der gezeichneten Geometrie gezählt.","text.eulerDuo":"Im Schriftfeld zählt F nur die quadratischen Flächen; hier sind auch die Polygonflächen der Basen P und Q enthalten.","text.keys":"Tasten: P oder Leertaste = Pause/Wiedergabe · ← → = vorherige/nächste Form (Polytope)",
 "text.doubleRotation":"Doppelrotation (4D), gleichzeitig in den Ebenen <span class=\"mono\">XW</span> und <span class=\"mono\">YZ</span> — deckt alle 4 Dimensionen ohne Überlappung ab. Mit Maus/Finger ziehen, um den 3D-Blickwinkel zu drehen, unabhängig von der 4D-Rotation. Hellere Punkte und Kanten = näher auf der 4. Achse.",
 "text.projPerspectiveExplainer":"Perspektive: Die 4. Achse (w) hat einen Fluchtpunkt — nähere Zellen wirken größer, wie bei gewöhnlicher 3D-Perspektive. Keine 4D→3D-Projektion kann gleichzeitig Abstände, Winkel UND Volumen bewahren (genau wie bei 2D-Karten) — die Perspektive zeigt „Tiefe” auf natürliche Weise, auf Kosten verzerrter tatsächlicher Größen.",
 "text.gluedExplainer":"Kugel A = die w≥0-Hemisphäre von S³ (projiziert auf (x,y,z), wobei w verloren geht). Kugel B = die w≤0-Hemisphäre, ebenso. Ihre Oberflächen — je eine gewöhnliche S²-Sphäre — <em>sind dieselbe</em> gemeinsame Grenze: genau der äquatoriale (w=0) Querschnitt aus der Ansicht „Querschnitt”, also die Sphäre mit maximalem Radius R. Der gelbe Punkt markiert eine Position auf dieser Grenze — dieselbe Position auf beiden, da es sich um einen einzigen Punkt handelt, gesehen von beiden Kugeln aus.",
@@ -2759,6 +2762,23 @@ star600:"Sternskelett (600v)",
       }
       return dict.poly[key] || def.info;
     }
+    // Euler–Poincaré check for convex 4D polytopes: V − E + F − C = 0. V and E come from the drawn
+    // geometry; F (total faces) and C (cells) follow from the known combinatorics of each family.
+    var CELLS = { cell5: 5, cell8: 8, cell16: 16, cell24: 24, cell600: 600, cell120: 120, pyrCube: 7, pyrOcta: 9, pyrDode: 13, pyrIcosa: 21, duo33: 6, duo35: 8 };
+    var eulerEl = document.getElementById('poly-euler');
+    function updateEuler() {
+      if (!eulerEl) return;
+      var key = currentPolyKey, dict = (I18N[currentLang] || I18N.ro).ui;
+      var F, C, duo = false;
+      if (key === 'duoCustom') { F = duoP * duoQ + duoP + duoQ; C = duoP + duoQ; duo = true; }
+      else if (key === 'duo33') { F = 15; C = CELLS[key]; duo = true; }
+      else if (key === 'duo35') { F = 23; C = CELLS[key]; duo = true; }
+      else if (CELLS[key] !== undefined) { F = parseInt(POLY[key].vm.split('·')[2], 10); C = CELLS[key]; }
+      else { eulerEl.textContent = ''; return; }
+      var V = vertices.length, E = edges.length, chi = V - E + F - C;
+      eulerEl.textContent = dict['text.euler'] + ': ' + V + ' − ' + E + ' + ' + F + ' − ' + C + ' = ' + chi + (chi === 0 ? ' ✓' : ' ✗') +
+        '. ' + dict['text.eulerNote'] + (duo ? ' ' + dict['text.eulerDuo'] : '');
+    }
     var currentPolyKey = 'cell8';
     var currentTier = 'normal';
     function loadShape(key) {
@@ -2811,6 +2831,7 @@ star600:"Sternskelett (600v)",
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || def.corp;
       cartVM.textContent = def.vm;
       cartHV.textContent = def.hv || '—';
+      updateEuler();
       infoText.textContent = getPolyInfoText(currentPolyKey, POLY[currentPolyKey]) + (tier === 'veryDense' ? ' ' + ((I18N[currentLang] || I18N.ro).ui['text.autopausedDense']) : '');
 
       if (faces.length === 0) {
@@ -3028,8 +3049,27 @@ star600:"Sternskelett (600v)",
       setPlaying(playing);
       infoText.textContent = getPolyInfoText(currentPolyKey, POLY[currentPolyKey]) + (currentTier === 'veryDense' ? ' ' + ((I18N[currentLang] || I18N.ro).ui['text.autopausedDense']) : '');
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || POLY[currentPolyKey].corp;
+      updateEuler();
     });
   })(); } catch (e) { console.error('polytope init failed', e); }
+
+  // ---- Keyboard shortcuts (polytope view): P / Space = pause/play, ← → = previous/next shape ----
+  document.addEventListener('keydown', function (e) {
+    if (!polyVisible || e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+    var tg = e.target && e.target.tagName, onPill = e.target && e.target.classList && e.target.classList.contains('pill');
+    if (tg === 'INPUT' || tg === 'SELECT' || tg === 'TEXTAREA') return;
+    if (e.key === 'p' || e.key === 'P' || (e.key === ' ' && tg !== 'BUTTON' && tg !== 'A' && tg !== 'SUMMARY')) {
+      if (tg === 'BUTTON' && !onPill && e.key === ' ') return;
+      e.preventDefault(); document.getElementById('poly-play').click();
+    } else if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && (tg !== 'BUTTON' || onPill)) {
+      var pills = Array.prototype.slice.call(document.querySelectorAll('#subnav-polytopes .pill[data-shape]'));
+      var cur = pills.findIndex(function (b) { return b.getAttribute('aria-pressed') === 'true'; });
+      if (cur < 0) return;
+      e.preventDefault();
+      var nxt = pills[(cur + (e.key === 'ArrowRight' ? 1 : pills.length - 1)) % pills.length];
+      nxt.click(); nxt.focus();
+    }
+  });
 
   // ---- Restore state from the URL hash, if present (bookmarkable/shareable deep links) ----
   (function restoreFromHash() {

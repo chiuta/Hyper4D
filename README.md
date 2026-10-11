@@ -19,7 +19,9 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 - Pentru tesseractul oblic: direcții de tăiere față / muchie / vârf.
 - **Politopi:** 5-cell, 8-cell, 16-cell, 24-cell, 600-cell, 120-cell; duoprisme (3,3), (3,5) și (P,Q) personalizat; piramide peste cub, octaedru, dodecaedru, icosaedru; „star skeleton”.
 - Rotație dublă 4D (planurile XW și YZ), proiecție în perspectivă sau ortografică, pauză/redare, viteză, „Solid faces”.
-- Cartuș cu valori calculate (corp, V·M·F, hipervolum V₄, unghiurile ∠XW și ∠YZ).
+- Cartuș cu valori calculate (corp, vârfuri·muchii·fețe — etichetată V·M·F, S·A·F, V·E·F etc. după limbă —, hipervolum V₄, unghiurile ∠XW și ∠YZ).
+- Verificare Euler pentru politopi: `vârfuri − muchii + fețe − celule = 0`, cu vârfurile și muchiile numărate din geometria desenată (inclusiv pentru duoprisma personalizată P×Q); pentru duoprisme se numără și fețele poligonale ale bazelor, nu doar cele pătrate din cartuș. Nu se afișează pentru scheletul-stea.
+- Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 7 limbi).
 - Rotire prin tragere cu mouse-ul, zoom cu rotița sau cu două degete.
 - Interfață în 7 limbi: EN (implicit), RO, FR, IT, ES, PT, DE.
 - Starea (limbă, categorie, formă, vizualizare) se reflectă în hash-ul URL-ului, deci poate fi pusă la semn sau partajată.
@@ -45,6 +47,10 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
 
 ## Istoric / Changelog
+
+### 11 octombrie 2026 (a doua intrare)
+- Verificare Euler (V − E + F − C = 0) pentru politopii convecși, scurtături de tastatură `P`/`Spațiu` și `←`/`→`, eticheta cartușului V·M·F tradusă în cele 7 limbi (în engleză „M” nu avea sens), traduceri noi în 7 limbi.
+- Politica CSP: `script-src` cu hash în loc de `'unsafe-inline'`.
 
 ### 11 octombrie 2026
 - Accesibilitate: zona de lucru încadrată în <main>, bara de categorii a devenit un element `div` cu rol `tablist` (axe: 0 violări).
