@@ -23,6 +23,8 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 - Verificare Euler pentru politopi: `vârfuri − muchii + fețe − celule = 0`, cu vârfurile și muchiile numărate din geometria desenată (inclusiv pentru duoprisma personalizată P×Q); pentru duoprisme se numără și fețele poligonale ale bazelor, nu doar cele pătrate din cartuș. Nu se afișează pentru scheletul-stea.
 - Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 7 limbi).
 - Rotire prin tragere cu mouse-ul, zoom cu rotița sau cu două degete.
+- Buton „Salvează SVG” (la Politopi și la „Corp întreg + secțiune curentă”): descarcă diagrama curentă ca fișier SVG autonom (stilurile calculate sunt copiate în atribute, cu fundalul aplicației), pentru lucrări sau prezentări; se face local, fără rețea.
+- Diagrama politopului are acum alternativă text (`role="img"` cu corp, V·M·F și trimitere la cartuș), în 7 limbi.
 - Interfață în 7 limbi: EN (implicit), RO, FR, IT, ES, PT, DE.
 - Starea (limbă, categorie, formă, vizualizare) se reflectă în hash-ul URL-ului, deci poate fi pusă la semn sau partajată.
 
@@ -47,6 +49,10 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
 
 ## Istoric / Changelog
+
+### 11 octombrie 2026 (a treia intrare)
+- Salvare SVG pentru diagrama politopului și pentru corpul întreg + secțiune (7 limbi).
+- Diagrama proiecției rotative nu mai este `aria-hidden`: are descriere text (corp, V·M·F), actualizată la schimbarea formei sau a limbii.
 
 ### 11 octombrie 2026 (a doua intrare)
 - Verificare Euler (V − E + F − C = 0) pentru politopii convecși, scurtături de tastatură `P`/`Spațiu` și `←`/`→`, eticheta cartușului V·M·F tradusă în cele 7 limbi (în engleză „M” nu avea sens), traduceri noi în 7 limbi.

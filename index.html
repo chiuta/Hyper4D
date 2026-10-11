@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'  'sha256-6NrOwltZH/fzCoYi2219jxKgPO2VNqQ4ICnI+9/0sgY='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-3Aya8Z1ZNcM5UOi3AILQLZvmcSfeqJ2JqKoHWSOrwtM='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Hyper4D</title>
 <style>
   :root {
@@ -167,6 +167,7 @@
     footer.note { margin-top: 8px; font-size: 10px; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -267,6 +268,7 @@
             <g id="curve-mesh"></g>
             <polygon id="curve-ring" fill="rgba(224,196,131,0.30)" stroke="#e0c483" stroke-width="2" stroke-linejoin="round"/>
           </svg>
+          <div class="controls-row"><button class="playbtn" id="curve-save-svg" type="button" data-i18n="btn.saveSvg">Save SVG</button></div>
           <p class="formula" style="text-align:center;margin-top:4px;">
             w = <span class="mono" id="curve-w-readout">0.00</span>&nbsp;·&nbsp;
             r = <span class="mono" id="curve-r-readout">1.00</span>
@@ -445,7 +447,7 @@
     </div>
     <div class="card">
       <p class="card-label"><span data-i18n="card.rotProjection">Rotating 4D → 3D → 2D projection</span> <span class="drag-hint" data-i18n="hint.dragRotate">— drag to rotate</span></p>
-      <svg class="diagram orbitable" id="poly-svg" viewBox="0 0 400 380" aria-hidden="true"></svg>
+      <svg class="diagram orbitable" id="poly-svg" viewBox="0 0 400 380" role="img" aria-label="Rotating 4D projection diagram"></svg>
       <div class="controls-row">
         <button class="playbtn" id="poly-play" aria-pressed="true">
           <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
@@ -455,6 +457,7 @@
           <div class="slider-caption"><span data-i18n="label.speed">Speed</span><span id="poly-speed-readout">1.0×</span></div>
           <input type="range" id="poly-speed" min="0" max="300" value="100" step="1" aria-label="speed" data-i18n-attr="aria-label:aria.speedSlider">
         </div>
+        <button class="playbtn" id="poly-save-svg" type="button" data-i18n="btn.saveSvg">Save SVG</button>
         <label class="face-toggle" id="poly-face-label">
           <input type="checkbox" id="poly-faces-toggle"> <span data-i18n="toggle.solidFaces">Solid faces</span>
         </label>
@@ -468,6 +471,7 @@
     <p class="formula" data-i18n="text.doubleRotation">Double rotation (4D), simultaneously in the <span class="mono">XW</span> and <span class="mono">YZ</span> planes — covers all 4 dimensions with no overlap. Drag with mouse/finger to rotate the 3D viewing angle, independent of the 4D rotation. Brighter points and edges = closer along the 4th axis.<span class="mono">XW</span> și <span class="mono">YZ</span> — acoperă toate cele 4 dimensiuni fără suprapunere. Trage cu mouse-ul/degetul ca să rotești unghiul de vizualizare 3D, independent de rotația 4D. Puncte și muchii mai strălucitoare = mai aproape pe axa a 4-a.</p>
     <p class="formula" id="poly-info-text">—</p>
     <p class="formula" id="poly-euler"></p>
+    <p class="sr-only" id="svg-status" role="status" aria-live="polite"></p>
     <div class="cartus mono">
       <div class="cartus-cell"><p class="cartus-label" data-i18n="cart.body">Body</p><p class="cartus-value" id="cartus-poly-corp">8-cell</p></div>
       <div class="cartus-cell"><p class="cartus-label" data-i18n="cart.vef">V·M·F</p><p class="cartus-value" id="cartus-poly-vm">16·32·24</p></div>
@@ -559,6 +563,7 @@ ui: {
 "hint.samePattern":"(același tipar, un nivel mai jos)",
 "cap.polA":"pol A","cap.polB":"pol B","cap.equator":"ecuator","cap.aroundHole":"în jurul găurii","cap.aroundTube":"în jurul tubului",
 "toggle.solidFaces":"Fețe pline","toggle.mystery":"Mod mister","toggle.showSecondCut":"Arată tăietura spre 2D",
+"btn.saveSvg":"Salvează SVG","aria.polyDiagram":"Diagrama proiecției rotative 4D → 3D → 2D: {n}, V·M·F {vm}. Unghiurile de rotație sunt în cartușul de mai jos.","toast.svgSaved":"SVG salvat.",
 "label.howManyWorms":"Câți viermi?","label.speed":"Viteză","btn.pause":"Pauză","btn.play":"Redă",
 "cart.body":"Corp","cart.formula":"Formulă","cart.boundary":"Graniță","cart.currentW":"w curent","cart.visibleNow":"Vizibili acum",
 "cart.mode":"Mod","cart.worms":"Viermi","cart.zone":"Zonă","cart.hypervolume":"Hipervolum V₄","cart.vef":"V·M·F","text.euler":"Verificare Euler: vârfuri − muchii + fețe − celule","text.eulerNote":"Pentru orice politop convex 4D rezultatul este 0; vârfurile și muchiile sunt numărate din geometria desenată.","text.eulerDuo":"În cartuș, F numără doar fețele pătrate; aici sunt incluse și fețele poligonale ale celor două baze (P și Q).","text.keys":"Taste: P sau Spațiu = pauză/redare · ← → = forma anterioară/următoare (la Politopi)",
@@ -650,6 +655,7 @@ ui: {
 "hint.samePattern":"(same pattern, one level down)",
 "cap.polA":"pole A","cap.polB":"pole B","cap.equator":"equator","cap.aroundHole":"around the hole","cap.aroundTube":"around the tube",
 "toggle.solidFaces":"Solid faces","toggle.mystery":"Mystery mode","toggle.showSecondCut":"Show the cut toward 2D",
+"btn.saveSvg":"Save SVG","aria.polyDiagram":"Rotating 4D → 3D → 2D projection diagram: {n}, V·E·F {vm}. The rotation angles are listed in the readout below.","toast.svgSaved":"SVG saved.",
 "label.howManyWorms":"How many worms?","label.speed":"Speed","btn.pause":"Pause","btn.play":"Play",
 "cart.body":"Body","cart.formula":"Formula","cart.boundary":"Boundary","cart.currentW":"current w","cart.visibleNow":"Visible now",
 "cart.mode":"Mode","cart.worms":"Worms","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄","cart.vef":"V·E·F","text.euler":"Euler check: vertices − edges + faces − cells","text.eulerNote":"For every convex 4D polytope the result is 0; vertices and edges are counted from the drawn geometry.","text.eulerDuo":"The cartouche's F counts only the square faces; here the polygonal faces of the P and Q bases are included too.","text.keys":"Keys: P or Space = pause/play · ← → = previous/next shape (Polytopes)",
@@ -742,6 +748,7 @@ ui: {
 "hint.samePattern":"(même schéma, un niveau plus bas)",
 "cap.polA":"pôle A","cap.polB":"pôle B","cap.equator":"équateur","cap.aroundHole":"autour du trou","cap.aroundTube":"autour du tube",
 "toggle.solidFaces":"Faces pleines","toggle.mystery":"Mode mystère","toggle.showSecondCut":"Montrer la coupe vers 2D",
+"btn.saveSvg":"Enregistrer en SVG","aria.polyDiagram":"Diagramme de la projection rotative 4D → 3D → 2D : {n}, S·A·F {vm}. Les angles de rotation figurent dans le cartouche ci-dessous.","toast.svgSaved":"SVG enregistré.",
 "label.howManyWorms":"Combien de vers ?","label.speed":"Vitesse","btn.pause":"Pause","btn.play":"Lire",
 "cart.body":"Corps","cart.formula":"Formule","cart.boundary":"Frontière","cart.currentW":"w actuel","cart.visibleNow":"Visibles maintenant",
 "cart.mode":"Mode","cart.worms":"Vers","cart.zone":"Zone","cart.hypervolume":"Hypervolume V₄","cart.vef":"S·A·F","text.euler":"Vérification d'Euler : sommets − arêtes + faces − cellules","text.eulerNote":"Pour tout polytope convexe 4D, le résultat est 0 ; sommets et arêtes sont comptés à partir de la géométrie dessinée.","text.eulerDuo":"Dans le cartouche, F ne compte que les faces carrées ; ici, les faces polygonales des bases P et Q sont incluses.","text.keys":"Touches : P ou Espace = pause/lecture · ← → = forme précédente/suivante (Polytopes)",
@@ -834,6 +841,7 @@ ui: {
 "hint.samePattern":"(stesso schema, un livello più in basso)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"equatore","cap.aroundHole":"intorno al buco","cap.aroundTube":"intorno al tubo",
 "toggle.solidFaces":"Facce piene","toggle.mystery":"Modalità mistero","toggle.showSecondCut":"Mostra il taglio verso 2D",
+"btn.saveSvg":"Salva SVG","aria.polyDiagram":"Diagramma della proiezione rotante 4D → 3D → 2D: {n}, V·S·F {vm}. Gli angoli di rotazione sono nel riquadro sottostante.","toast.svgSaved":"SVG salvato.",
 "label.howManyWorms":"Quanti vermi?","label.speed":"Velocità","btn.pause":"Pausa","btn.play":"Riproduci",
 "cart.body":"Corpo","cart.formula":"Formula","cart.boundary":"Confine","cart.currentW":"w attuale","cart.visibleNow":"Visibili ora",
 "cart.mode":"Modalità","cart.worms":"Vermi","cart.zone":"Zona","cart.hypervolume":"Ipervolume V₄","cart.vef":"V·S·F","text.euler":"Verifica di Euler: vertici − spigoli + facce − celle","text.eulerNote":"Per ogni politopo convesso 4D il risultato è 0; vertici e spigoli sono contati dalla geometria disegnata.","text.eulerDuo":"Nel cartiglio F conta solo le facce quadrate; qui sono incluse anche le facce poligonali delle basi P e Q.","text.keys":"Tasti: P o Spazio = pausa/riproduci · ← → = forma precedente/successiva (Politopi)",
@@ -926,6 +934,7 @@ ui: {
 "hint.samePattern":"(mismo patrón, un nivel más abajo)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"ecuador","cap.aroundHole":"alrededor del agujero","cap.aroundTube":"alrededor del tubo",
 "toggle.solidFaces":"Caras sólidas","toggle.mystery":"Modo misterio","toggle.showSecondCut":"Mostrar el corte hacia 2D",
+"btn.saveSvg":"Guardar SVG","aria.polyDiagram":"Diagrama de la proyección rotatoria 4D → 3D → 2D: {n}, V·A·C {vm}. Los ángulos de rotación están en el recuadro inferior.","toast.svgSaved":"SVG guardado.",
 "label.howManyWorms":"¿Cuántos gusanos?","label.speed":"Velocidad","btn.pause":"Pausa","btn.play":"Reproducir",
 "cart.body":"Cuerpo","cart.formula":"Fórmula","cart.boundary":"Frontera","cart.currentW":"w actual","cart.visibleNow":"Visibles ahora",
 "cart.mode":"Modo","cart.worms":"Gusanos","cart.zone":"Zona","cart.hypervolume":"Hipervolumen V₄","cart.vef":"V·A·C","text.euler":"Comprobación de Euler: vértices − aristas + caras − celdas","text.eulerNote":"Para todo politopo convexo 4D el resultado es 0; los vértices y las aristas se cuentan a partir de la geometría dibujada.","text.eulerDuo":"En el cartucho, F cuenta solo las caras cuadradas; aquí se incluyen también las caras poligonales de las bases P y Q.","text.keys":"Teclas: P o Espacio = pausa/reproducir · ← → = forma anterior/siguiente (Politopos)",
@@ -1018,6 +1027,7 @@ ui: {
 "hint.samePattern":"(mesmo padrão, um nível mais abaixo)",
 "cap.polA":"polo A","cap.polB":"polo B","cap.equator":"equador","cap.aroundHole":"à volta do buraco","cap.aroundTube":"à volta do tubo",
 "toggle.solidFaces":"Faces sólidas","toggle.mystery":"Modo mistério","toggle.showSecondCut":"Mostrar o corte para 2D",
+"btn.saveSvg":"Guardar SVG","aria.polyDiagram":"Diagrama da projeção rotativa 4D → 3D → 2D: {n}, V·A·F {vm}. Os ângulos de rotação estão no quadro abaixo.","toast.svgSaved":"SVG guardado.",
 "label.howManyWorms":"Quantos vermes?","label.speed":"Velocidade","btn.pause":"Pausa","btn.play":"Reproduzir",
 "cart.body":"Corpo","cart.formula":"Fórmula","cart.boundary":"Fronteira","cart.currentW":"w atual","cart.visibleNow":"Visíveis agora",
 "cart.mode":"Modo","cart.worms":"Vermes","cart.zone":"Zona","cart.hypervolume":"Hipervolume V₄","cart.vef":"V·A·F","text.euler":"Verificação de Euler: vértices − arestas + faces − células","text.eulerNote":"Para qualquer politopo convexo 4D o resultado é 0; os vértices e as arestas são contados a partir da geometria desenhada.","text.eulerDuo":"No cartucho, F conta apenas as faces quadradas; aqui incluem-se também as faces poligonais das bases P e Q.","text.keys":"Teclas: P ou Espaço = pausa/reproduzir · ← → = forma anterior/seguinte (Politopos)",
@@ -1110,6 +1120,7 @@ ui: {
 "hint.samePattern":"(gleiches Muster, eine Ebene tiefer)",
 "cap.polA":"Pol A","cap.polB":"Pol B","cap.equator":"Äquator","cap.aroundHole":"um das Loch","cap.aroundTube":"um die Röhre",
 "toggle.solidFaces":"Volle Flächen","toggle.mystery":"Rätselmodus","toggle.showSecondCut":"Schnitt nach 2D zeigen",
+"btn.saveSvg":"SVG speichern","aria.polyDiagram":"Diagramm der rotierenden 4D → 3D → 2D-Projektion: {n}, E·K·F {vm}. Die Drehwinkel stehen im Feld darunter.","toast.svgSaved":"SVG gespeichert.",
 "label.howManyWorms":"Wie viele Würmer?","label.speed":"Geschwindigkeit","btn.pause":"Pause","btn.play":"Abspielen",
 "cart.body":"Körper","cart.formula":"Formel","cart.boundary":"Grenze","cart.currentW":"aktuelles w","cart.visibleNow":"Jetzt sichtbar",
 "cart.mode":"Modus","cart.worms":"Würmer","cart.zone":"Zone","cart.hypervolume":"Hypervolumen V₄","cart.vef":"E·K·F","text.euler":"Euler-Probe: Ecken − Kanten + Flächen − Zellen","text.eulerNote":"Für jedes konvexe 4D-Polytop ergibt sich 0; Ecken und Kanten werden aus der gezeichneten Geometrie gezählt.","text.eulerDuo":"Im Schriftfeld zählt F nur die quadratischen Flächen; hier sind auch die Polygonflächen der Basen P und Q enthalten.","text.keys":"Tasten: P oder Leertaste = Pause/Wiedergabe · ← → = vorherige/nächste Form (Polytope)",
@@ -1194,6 +1205,42 @@ star600:"Sternskelett (600v)",
     document.getElementById('lang-select').addEventListener('change', function (e) { applyLanguage(e.target.value); setHashPart('lang', e.target.value); });
   }
   applyLanguage(currentLang);
+
+
+  // ---- Export SVG: copiază stilurile calculate în atribute, ca fișierul să arate la fel în afara paginii ----
+  function exportSvgFile(svgEl, baseName) {
+    var clone = svgEl.cloneNode(true), vb = svgEl.getAttribute('viewBox').trim().split(/\s+/).map(Number);
+    var props = ['fill','fill-opacity','stroke','stroke-width','stroke-opacity','stroke-dasharray','stroke-linecap','stroke-linejoin','opacity','font-family','font-size','font-weight','text-anchor'];
+    var src = [svgEl].concat(Array.prototype.slice.call(svgEl.querySelectorAll('*')));
+    var dst = [clone].concat(Array.prototype.slice.call(clone.querySelectorAll('*')));
+    src.forEach(function (n, i) {
+      var cs = getComputedStyle(n), d = dst[i];
+      if (/^(defs|stop|radialGradient|linearGradient)$/.test(n.localName)) return;
+      props.forEach(function (p) {
+        var v = cs.getPropertyValue(p);
+        if (v) d.setAttribute(p, v.replace(/url\(["']?([^"')]+)["']?\)/g, 'url($1)'));
+      });
+      if (cs.display === 'none') d.setAttribute('display', 'none');
+    });
+    ['class','id','aria-label','role'].forEach(function (a) { clone.removeAttribute(a); });
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    clone.setAttribute('width', Math.round(vb[2] * 2)); clone.setAttribute('height', Math.round(vb[3] * 2));
+    var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', vb[0]); rect.setAttribute('y', vb[1]); rect.setAttribute('width', vb[2]); rect.setAttribute('height', vb[3]);
+    rect.setAttribute('fill', getComputedStyle(document.body).backgroundColor);
+    clone.insertBefore(rect, clone.firstChild);
+    var blob = new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(clone)], { type: 'image/svg+xml' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = baseName + '.svg';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+
+  (function () {
+    var b = document.getElementById('curve-save-svg');
+    if (b) b.addEventListener('click', function () {
+      exportSvgFile(document.getElementById('curve-render-svg'), 'hyper4d-sectiune');
+      var st = document.getElementById('svg-status'); if (st) st.textContent = (I18N[currentLang] || I18N.ro).ui['toast.svgSaved'];
+    });
+  })();
 
   function buildPath(points) {
     return points.map(function (p, i) { return (i === 0 ? 'M ' : 'L ') + p[0].toFixed(2) + ' ' + p[1].toFixed(2); }).join(' ');
@@ -2780,6 +2827,16 @@ star600:"Sternskelett (600v)",
         '. ' + dict['text.eulerNote'] + (duo ? ' ' + dict['text.eulerDuo'] : '');
     }
     var currentPolyKey = 'cell8';
+    function updatePolyLabel() {
+      var d = (I18N[currentLang] || I18N.ro).ui, def = POLY[currentPolyKey];
+      if (!def || !d['aria.polyDiagram']) return;
+      svg.setAttribute('aria-label', d['aria.polyDiagram'].replace('{n}', cartCorp.textContent).replace('{vm}', def.vm));
+    }
+    var saveBtn = document.getElementById('poly-save-svg');
+    if (saveBtn) saveBtn.addEventListener('click', function () {
+      exportSvgFile(svg, 'hyper4d-' + currentPolyKey);
+      var st = document.getElementById('svg-status'); if (st) st.textContent = (I18N[currentLang] || I18N.ro).ui['toast.svgSaved'];
+    });
     var currentTier = 'normal';
     function loadShape(key) {
       currentPolyKey = key;
@@ -2831,7 +2888,7 @@ star600:"Sternskelett (600v)",
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || def.corp;
       cartVM.textContent = def.vm;
       cartHV.textContent = def.hv || '—';
-      updateEuler();
+      updateEuler(); updatePolyLabel();
       infoText.textContent = getPolyInfoText(currentPolyKey, POLY[currentPolyKey]) + (tier === 'veryDense' ? ' ' + ((I18N[currentLang] || I18N.ro).ui['text.autopausedDense']) : '');
 
       if (faces.length === 0) {
@@ -3049,7 +3106,7 @@ star600:"Sternskelett (600v)",
       setPlaying(playing);
       infoText.textContent = getPolyInfoText(currentPolyKey, POLY[currentPolyKey]) + (currentTier === 'veryDense' ? ' ' + ((I18N[currentLang] || I18N.ro).ui['text.autopausedDense']) : '');
       cartCorp.textContent = (I18N[currentLang] && I18N[currentLang].corp && I18N[currentLang].corp[currentPolyKey]) || POLY[currentPolyKey].corp;
-      updateEuler();
+      updateEuler(); updatePolyLabel();
     });
   })(); } catch (e) { console.error('polytope init failed', e); }
 
