@@ -4,6 +4,8 @@ Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hiperco
 
 **Live:** https://chiuta.github.io/Hyper4D/
 
+**Ultima actualizare:** 11 octombrie 2026
+
 ![Captura de ecran](screenshot.png)
 
 ## Ce este
@@ -41,6 +43,12 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 ## Rulare locală / offline
 
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
+
+## Istoric / Changelog
+
+### 11 octombrie 2026
+- Accesibilitate: zona de lucru încadrată în <main>, bara de categorii a devenit un element `div` cu rol `tablist` (axe: 0 violări).
+- Adăugat CSP strict (fără rețea, fără resurse externe).
 
 ## Licență
 
