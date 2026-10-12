@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-3Aya8Z1ZNcM5UOi3AILQLZvmcSfeqJ2JqKoHWSOrwtM='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="application-version" content="1.0.0">
+<meta name="last-updated" content="2026-10-12">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-7WP/FkbZo78YQaEVIAN/eSHLSifCLrN3ro4Ev08SSvw='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Hyper4D</title>
 <style>
   :root {
@@ -484,7 +486,8 @@
   <p class="note keys-hint" data-i18n="text.keys">Keys: P or Space = pause/play · ← → = previous/next shape (Polytopes)</p>
   </main>
 
-  <footer class="note" data-i18n="footer.note">Offline tool, no external dependencies. R normalized to 1; all polytopes normalized to the same circumradius, for direct visual comparison.</footer>
+  <footer class="note"><span data-i18n="footer.note">Offline tool, no external dependencies. R normalized to 1; all polytopes normalized to the same circumradius, for direct visual comparison.</span>
+    <div style="margin-top:6px"><span data-i18n="ver.label">Versiune</span> <span id="app-version">v 1.0.0 · 2026-10-12</span></div></footer>
 </div>
 
 <script>
@@ -575,6 +578,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — exact aceeași formulă ca la tăietura întâi, doar aplicată bilei curente (rază r) în loc de hipersferei întregi. Hipersferă∩3D = sferă; acum sferă∩2D = cerc. Recursivitatea lui Ionuț, dusă un nivel mai departe.",
 "text.obliqExplainer":"Colț-întâi: punct → tetraedru → tetraedru trunchiat → <b>octaedru</b> la mijloc → înapoi. Muchie-întâi și față-întâi: secțiune constantă (hexaedru) tot drumul, doar înclinată diferit.",
 "text.autopausedDense":"Pornește în pauză (performanță) — apasă Redă pentru rotație.",
+"ver.label":"Versiune",
 "footer.note":"Instrument offline, fără dependențe externe. R normalizat la 1; toate politopurile normalizate la aceeași raza circumscrisă, pentru comparație vizuală directă."
 },
 curves: {
@@ -667,6 +671,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — exactly the same formula as the first cut, just applied to the current ball (radius r) instead of the whole hypersphere. Hypersphere∩3D = sphere; now sphere∩2D = circle. Ionuț's recursion, taken one level further.",
 "text.obliqExplainer":"Corner-first: point → tetrahedron → truncated tetrahedron → <b>octahedron</b> at the middle → back. Edge-first and face-first: constant cross-section (hexahedron) the whole way, just tilted differently.",
 "text.autopausedDense":"Starts paused (performance) — press Play for rotation.",
+"ver.label":"Version",
 "footer.note":"Offline tool, no external dependencies. R normalized to 1; all polytopes normalized to the same circumradius, for direct visual comparison."
 },
 curves: {
@@ -760,6 +765,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — exactement la même formule que la première coupe, appliquée à la boule actuelle (rayon r) au lieu de l'hypersphère entière. Hypersphère∩3D = sphère ; maintenant sphère∩2D = cercle. La récursivité d'Ionuț, poussée un niveau plus loin.",
 "text.obliqExplainer":"Sommet d'abord : point → tétraèdre → tétraèdre tronqué → <b>octaèdre</b> au milieu → retour. Arête d'abord et face d'abord : section constante (hexaèdre) tout du long, juste inclinée différemment.",
 "text.autopausedDense":"Démarre en pause (performance) — appuyez sur Lecture pour la rotation.",
+"ver.label":"Version",
 "footer.note":"Outil hors ligne, sans dépendances externes. R normalisé à 1 ; tous les polytopes normalisés au même rayon circonscrit, pour une comparaison visuelle directe."
 },
 curves: {
@@ -853,6 +859,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — esattamente la stessa formula del primo taglio, applicata alla palla attuale (raggio r) invece che all'intera ipersfera. Ipersfera∩3D = sfera; ora sfera∩2D = cerchio. La ricorsività di Ionuț, portata un livello più avanti.",
 "text.obliqExplainer":"Prima il vertice: punto → tetraedro → tetraedro troncato → <b>ottaedro</b> a metà → ritorno. Prima lo spigolo e prima la faccia: sezione costante (esaedro) per tutto il percorso, solo inclinata diversamente.",
 "text.autopausedDense":"Parte in pausa (prestazioni) — premi Riproduci per la rotazione.",
+"ver.label":"Versione",
 "footer.note":"Strumento offline, senza dipendenze esterne. R normalizzato a 1; tutti i politopi normalizzati allo stesso raggio circoscritto, per un confronto visivo diretto."
 },
 curves: {
@@ -946,6 +953,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — exactamente la misma fórmula que el primer corte, solo aplicada a la bola actual (radio r) en lugar de la hiperesfera entera. Hiperesfera∩3D = esfera; ahora esfera∩2D = círculo. La recursividad de Ionuț, llevada un nivel más allá.",
 "text.obliqExplainer":"Vértice primero: punto → tetraedro → tetraedro truncado → <b>octaedro</b> en el medio → vuelta. Arista primero y cara primero: sección constante (hexaedro) todo el camino, solo inclinada de forma diferente.",
 "text.autopausedDense":"Empieza en pausa (rendimiento) — pulsa Reproducir para la rotación.",
+"ver.label":"Versión",
 "footer.note":"Herramienta sin conexión, sin dependencias externas. R normalizado a 1; todos los politopos normalizados al mismo radio circunscrito, para comparación visual directa."
 },
 curves: {
@@ -1039,6 +1047,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — exatamente a mesma fórmula do primeiro corte, apenas aplicada à bola atual (raio r) em vez da hiperesfera inteira. Hiperesfera∩3D = esfera; agora esfera∩2D = círculo. A recursividade do Ionuț, levada mais um nível adiante.",
 "text.obliqExplainer":"Vértice primeiro: ponto → tetraedro → tetraedro truncado → <b>octaedro</b> no meio → volta. Aresta primeiro e face primeiro: secção constante (hexaedro) o caminho todo, apenas inclinada de forma diferente.",
 "text.autopausedDense":"Começa em pausa (desempenho) — prima Reproduzir para a rotação.",
+"ver.label":"Versão",
 "footer.note":"Ferramenta offline, sem dependências externas. R normalizado para 1; todos os politopos normalizados ao mesmo raio circunscrito, para comparação visual direta."
 },
 curves: {
@@ -1132,6 +1141,7 @@ ui: {
 "text.secondCutExplainer":"r₂(w₂) = √(r² − w₂²) — genau dieselbe Formel wie beim ersten Schnitt, nur angewendet auf die aktuelle Kugel (Radius r) statt auf die ganze Hypersphäre. Hypersphäre∩3D = Sphäre; jetzt Sphäre∩2D = Kreis. Ionuțs Rekursion, eine Ebene weitergeführt.",
 "text.obliqExplainer":"Ecke zuerst: Punkt → Tetraeder → gestutzter Tetraeder → <b>Oktaeder</b> in der Mitte → zurück. Kante zuerst und Fläche zuerst: konstanter Querschnitt (Hexaeder) den ganzen Weg, nur unterschiedlich geneigt.",
 "text.autopausedDense":"Startet pausiert (Leistung) — Wiedergabe drücken für Rotation.",
+"ver.label":"Version",
 "footer.note":"Offline-Werkzeug, ohne externe Abhängigkeiten. R auf 1 normalisiert; alle Polytope auf denselben Umkreisradius normalisiert, für direkten visuellen Vergleich."
 },
 curves: {

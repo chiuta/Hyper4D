@@ -4,7 +4,7 @@ Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hiperco
 
 **Live:** https://chiuta.github.io/Hyper4D/
 
-**Ultima actualizare:** 11 octombrie 2026
+**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
 
 ![Captura de ecran](screenshot.png)
 
@@ -49,6 +49,9 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
 
 ## Istoric / Changelog
+
+### 12 octombrie 2026 (v1.0.0)
+- 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație
 
 ### 11 octombrie 2026 (a treia intrare)
 - Salvare SVG pentru diagrama politopului și pentru corpul întreg + secțiune (7 limbi).
