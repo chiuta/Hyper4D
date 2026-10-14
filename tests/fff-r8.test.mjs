@@ -85,7 +85,7 @@ await ctx.close();
   await m.p.click('#poly-qr'); await m.p.waitForTimeout(300); t('360: dialog QR încape', await m.p.evaluate(() => { const r = document.getElementById('h4d-qr').getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; }));
   t('360: axe 0 violări (luminos, dialog deschis)', (await runAxe(m.p)).length === 0, await runAxe(m.p)); t('360: fără erori', m.errs.length === 0, m.errs); await m.ctx.close(); }
 { const m = await mk(1280, 800, 'dark'); const html = fs.readFileSync(path.join(HERE, '..', 'index.html'), 'utf8').replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/, '');
-  const tmp = path.join(HERE, '_nokit.tmp.html'); fs.writeFileSync(tmp, html); await m.p.goto('file://' + tmp + '#cat=polytopes&shape=cell8'); await m.p.waitForTimeout(1500);
+  const tmp = path.join(HERE, '..', '_nokit.tmp.html'); /* în directorul aplicației, ca manifestul și iconițele relative să existe */ fs.writeFileSync(tmp, html); await m.p.goto('file://' + tmp + '#cat=polytopes&shape=cell8'); await m.p.waitForTimeout(1500);
   t('fără kit: fără erori, butonul QR ascuns, exportul funcționează', m.errs.length === 0 && !(await m.p.isVisible('#poly-qr')) && (await dl(m.p, '#poly-export-json')).txt.length > 100, m.errs); await m.ctx.close(); fs.unlinkSync(tmp); }
 await b.close();
 console.log(`\n${ok} ok / ${bad} eșuate`); process.exit(bad ? 1 : 0);
