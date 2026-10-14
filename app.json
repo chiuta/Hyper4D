@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "slug": "hyper4d",
+  "name": "Hyper4D",
+  "version": "1.1.0",
+  "updated": "2026-10-14",
+  "description": "",
+  "egress": [],
+  "permissions": [
+    "clipboard",
+    "serviceWorker"
+  ],
+  "storageKeys": [],
+  "sizeBytes": 385893,
+  "sha256": "02bc812c18528fe146920ea3725107833d47447ce965044beb40b59ac99214fe",
+  "csp": {
+    "present": true,
+    "directives": {
+      "default-src": "'none'",
+      "script-src": "'self' sha256×3",
+      "style-src": "'unsafe-inline'",
+      "img-src": "'self' data: blob:",
+      "font-src": "data:",
+      "connect-src": "'none'",
+      "object-src": "'none'",
+      "base-uri": "'none'",
+      "form-action": "'none'",
+      "manifest-src": "'self'",
+      "worker-src": "'self'"
+    },
+    "scriptInline": "hash",
+    "connect": "'none'"
+  },
+  "features": {
+    "export": true,
+    "import": true,
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "de"
+    ],
+    "pwa": {
+      "manifest": true,
+      "serviceWorker": true
+    },
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "qr"
+    ]
+  },
+  "kit": {
+    "version": "1.0.0",
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "qr"
+    ]
+  },
+  "selfSerializing": false
+}
