@@ -88,7 +88,7 @@ Descarcă `index.html` și deschide-l în browser; funcționează complet fără
 
 ## Licență
 
-CC0 1.0 Universal (domeniu public) pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventualele biblioteci terțe incluse în fișier își păstrează licențele proprii.
+MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventualele biblioteci terțe incluse în fișier își păstrează licențele proprii.
 
 ## Autor
 
@@ -96,6 +96,6 @@ Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf.
 
 ## English summary
 
-Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 7 UI languages, no storage, no network. License not yet declared.
+Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 7 UI languages, no storage, no network. Licensed under MIT.
 
 New in 1.1.0 (Polytopes): OBJ export of the current 3D projection (wireframe), JSON export of the 4D vertices/edges/faces, a QR code for the current view (public address + state hash; generated locally), and a paper-friendly print stylesheet. 7 UI languages unchanged (no Hungarian); new strings in FR/IT/ES/PT/DE are machine-translated and not native-checked.
