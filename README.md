@@ -1,101 +1,97 @@
 # Hyper4D
 
-Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hipercorpurilor și proiecții ale politopilor regulați.
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Live:** https://chiuta.github.io/Hyper4D/
+**Version:** 1.1.0 · **Last updated:** 2026-10-14
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
+An interactive explorer of geometry in the fourth dimension: cross-sections of hyperbodies and projections of regular polytopes.
 
-![Captura de ecran](screenshot.png)
+**Live app:** https://chiuta.github.io/Hyper4D/
 
-## Ce este
+![Screenshot](screenshot.png)
 
-Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără biblioteci) pentru geometria descriptivă „dincolo de a treia dimensiune”, în stilul unui desen tehnic albastru. Are două categorii: **Secțiuni transversale** (cum arată un corp 4D tăiat de un spațiu 3D, parcurgând a patra axă) și **Politopi** (proiecții 4D → 3D → 2D rotite în timp real).
+## What it is
 
-## Funcții
+Hyper4D is a single-file application (`index.html`, SVG + JavaScript, no libraries) for descriptive geometry "beyond the third dimension", in the style of a blue technical drawing. It has two categories: **Cross-sections** (what a 4D body looks like when cut by a 3D space, moving along the fourth axis) and **Polytopes** (4D → 3D → 2D projections rotated in real time).
 
-- **Secțiuni transversale:** hipersferă, hipercon, hipercilindru, hipercon dublu (bicon), „Piramida STRING”, hipercilindru (construcție), hiperelipsoid, tesseract oblic, desfășurare (net). Profilul r(w) cu punct tras de mouse, corpul întreg cu secțiunea curentă, „a doua tăietură” (sferă ∩ 2D = cerc).
-- Pentru hipersferă, vizualizări: secțiune, „2 bile lipite”, „2 tori plini”, „2 viermi (mărul)” cu număr de viermi selectabil.
-- Pentru tesseractul oblic: direcții de tăiere față / muchie / vârf.
-- **Politopi:** 5-cell, 8-cell, 16-cell, 24-cell, 600-cell, 120-cell; duoprisme (3,3), (3,5) și (P,Q) personalizat; piramide peste cub, octaedru, dodecaedru, icosaedru; „star skeleton”.
-- Rotație dublă 4D (planurile XW și YZ), proiecție în perspectivă sau ortografică, pauză/redare, viteză, „Solid faces”.
-- Cartuș cu valori calculate (corp, vârfuri·muchii·fețe — etichetată V·M·F, S·A·F, V·E·F etc. după limbă —, hipervolum V₄, unghiurile ∠XW și ∠YZ).
-- Verificare Euler pentru politopi: `vârfuri − muchii + fețe − celule = 0`, cu vârfurile și muchiile numărate din geometria desenată (inclusiv pentru duoprisma personalizată P×Q); pentru duoprisme se numără și fețele poligonale ale bazelor, nu doar cele pătrate din cartuș. Nu se afișează pentru scheletul-stea.
-- Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 7 limbi).
-- Rotire prin tragere cu mouse-ul, zoom cu rotița sau cu două degete.
-- Buton „Salvează SVG” (la Politopi și la „Corp întreg + secțiune curentă”): descarcă diagrama curentă ca fișier SVG autonom (stilurile calculate sunt copiate în atribute, cu fundalul aplicației), pentru lucrări sau prezentări; se face local, fără rețea.
-- Diagrama politopului are acum alternativă text (`role="img"` cu corp, V·M·F și trimitere la cartuș), în 7 limbi.
-- Interfață în 7 limbi: EN (implicit), RO, FR, IT, ES, PT, DE.
-- Starea (limbă, categorie, formă, vizualizare) se reflectă în hash-ul URL-ului, deci poate fi pusă la semn sau partajată.
+## Features
 
-## Funcții noi (1.1.0)
+- **Cross-sections:** hypersphere, hypercone, hypercylinder, double hypercone (bicone), "STRING Pyramid", hypercylinder (construction), hyperellipsoid, oblique tesseract, unfolding (net). The r(w) profile with a point dragged by the mouse, the whole body with the current section, the "second cut" (sphere ∩ 2D = circle).
+- For the hypersphere, views: section, "2 glued balls", "2 solid tori", "2 worms (the apple)" with a selectable number of worms.
+- For the oblique tesseract: cutting directions face / edge / vertex.
+- **Polytopes:** 5-cell, 8-cell, 16-cell, 24-cell, 600-cell, 120-cell; duoprisms (3,3), (3,5) and custom (P,Q); pyramids over the cube, octahedron, dodecahedron, icosahedron; "star skeleton".
+- Double 4D rotation (the XW and YZ planes), perspective or orthographic projection, pause/play, speed, "Solid faces".
+- A title block with computed values (body, vertices·edges·faces — labelled V·M·F, S·A·F, V·E·F etc. depending on the language —, hypervolume V₄, the angles ∠XW and ∠YZ).
+- Euler check for polytopes: `vertices − edges + faces − cells = 0`, with vertices and edges counted from the drawn geometry (including for the custom P×Q duoprism); for duoprisms the polygonal faces of the bases are counted too, not only the square ones from the title block. It is not shown for the star skeleton.
+- Keyboard shortcuts for Polytopes: `P` or `Space` = pause/play, `←` `→` = previous/next shape (hint shown on the page, in 7 languages).
+- Rotation by dragging with the mouse, zoom with the wheel or with two fingers.
+- "Save SVG" button (for Polytopes and for "Whole body + current section"): downloads the current diagram as a standalone SVG file (the computed styles are copied into attributes, with the app's background), for papers or presentations; it is done locally, without a network.
+- The polytope diagram now has a text alternative (`role="img"` with the body, V·M·F and a pointer to the title block), in 7 languages.
+- Interface in 7 languages: EN (default), RO, FR, IT, ES, PT, DE.
+- The state (language, category, shape, view) is reflected in the URL hash, so it can be bookmarked or shared.
 
-La **Politopuri**, sub diagramă, un rând nou de butoane (în cele 7 limbi ale aplicației):
-- **Export OBJ (3D)**: vârfurile politopului în proiecția 4D → 3D de la momentul apăsării (rotația dublă și modul perspectivă/ortografic curente) și muchiile ca linii `l`. Se deschide în Blender, MeshLab ș.a. (pune rotația în pauză ca să știi exact ce exporți). Nu exportă fețe: sunt doar liniile (schelet).
-- **Export JSON (4D)**: coordonatele 4D (x, y, z, w), normalizate la raza circumscrisă 1, muchiile și fețele ca indici (de la 0), plus numărătorile. Testat: 8-cell = 16/32/24, 600-cell = 120/720, 120-cell = 600/1200 etc.
-- **Cod QR**: codul conține adresa publică a aplicației (`https://chiuta.github.io/Hyper4D/`; când pagina e servită de pe alt gazdă HTTPS, adresa acelei pagini) plus hash-ul de stare curent (limbă, categorie, formă, vizualizare). Util ca să deschizi pe telefon exact aceeași vedere. Se poate și copia adresa. Generat local; apare doar dacă modulul QR e în fișier.
-- **Tipărire**: butonul „Tipărește” (sau Ctrl+P) folosește acum o foaie de stil pentru hârtie: fundal alb, linii închise la culoare, fără file, butoane și selectoare. Înainte se tipărea tema întunecată. Desenele rămân cele de pe ecran (aspectul exact al fețelor pline poate diferi de cel din browser, în funcție de imprimantă).
+## New features (1.1.0)
 
-Limbile aplicației rămân EN, RO, FR, IT, ES, PT, DE (maghiara nu există în aplicație; nu am adăugat o limbă pe jumătate). Traducerile noi în FR/IT/ES/PT/DE sunt automate, **neverificate nativ**.
+Under **Polytopes**, below the diagram, a new row of buttons (in the app's 7 languages):
+- **OBJ export (3D)**: the polytope's vertices in the 4D → 3D projection at the moment of pressing (the current double rotation and perspective/orthographic mode) and the edges as `l` lines. It opens in Blender, MeshLab etc. (pause the rotation so you know exactly what you are exporting). It does not export faces: it is only the lines (a skeleton).
+- **JSON export (4D)**: the 4D coordinates (x, y, z, w), normalised to circumradius 1, the edges and faces as indices (from 0), plus the counts. Tested: 8-cell = 16/32/24, 600-cell = 120/720, 120-cell = 600/1200 etc.
+- **QR code**: the code contains the app's public address (`https://chiuta.github.io/Hyper4D/`; when the page is served from another HTTPS host, the address of that page) plus the current state hash (language, category, shape, view). Useful for opening exactly the same view on a phone. The address can also be copied. Generated locally; it appears only if the QR module is in the file.
+- **Printing**: the "Print" button (or Ctrl+P) now uses a stylesheet for paper: white background, dark lines, no tabs, buttons or selectors. Previously the dark theme was printed. The drawings remain those from the screen (the exact look of solid faces may differ from the browser's, depending on the printer).
 
-## Kit „fff-kit”
+The app's languages remain EN, RO, FR, IT, ES, PT, DE (Hungarian does not exist in the app; I did not add a half-finished language). The new translations in FR/IT/ES/PT/DE are automatic, **not natively checked**.
 
-Module lipite în `index.html`: `core`, `label`, `bundle`, `qr`. „Transparență” se deschide din versiunea din subsol (rețea: 0 cereri externe; nu există chei în `localStorage`, deci copia de siguranță este goală). Fără kit, aplicația funcționează la fel, dar fără butonul QR.
+## The "fff-kit"
 
-## Teste
+Modules pasted into `index.html`: `core`, `label`, `bundle`, `qr`. "Transparency" opens from the version in the footer (network: 0 external requests; there are no keys in `localStorage`, so the backup is empty). Without the kit, the app works the same, but without the QR button.
 
-`node tests/fff-r8.test.mjs` (Playwright, rețea blocată; 41 de verificări): exportul OBJ este comparat independent cu rotația 4D calculată din datele JSON și din unghiurile din cartuș (ortografic și perspectivă), numărători pentru 5-cell…120-cell și duoprisme, lungimea muchiilor teseractului, QR decodat înapoi, etichete în 7 limbi, mod tipărire (PDF), axe-core 0 violări (inclusiv dialog, ambele categorii), 360 px, fără kit.
+## Tests
 
-## Manual de utilizare
+`node tests/fff-r8.test.mjs` (Playwright, network blocked; 41 checks): the OBJ export is compared independently with the 4D rotation computed from the JSON data and from the angles in the title block (orthographic and perspective), counts for 5-cell…120-cell and duoprisms, the tesseract's edge length, QR decoded back, labels in 7 languages, print mode (PDF), axe-core 0 violations (including the dialog, both categories), 360 px, without the kit.
 
-1. Alege limba din selectorul din colțul antetului (EN / RO / FR / IT / ES / PT / DE).
-2. Alege categoria: **Secțiuni transversale** sau **Politopi**.
-3. La secțiuni: alege un corp (de exemplu „Hipersferă”) și trage punctul de pe profilul r(w) sau mută sliderul `w` pentru a parcurge a patra axă; trage corpul pentru a-l roti.
-4. Bifează „Show the cut toward 2D” (în limba aleasă) pentru a doua tăietură; pentru hipersferă încearcă vizualizările „2 bile lipite”, „2 tori plini”, „2 viermi”.
-5. La politopi: alege un poliedru 4D, apoi „Pause”/„Play” pentru rotație, sliderul de viteză și „Solid faces” pentru fețe pline; comută între proiecție în perspectivă și ortografică.
-6. Pentru duoprisma personalizată alege valorile P și Q din liste.
-7. Copiază adresa din browser pentru a partaja exact starea curentă (hash `#lang=…&cat=…&shape=…`).
+## User guide
 
-## Confidențialitate și rețea
+1. Choose the language from the selector in the corner of the header (EN / RO / FR / IT / ES / PT / DE).
+2. Choose the category: **Cross-sections** or **Polytopes**.
+3. For sections: choose a body (for example "Hypersphere") and drag the point on the r(w) profile or move the `w` slider to travel along the fourth axis; drag the body to rotate it.
+4. Tick "Show the cut toward 2D" (in the chosen language) for the second cut; for the hypersphere try the views "2 glued balls", "2 solid tori", "2 worms".
+5. For polytopes: choose a 4D polyhedron, then "Pause"/"Play" for the rotation, the speed slider and "Solid faces" for solid faces; switch between perspective and orthographic projection.
+6. For the custom duoprism choose the P and Q values from the lists.
+7. Copy the address from the browser to share exactly the current state (hash `#lang=…&cat=…&shape=…`).
 
-- Nu am găsit în cod stocare locală (nici în 1.1.0: exporturile sunt fișiere descărcate la cerere) (`localStorage`, `IndexedDB`), cookie-uri sau apeluri de rețea (`fetch`/XHR); nu se încarcă scripturi, fonturi sau imagini externe.
-- Starea de navigare e păstrată doar în hash-ul URL-ului (`replaceState`).
-- Singura adresă `http` din fișier este spațiul de nume SVG standard (`www.w3.org`), fără conexiune.
+## Privacy and network
 
-## Rulare locală / offline
+- I found in the code no local storage (not even in 1.1.0: the exports are files downloaded on request) (`localStorage`, `IndexedDB`), cookies or network calls (`fetch`/XHR); no external scripts, fonts or images are loaded.
+- The navigation state is kept only in the URL hash (`replaceState`).
+- The only `http` address in the file is the standard SVG namespace (`www.w3.org`), with no connection.
 
-Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
+## Running locally / offline
 
-## Istoric / Changelog
+Download `index.html` and open it in a browser; it works fully without internet (the app's footer says: "Offline tool, no external dependencies").
 
-### 14 octombrie 2026 (v1.1.0)
-- Nou la Politopuri: export OBJ și JSON, cod QR al stării, foaie de stil de tipărire; fereastra „Transparență” (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: hash-ul scriptului recalculat.
+## History / Changelog
 
-### 12 octombrie 2026 (v1.0.0)
-- 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație
+### 14 October 2026 (v1.1.0)
+- New under Polytopes: OBJ and JSON export, QR code of the state, print stylesheet; the "Transparency" window (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: script hash recalculated.
 
-### 11 octombrie 2026 (a treia intrare)
-- Salvare SVG pentru diagrama politopului și pentru corpul întreg + secțiune (7 limbi).
-- Diagrama proiecției rotative nu mai este `aria-hidden`: are descriere text (corp, V·M·F), actualizată la schimbarea formei sau a limbii.
+### 12 October 2026 (v1.0.0)
+- 1.0.0 — 2026-10-12: the version and the date of the last update are shown in the app
 
-### 11 octombrie 2026 (a doua intrare)
-- Verificare Euler (V − E + F − C = 0) pentru politopii convecși, scurtături de tastatură `P`/`Spațiu` și `←`/`→`, eticheta cartușului V·M·F tradusă în cele 7 limbi (în engleză „M” nu avea sens), traduceri noi în 7 limbi.
-- Politica CSP: `script-src` cu hash în loc de `'unsafe-inline'`.
+### 11 October 2026 (third entry)
+- SVG saving for the polytope diagram and for the whole body + section.
+- The rotating projection diagram is no longer `aria-hidden`: it has a text description (body, V·M·F), updated when the shape or the language changes.
 
-### 11 octombrie 2026
-- Accesibilitate: zona de lucru încadrată în <main>, bara de categorii a devenit un element `div` cu rol `tablist` (axe: 0 violări).
-- Adăugat CSP strict (fără rețea, fără resurse externe).
+### 11 October 2026 (second entry)
+- Euler check (V − E + F − C = 0) for convex polytopes, keyboard shortcuts `P`/`Space` and `←`/`→`, the title-block label V·M·F translated into all 7 languages (in English "M" made no sense), new translations in 7 languages.
+- CSP policy: `script-src` with a hash instead of `'unsafe-inline'`.
 
-## Licență
+### 11 October 2026
+- Accessibility: the work area is wrapped in <main>, the category bar became a `div` element with the `tablist` role (axe: 0 violations).
+- Added a strict CSP (no network, no external resources).
 
-MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventualele biblioteci terțe incluse în fișier își păstrează licențele proprii.
+## License
 
-## Autor
+MIT for the app's code and structure — see the `LICENSE` file. Any third-party libraries included in the file keep their own licenses.
+
+## Author
 
 Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf.
-
-## English summary
-
-Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 7 UI languages, no storage, no network. Licensed under MIT.
-
-New in 1.1.0 (Polytopes): OBJ export of the current 3D projection (wireframe), JSON export of the 4D vertices/edges/faces, a QR code for the current view (public address + state hash; generated locally), and a paper-friendly print stylesheet. 7 UI languages unchanged (no Hungarian); new strings in FR/IT/ES/PT/DE are machine-translated and not native-checked.
