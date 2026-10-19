@@ -98,8 +98,8 @@ MIT pentru codul și structura aplicației — vezi fișierul `LICENSE`. Eventua
 
 Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf.
 
-## English summary
+## Rezumat
 
-Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 8 UI languages, no storage, no network. Licensed under MIT.
+Hyper4D este un explorator SVG/JavaScript într-un singur fișier al geometriei în patru dimensiuni: secțiuni prin hipersfere, hiperconuri, hipercilindri, tesseract oblic și altele, plus proiecții rotative 4D–3D–2D ale politopilor regulați (5-celule până la 120-celule), duoprisme și piramide. 8 limbi de interfață, fără stocare, fără rețea. Licență MIT.
 
-New in 1.1.0 (Polytopes): OBJ export of the current 3D projection (wireframe), JSON export of the 4D vertices/edges/faces, a QR code for the current view (public address + state hash; generated locally), and a paper-friendly print stylesheet. 8 UI languages (including Hungarian); new strings in FR/IT/ES/PT/DE/HU are machine-translated and not native-checked.
+Noutăți în 1.1.0 (Politopi): export OBJ al proiecției 3D curente (schelet de linii), export JSON al vârfurilor/muchiilor/fețelor 4D, un cod QR pentru vizualizarea curentă (adresa publică + hash al stării; generat local) și o foaie de stil prietenoasă cu tipărirea. 8 limbi de interfață (inclusiv maghiara); textele noi în FR/IT/ES/PT/DE/HU sunt traduse automat și nu au fost verificate de vorbitori nativi.
