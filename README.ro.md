@@ -10,7 +10,7 @@ Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hiperco
 
 **Live:** https://chiuta.github.io/Hyper4D/
 
-![Captura de ecran](screenshot.png)
+![Captura de ecran](screenshot.ro.png)
 
 ## Ce este
 

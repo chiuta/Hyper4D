@@ -10,7 +10,7 @@ An interactive explorer of geometry in the fourth dimension: cross-sections of h
 
 **Live app:** https://chiuta.github.io/Hyper4D/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.en.png)
 
 ## What it is
 

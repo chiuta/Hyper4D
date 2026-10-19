@@ -10,7 +10,7 @@ Explorador interativo de geometria na quarta dimensão: secções de hipercorpos
 
 **Aplicação online:** https://chiuta.github.io/Hyper4D/
 
-![Captura de ecrã](screenshot.png)
+![Captura de ecrã](screenshot.pt.png)
 
 ## O que é
 

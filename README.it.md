@@ -10,7 +10,7 @@ Esploratore interattivo di geometria nella quarta dimensione: sezioni di ipercor
 
 **Applicazione online:** https://chiuta.github.io/Hyper4D/
 
-![Schermata](screenshot.png)
+![Schermata](screenshot.it.png)
 
 ## Che cos'è
 

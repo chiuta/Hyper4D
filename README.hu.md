@@ -10,7 +10,7 @@ Interaktív felfedező a negyedik dimenzió geometriájához: hypertestek metsze
 
 **Online alkalmazás:** https://chiuta.github.io/Hyper4D/
 
-![Képernyőkép](screenshot.png)
+![Képernyőkép](screenshot.hu.png)
 
 ## Mi ez
 

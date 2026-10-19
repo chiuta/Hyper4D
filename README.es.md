@@ -10,7 +10,7 @@ Explorador interactivo de geometría en la cuarta dimensión: secciones de hiper
 
 **Aplicación en línea:** https://chiuta.github.io/Hyper4D/
 
-![Captura de pantalla](screenshot.png)
+![Captura de pantalla](screenshot.es.png)
 
 ## Qué es
 

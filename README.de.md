@@ -10,7 +10,7 @@ Interaktiver Entdecker der Geometrie in der vierten Dimension: Schnitte von Hype
 
 **Online-App:** https://chiuta.github.io/Hyper4D/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 ## Was es ist
 
