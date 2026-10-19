@@ -98,8 +98,7 @@ MIT az alkalmazás kódjára és szerkezetére — lásd a `LICENSE` fájlt. A f
 
 Alexio — Alexandru-Ionuț Chiuță, kapcsolat: alexio@trom.tf.
 
-## Angol nyelvű összefoglaló
-
+## Összefoglaló
 A Hyper4D egyetlen fájlból álló SVG/JavaScript felfedező a négydimenziós geometriához: hipergömbök, hiperkúpok, hiperhengerek, a ferde tesszerakt és mások metszetei, valamint szabályos politópok (az 5-cellától a 120-celláig), duoprizmák és piramisok forgó 4D → 3D → 2D vetületei. Felület 8 nyelven, tárolás és hálózat nélkül. MIT-licenc.
 
 Újdonság az 1.1.0-ban (Politópok): az aktuális 3D vetület OBJ-exportja (drótváz), a 4D csúcsok/élek/lapok JSON-exportja, az aktuális nézet QR-kódja (nyilvános cím + állapot-hash; helyben generálva) és egy papírbarát nyomtatási stíluslap. A felület 8 nyelvű (a magyarral együtt); az új FR/IT/ES/PT/DE/HU szövegek gépi fordítások, anyanyelvi beszélők által nem ellenőrizve.

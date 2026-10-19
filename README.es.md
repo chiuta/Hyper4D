@@ -98,7 +98,7 @@ MIT para el código y la estructura de la aplicación — véase el archivo `LIC
 
 Alexio — Alexandru-Ionuț Chiuță, contacto: alexio@trom.tf.
 
-## Resumen en inglés
+## Resumen
 
 Hyper4D es un explorador SVG/JavaScript de un único archivo de la geometría de cuatro dimensiones: secciones de hiperesferas, hiperconos, hipercilindros, del teseracto oblicuo y más, además de proyecciones 4D → 3D → 2D rotatorias de politopos regulares (del 5-celdas al 120-celdas), duoprismas y pirámides. Interfaz en 8 idiomas, sin almacenamiento, sin red. Licencia MIT.
 

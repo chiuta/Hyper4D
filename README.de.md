@@ -98,8 +98,7 @@ MIT für den Code und die Struktur der App — siehe Datei `LICENSE`. Eventuell 
 
 Alexio — Alexandru-Ionuț Chiuță, Kontakt: alexio@trom.tf.
 
-## Zusammenfassung auf Englisch
-
+## Zusammenfassung
 Hyper4D ist ein SVG/JavaScript-Entdecker in einer einzigen Datei für die Geometrie in vier Dimensionen: Schnitte von Hypersphären, Hyperkegeln, Hyperzylindern, des schiefen Tesserakts und mehr, dazu rotierende 4D → 3D → 2D-Projektionen regulärer Polytope (vom 5-Zeller bis zum 120-Zeller), Duoprismen und Pyramiden. Oberfläche in 8 Sprachen, kein Speicher, kein Netzwerk. MIT-lizenziert.
 
 Neu in 1.1.0 (Polytope): OBJ-Export der aktuellen 3D-Projektion (Drahtgitter), JSON-Export der 4D-Ecken/Kanten/Flächen, ein QR-Code für die aktuelle Ansicht (öffentliche Adresse + Zustands-Hash; lokal erzeugt) und ein papierfreundliches Druck-Stylesheet. Die Oberfläche hat 8 Sprachen (Ungarisch eingeschlossen); die neuen Zeichenfolgen in FR/IT/ES/PT/DE/HU sind maschinell übersetzt und nicht muttersprachlich geprüft.
