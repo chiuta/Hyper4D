@@ -2,7 +2,9 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 2026-10-14
+**Versiune:** 1.2.0 · **Ultima actualizare:** 2026-10-19
+
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hipercorpurilor și proiecții ale politopilor regulați.
 
@@ -23,11 +25,11 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 - Rotație dublă 4D (planurile XW și YZ), proiecție în perspectivă sau ortografică, pauză/redare, viteză, „Solid faces”.
 - Cartuș cu valori calculate (corp, vârfuri·muchii·fețe — etichetată V·M·F, S·A·F, V·E·F etc. după limbă —, hipervolum V₄, unghiurile ∠XW și ∠YZ).
 - Verificare Euler pentru politopi: `vârfuri − muchii + fețe − celule = 0`, cu vârfurile și muchiile numărate din geometria desenată (inclusiv pentru duoprisma personalizată P×Q); pentru duoprisme se numără și fețele poligonale ale bazelor, nu doar cele pătrate din cartuș. Nu se afișează pentru scheletul-stea.
-- Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 7 limbi).
+- Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 8 limbi).
 - Rotire prin tragere cu mouse-ul, zoom cu rotița sau cu două degete.
 - Buton „Salvează SVG” (la Politopi și la „Corp întreg + secțiune curentă”): descarcă diagrama curentă ca fișier SVG autonom (stilurile calculate sunt copiate în atribute, cu fundalul aplicației), pentru lucrări sau prezentări; se face local, fără rețea.
-- Diagrama politopului are acum alternativă text (`role="img"` cu corp, V·M·F și trimitere la cartuș), în 7 limbi.
-- Interfață în 7 limbi: EN (implicit), RO, FR, IT, ES, PT, DE.
+- Diagrama politopului are acum alternativă text (`role="img"` cu corp, V·M·F și trimitere la cartuș), în 8 limbi.
+- Interfață în 8 limbi: EN (implicit), RO, FR, IT, ES, PT, DE, HU.
 - Starea (limbă, categorie, formă, vizualizare) se reflectă în hash-ul URL-ului, deci poate fi pusă la semn sau partajată.
 
 ## Funcții noi (1.1.0)
@@ -38,7 +40,7 @@ La **Politopuri**, sub diagramă, un rând nou de butoane (în cele 7 limbi ale 
 - **Cod QR**: codul conține adresa publică a aplicației (`https://chiuta.github.io/Hyper4D/`; când pagina e servită de pe alt gazdă HTTPS, adresa acelei pagini) plus hash-ul de stare curent (limbă, categorie, formă, vizualizare). Util ca să deschizi pe telefon exact aceeași vedere. Se poate și copia adresa. Generat local; apare doar dacă modulul QR e în fișier.
 - **Tipărire**: butonul „Tipărește” (sau Ctrl+P) folosește acum o foaie de stil pentru hârtie: fundal alb, linii închise la culoare, fără file, butoane și selectoare. Înainte se tipărea tema întunecată. Desenele rămân cele de pe ecran (aspectul exact al fețelor pline poate diferi de cel din browser, în funcție de imprimantă).
 
-Limbile aplicației rămân EN, RO, FR, IT, ES, PT, DE (maghiara nu există în aplicație; nu am adăugat o limbă pe jumătate). Traducerile noi în FR/IT/ES/PT/DE sunt automate, **neverificate nativ**.
+Limbile aplicației sunt EN, RO, FR, IT, ES, PT, DE, HU. Traducerile noi în FR/IT/ES/PT/DE/HU sunt automate, **neverificate nativ**.
 
 ## Kit „fff-kit”
 
@@ -46,11 +48,11 @@ Module lipite în `index.html`: `core`, `label`, `bundle`, `qr`. „Transparenț
 
 ## Teste
 
-`node tests/fff-r8.test.mjs` (Playwright, rețea blocată; 41 de verificări): exportul OBJ este comparat independent cu rotația 4D calculată din datele JSON și din unghiurile din cartuș (ortografic și perspectivă), numărători pentru 5-cell…120-cell și duoprisme, lungimea muchiilor teseractului, QR decodat înapoi, etichete în 7 limbi, mod tipărire (PDF), axe-core 0 violări (inclusiv dialog, ambele categorii), 360 px, fără kit.
+`node tests/fff-r8.test.mjs` (Playwright, rețea blocată; 41 de verificări): exportul OBJ este comparat independent cu rotația 4D calculată din datele JSON și din unghiurile din cartuș (ortografic și perspectivă), numărători pentru 5-cell…120-cell și duoprisme, lungimea muchiilor teseractului, QR decodat înapoi, etichete în 8 limbi, mod tipărire (PDF), axe-core 0 violări (inclusiv dialog, ambele categorii), 360 px, fără kit.
 
 ## Manual de utilizare
 
-1. Alege limba din selectorul din colțul antetului (EN / RO / FR / IT / ES / PT / DE).
+1. Alege limba din selectorul din colțul antetului (EN / RO / FR / IT / ES / PT / DE / HU).
 2. Alege categoria: **Secțiuni transversale** sau **Politopi**.
 3. La secțiuni: alege un corp (de exemplu „Hipersferă”) și trage punctul de pe profilul r(w) sau mută sliderul `w` pentru a parcurge a patra axă; trage corpul pentru a-l roti.
 4. Bifează „Show the cut toward 2D” (în limba aleasă) pentru a doua tăietură; pentru hipersferă încearcă vizualizările „2 bile lipite”, „2 tori plini”, „2 viermi”.
@@ -98,6 +100,6 @@ Alexio — Alexandru-Ionuț Chiuță, contact: alexio@trom.tf.
 
 ## English summary
 
-Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 7 UI languages, no storage, no network. Licensed under MIT.
+Hyper4D is a single-file SVG/JavaScript explorer of four-dimensional geometry: cross-sections of hyperspheres, hypercones, hypercylinders, oblique tesseract and more, plus rotating 4D to 3D to 2D projections of regular polytopes (5-cell to 120-cell), duoprisms and pyramids. 8 UI languages, no storage, no network. Licensed under MIT.
 
-New in 1.1.0 (Polytopes): OBJ export of the current 3D projection (wireframe), JSON export of the 4D vertices/edges/faces, a QR code for the current view (public address + state hash; generated locally), and a paper-friendly print stylesheet. 7 UI languages unchanged (no Hungarian); new strings in FR/IT/ES/PT/DE are machine-translated and not native-checked.
+New in 1.1.0 (Polytopes): OBJ export of the current 3D projection (wireframe), JSON export of the 4D vertices/edges/faces, a QR code for the current view (public address + state hash; generated locally), and a paper-friendly print stylesheet. 8 UI languages (including Hungarian); new strings in FR/IT/ES/PT/DE/HU are machine-translated and not native-checked.

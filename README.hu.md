@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.0 · **Utolsó frissítés:** 2026-10-14
+**Verzió:** 1.2.0 · **Utolsó frissítés:** 2026-10-19
+
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Interaktív felfedező a negyedik dimenzió geometriájához: hypertestek metszetei és szabályos politópok vetületei.
 
@@ -23,11 +25,11 @@ A Hyper4D egyetlen fájlból álló alkalmazás (`index.html`, SVG + JavaScript,
 - Kettős 4D-forgatás (XW és YZ síkok), perspektivikus vagy ortografikus vetítés, szünet/lejátszás, sebesség, „Solid faces”.
 - Címtábla a kiszámított értékekkel (test, csúcsok·élek·lapok — nyelvtől függően V·M·F, S·A·F, V·E·F stb. jelöléssel —, hipertérfogat V₄, a ∠XW és ∠YZ szögek).
 - Euler-ellenőrzés a politópokhoz: `csúcsok − élek + lapok − cellák = 0`, a csúcsok és élek megszámlálása a megrajzolt geometriából történik (az egyéni P×Q duoprizmára is); a duoprizmáknál az alapok soklapú lapjait is megszámoljuk, nem csak a címtáblán szereplő négyzetes lapokat. A csillagvázhoz nem jelenik meg.
-- Billentyűparancsok a Politópoknál: `P` vagy `Szóköz` = szünet/lejátszás, `←` `→` = előző/következő alakzat (a súgó az oldalon látható, 7 nyelven).
+- Billentyűparancsok a Politópoknál: `P` vagy `Szóköz` = szünet/lejátszás, `←` `→` = előző/következő alakzat (a súgó az oldalon látható, 8 nyelven).
 - Forgatás egérrel való húzással, nagyítás görgővel vagy két ujjal.
 - „SVG mentése” gomb (a Politópoknál és az „Egész test + aktuális metszet” nézetnél): önálló SVG-fájlként letölti az aktuális diagramot (a számított stílusokat attribútumokba másolja, az alkalmazás hátterével), dolgozatokhoz vagy előadásokhoz; helyben történik, hálózat nélkül.
-- A politóp diagramja mostantól szöveges alternatívával rendelkezik (`role="img"` a testtel, V·M·F-fel és a címtáblára való utalással), 7 nyelven.
-- Felület 7 nyelven: EN (alapértelmezett), RO, FR, IT, ES, PT, DE.
+- A politóp diagramja mostantól szöveges alternatívával rendelkezik (`role="img"` a testtel, V·M·F-fel és a címtáblára való utalással), 8 nyelven.
+- Felület 8 nyelven: EN (alapértelmezett), RO, FR, IT, ES, PT, DE, HU.
 - Az állapot (nyelv, kategória, alakzat, nézet) megjelenik az URL hash-ében, így könyvjelzőzhető vagy megosztható.
 
 ## Újdonságok (1.1.0)
@@ -38,7 +40,7 @@ A **Politópoknál**, a diagram alatt, a gombok új sora (az alkalmazás 7 nyelv
 - **QR-kód**: a kód az alkalmazás nyilvános címét tartalmazza (`https://chiuta.github.io/Hyper4D/`; ha az oldalt más HTTPS-gazdagép szolgálja ki, annak az oldalnak a címét) és az aktuális állapot-hash-t (nyelv, kategória, alakzat, nézet). Hasznos, hogy telefonon pontosan ugyanazt a nézetet nyisd meg. A cím másolható is. Helyben generálódik; csak akkor jelenik meg, ha a QR-modul a fájlban van.
 - **Nyomtatás**: a „Nyomtatás” gomb (vagy Ctrl+P) mostantól papírra szabott stíluslapot használ: fehér háttér, sötét vonalak, fülek, gombok és választók nélkül. Korábban a sötét téma nyomtatódott. A rajzok ugyanazok maradnak, mint a képernyőn (a tömör lapok pontos megjelenése a nyomtatótól függően eltérhet a böngészőbelitől).
 
-Az alkalmazás nyelvei továbbra is EN, RO, FR, IT, ES, PT, DE (magyar nyelv nincs az alkalmazásban; nem adtam hozzá félkész nyelvet). Az új FR/IT/ES/PT/DE fordítások gépiek, **anyanyelvi ellenőrzés nélkül**.
+Az alkalmazás nyelvei: EN, RO, FR, IT, ES, PT, DE, HU. Az új FR/IT/ES/PT/DE/HU fordítások gépiek, **anyanyelvi ellenőrzés nélkül**.
 
 ## Az „fff-kit”
 
@@ -46,11 +48,11 @@ Az `index.html`-be beillesztett modulok: `core`, `label`, `bundle`, `qr`. Az „
 
 ## Tesztek
 
-`node tests/fff-r8.test.mjs` (Playwright, letiltott hálózat; 41 ellenőrzés): az OBJ-export függetlenül össze van vetve a JSON-adatokból és a címtábla szögeiből számított 4D-s forgatással (ortografikus és perspektivikus), darabszámok az 5-cellától a 120-celláig és a duoprizmákra, a tesszerakt élhossza, visszadekódolt QR, címkék 7 nyelven, nyomtatási mód (PDF), axe-core 0 szabálysértés (a párbeszédablakot is beleértve, mindkét kategória), 360 px, a készlet nélkül.
+`node tests/fff-r8.test.mjs` (Playwright, letiltott hálózat; 41 ellenőrzés): az OBJ-export függetlenül össze van vetve a JSON-adatokból és a címtábla szögeiből számított 4D-s forgatással (ortografikus és perspektivikus), darabszámok az 5-cellától a 120-celláig és a duoprizmákra, a tesszerakt élhossza, visszadekódolt QR, címkék 8 nyelven, nyomtatási mód (PDF), axe-core 0 szabálysértés (a párbeszédablakot is beleértve, mindkét kategória), 360 px, a készlet nélkül.
 
 ## Használati útmutató
 
-1. Válaszd ki a nyelvet a fejléc sarkában lévő választóból (EN / RO / FR / IT / ES / PT / DE).
+1. Válaszd ki a nyelvet a fejléc sarkában lévő választóból (EN / RO / FR / IT / ES / PT / DE / HU).
 2. Válaszd ki a kategóriát: **Keresztmetszetek** vagy **Politópok**.
 3. A metszeteknél: válassz egy testet (például „Hipergömb”), és húzd az r(w) profilon lévő pontot, vagy mozgasd a `w` csúszkát a negyedik tengely bejárásához; húzd a testet a forgatásához.
 4. Jelöld be a „Show the cut toward 2D” opciót (a kiválasztott nyelven) a második vágáshoz; a hipergömbnél próbáld ki a „2 összeragasztott golyó”, „2 tömör tórusz”, „2 féreg” nézeteket.
@@ -98,6 +100,6 @@ Alexio — Alexandru-Ionuț Chiuță, kapcsolat: alexio@trom.tf.
 
 ## Angol nyelvű összefoglaló
 
-A Hyper4D egyetlen fájlból álló SVG/JavaScript felfedező a négydimenziós geometriához: hipergömbök, hiperkúpok, hiperhengerek, a ferde tesszerakt és mások metszetei, valamint szabályos politópok (az 5-cellától a 120-celláig), duoprizmák és piramisok forgó 4D → 3D → 2D vetületei. Felület 7 nyelven, tárolás és hálózat nélkül. MIT-licenc.
+A Hyper4D egyetlen fájlból álló SVG/JavaScript felfedező a négydimenziós geometriához: hipergömbök, hiperkúpok, hiperhengerek, a ferde tesszerakt és mások metszetei, valamint szabályos politópok (az 5-cellától a 120-celláig), duoprizmák és piramisok forgó 4D → 3D → 2D vetületei. Felület 8 nyelven, tárolás és hálózat nélkül. MIT-licenc.
 
-Újdonság az 1.1.0-ban (Politópok): az aktuális 3D vetület OBJ-exportja (drótváz), a 4D csúcsok/élek/lapok JSON-exportja, az aktuális nézet QR-kódja (nyilvános cím + állapot-hash; helyben generálva) és egy papírbarát nyomtatási stíluslap. A 7 felületi nyelv változatlan (magyar nélkül); az új FR/IT/ES/PT/DE szövegek gépi fordítások, anyanyelvi beszélők által nem ellenőrizve.
+Újdonság az 1.1.0-ban (Politópok): az aktuális 3D vetület OBJ-exportja (drótváz), a 4D csúcsok/élek/lapok JSON-exportja, az aktuális nézet QR-kódja (nyilvános cím + állapot-hash; helyben generálva) és egy papírbarát nyomtatási stíluslap. A felület 8 nyelvű (a magyarral együtt); az új FR/IT/ES/PT/DE/HU szövegek gépi fordítások, anyanyelvi beszélők által nem ellenőrizve.

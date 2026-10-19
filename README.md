@@ -2,7 +2,9 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.0 · **Last updated:** 2026-10-14
+**Version:** 1.2.0 · **Last updated:** 2026-10-19
+
+Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 An interactive explorer of geometry in the fourth dimension: cross-sections of hyperbodies and projections of regular polytopes.
 
@@ -23,11 +25,11 @@ Hyper4D is a single-file application (`index.html`, SVG + JavaScript, no librari
 - Double 4D rotation (the XW and YZ planes), perspective or orthographic projection, pause/play, speed, "Solid faces".
 - A title block with computed values (body, vertices·edges·faces — labelled V·M·F, S·A·F, V·E·F etc. depending on the language —, hypervolume V₄, the angles ∠XW and ∠YZ).
 - Euler check for polytopes: `vertices − edges + faces − cells = 0`, with vertices and edges counted from the drawn geometry (including for the custom P×Q duoprism); for duoprisms the polygonal faces of the bases are counted too, not only the square ones from the title block. It is not shown for the star skeleton.
-- Keyboard shortcuts for Polytopes: `P` or `Space` = pause/play, `←` `→` = previous/next shape (hint shown on the page, in 7 languages).
+- Keyboard shortcuts for Polytopes: `P` or `Space` = pause/play, `←` `→` = previous/next shape (hint shown on the page, in 8 languages).
 - Rotation by dragging with the mouse, zoom with the wheel or with two fingers.
 - "Save SVG" button (for Polytopes and for "Whole body + current section"): downloads the current diagram as a standalone SVG file (the computed styles are copied into attributes, with the app's background), for papers or presentations; it is done locally, without a network.
-- The polytope diagram now has a text alternative (`role="img"` with the body, V·M·F and a pointer to the title block), in 7 languages.
-- Interface in 7 languages: EN (default), RO, FR, IT, ES, PT, DE.
+- The polytope diagram now has a text alternative (`role="img"` with the body, V·M·F and a pointer to the title block), in 8 languages.
+- Interface in 8 languages: EN (default), RO, FR, IT, ES, PT, DE, HU.
 - The state (language, category, shape, view) is reflected in the URL hash, so it can be bookmarked or shared.
 
 ## New features (1.1.0)
@@ -38,7 +40,7 @@ Under **Polytopes**, below the diagram, a new row of buttons (in the app's 7 lan
 - **QR code**: the code contains the app's public address (`https://chiuta.github.io/Hyper4D/`; when the page is served from another HTTPS host, the address of that page) plus the current state hash (language, category, shape, view). Useful for opening exactly the same view on a phone. The address can also be copied. Generated locally; it appears only if the QR module is in the file.
 - **Printing**: the "Print" button (or Ctrl+P) now uses a stylesheet for paper: white background, dark lines, no tabs, buttons or selectors. Previously the dark theme was printed. The drawings remain those from the screen (the exact look of solid faces may differ from the browser's, depending on the printer).
 
-The app's languages remain EN, RO, FR, IT, ES, PT, DE (Hungarian does not exist in the app; I did not add a half-finished language). The new translations in FR/IT/ES/PT/DE are automatic, **not natively checked**.
+The app's languages are EN, RO, FR, IT, ES, PT, DE, HU. The new translations in FR/IT/ES/PT/DE/HU are automatic, **not natively checked**.
 
 ## The "fff-kit"
 
@@ -46,11 +48,11 @@ Modules pasted into `index.html`: `core`, `label`, `bundle`, `qr`. "Transparency
 
 ## Tests
 
-`node tests/fff-r8.test.mjs` (Playwright, network blocked; 41 checks): the OBJ export is compared independently with the 4D rotation computed from the JSON data and from the angles in the title block (orthographic and perspective), counts for 5-cell…120-cell and duoprisms, the tesseract's edge length, QR decoded back, labels in 7 languages, print mode (PDF), axe-core 0 violations (including the dialog, both categories), 360 px, without the kit.
+`node tests/fff-r8.test.mjs` (Playwright, network blocked; 41 checks): the OBJ export is compared independently with the 4D rotation computed from the JSON data and from the angles in the title block (orthographic and perspective), counts for 5-cell…120-cell and duoprisms, the tesseract's edge length, QR decoded back, labels in 8 languages, print mode (PDF), axe-core 0 violations (including the dialog, both categories), 360 px, without the kit.
 
 ## User guide
 
-1. Choose the language from the selector in the corner of the header (EN / RO / FR / IT / ES / PT / DE).
+1. Choose the language from the selector in the corner of the header (EN / RO / FR / IT / ES / PT / DE / HU).
 2. Choose the category: **Cross-sections** or **Polytopes**.
 3. For sections: choose a body (for example "Hypersphere") and drag the point on the r(w) profile or move the `w` slider to travel along the fourth axis; drag the body to rotate it.
 4. Tick "Show the cut toward 2D" (in the chosen language) for the second cut; for the hypersphere try the views "2 glued balls", "2 solid tori", "2 worms".

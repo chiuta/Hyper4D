@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.2.0 · **Dernière mise à jour :** 2026-10-19
+
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Explorateur interactif de géométrie en quatrième dimension : sections d'hypercorps et projections de polytopes réguliers.
 
@@ -23,11 +25,11 @@ Hyper4D est une application en un seul fichier (`index.html`, SVG + JavaScript, 
 - Double rotation 4D (plans XW et YZ), projection en perspective ou orthographique, pause/lecture, vitesse, « Solid faces ».
 - Cartouche avec des valeurs calculées (corps, sommets·arêtes·faces — étiquetés V·M·F, S·A·F, V·E·F, etc. selon la langue —, hypervolume V₄, angles ∠XW et ∠YZ).
 - Vérification d'Euler pour les polytopes : `sommets − arêtes + faces − cellules = 0`, avec les sommets et les arêtes comptés à partir de la géométrie dessinée (y compris pour le duoprisme personnalisé P×Q) ; pour les duoprismes, on compte aussi les faces polygonales des bases, et pas seulement les faces carrées du cartouche. Elle n'est pas affichée pour le squelette en étoile.
-- Raccourcis clavier pour les Polytopes : `P` ou `Espace` = pause/lecture, `←` `→` = forme précédente/suivante (indice affiché dans la page, en 7 langues).
+- Raccourcis clavier pour les Polytopes : `P` ou `Espace` = pause/lecture, `←` `→` = forme précédente/suivante (indice affiché dans la page, en 8 langues).
 - Rotation par glissement à la souris, zoom à la molette ou à deux doigts.
 - Bouton « Enregistrer SVG » (pour les Polytopes et pour « Corps entier + section courante ») : télécharge le diagramme courant sous forme de fichier SVG autonome (les styles calculés sont copiés dans des attributs, avec le fond de l'application), pour des travaux ou des présentations ; cela se fait en local, sans réseau.
-- Le diagramme du polytope dispose désormais d'une alternative textuelle (`role="img"` avec le corps, V·M·F et un renvoi au cartouche), en 7 langues.
-- Interface en 7 langues : EN (par défaut), RO, FR, IT, ES, PT, DE.
+- Le diagramme du polytope dispose désormais d'une alternative textuelle (`role="img"` avec le corps, V·M·F et un renvoi au cartouche), en 8 langues.
+- Interface en 8 langues : EN (par défaut), RO, FR, IT, ES, PT, DE, HU.
 - L'état (langue, catégorie, forme, vue) se reflète dans le hash de l'URL ; il peut donc être mis en favori ou partagé.
 
 ## Nouveautés (1.1.0)
@@ -38,7 +40,7 @@ Dans **Polytopes**, sous le diagramme, une nouvelle rangée de boutons (dans les
 - **Code QR** : le code contient l'adresse publique de l'application (`https://chiuta.github.io/Hyper4D/` ; lorsque la page est servie depuis un autre hôte HTTPS, l'adresse de cette page) plus le hash d'état courant (langue, catégorie, forme, vue). Utile pour ouvrir exactement la même vue sur un téléphone. On peut aussi copier l'adresse. Généré en local ; n'apparaît que si le module QR est dans le fichier.
 - **Impression** : le bouton « Imprimer » (ou Ctrl+P) utilise désormais une feuille de style pour le papier : fond blanc, lignes sombres, sans onglets, boutons ni sélecteurs. Auparavant, le thème sombre était imprimé. Les dessins restent ceux de l'écran (l'aspect exact des faces pleines peut différer de celui du navigateur, selon l'imprimante).
 
-Les langues de l'application restent EN, RO, FR, IT, ES, PT, DE (le hongrois n'existe pas dans l'application ; je n'ai pas ajouté une langue à moitié). Les nouvelles traductions en FR/IT/ES/PT/DE sont automatiques, **non vérifiées par des locuteurs natifs**.
+Les langues de l'application sont EN, RO, FR, IT, ES, PT, DE, HU. Les nouvelles traductions en FR/IT/ES/PT/DE/HU sont automatiques, **non vérifiées par des locuteurs natifs**.
 
 ## Le kit « fff-kit »
 
@@ -46,11 +48,11 @@ Modules collés dans `index.html` : `core`, `label`, `bundle`, `qr`. « Transpar
 
 ## Tests
 
-`node tests/fff-r8.test.mjs` (Playwright, réseau bloqué ; 41 vérifications) : l'export OBJ est comparé indépendamment à la rotation 4D calculée à partir des données JSON et des angles du cartouche (orthographique et perspective), décomptes pour 5-cellules…120-cellules et duoprismes, longueur des arêtes du tesseract, QR décodé en retour, étiquettes dans 7 langues, mode impression (PDF), axe-core 0 violation (y compris la boîte de dialogue, les deux catégories), 360 px, sans le kit.
+`node tests/fff-r8.test.mjs` (Playwright, réseau bloqué ; 41 vérifications) : l'export OBJ est comparé indépendamment à la rotation 4D calculée à partir des données JSON et des angles du cartouche (orthographique et perspective), décomptes pour 5-cellules…120-cellules et duoprismes, longueur des arêtes du tesseract, QR décodé en retour, étiquettes dans 8 langues, mode impression (PDF), axe-core 0 violation (y compris la boîte de dialogue, les deux catégories), 360 px, sans le kit.
 
 ## Mode d'emploi
 
-1. Choisissez la langue dans le sélecteur situé dans le coin de l'en-tête (EN / RO / FR / IT / ES / PT / DE).
+1. Choisissez la langue dans le sélecteur situé dans le coin de l'en-tête (EN / RO / FR / IT / ES / PT / DE / HU).
 2. Choisissez la catégorie : **Sections transversales** ou **Polytopes**.
 3. Pour les sections : choisissez un corps (par exemple « Hypersphère ») et faites glisser le point sur le profil r(w) ou déplacez le curseur `w` pour parcourir le quatrième axe ; faites glisser le corps pour le faire tourner.
 4. Cochez « Show the cut toward 2D » (dans la langue choisie) pour la deuxième coupe ; pour l'hypersphère, essayez les vues « 2 boules collées », « 2 tores pleins », « 2 vers ».
@@ -98,6 +100,6 @@ Alexio — Alexandru-Ionuț Chiuță, contact : alexio@trom.tf.
 
 ## Résumé en anglais
 
-Hyper4D est un explorateur SVG/JavaScript en un seul fichier de la géométrie à quatre dimensions : sections d'hypersphères, d'hypercônes, d'hypercylindres, du tesseract oblique et plus encore, ainsi que des projections 4D → 3D → 2D rotatives de polytopes réguliers (du 5-cellules au 120-cellules), de duoprismes et de pyramides. Interface en 7 langues, sans stockage, sans réseau. Sous licence MIT.
+Hyper4D est un explorateur SVG/JavaScript en un seul fichier de la géométrie à quatre dimensions : sections d'hypersphères, d'hypercônes, d'hypercylindres, du tesseract oblique et plus encore, ainsi que des projections 4D → 3D → 2D rotatives de polytopes réguliers (du 5-cellules au 120-cellules), de duoprismes et de pyramides. Interface en 8 langues, sans stockage, sans réseau. Sous licence MIT.
 
-Nouveau dans la 1.1.0 (Polytopes) : export OBJ de la projection 3D courante (fil de fer), export JSON des sommets/arêtes/faces 4D, code QR de la vue courante (adresse publique + hash d'état ; généré en local) et feuille de style d'impression adaptée au papier. Les 7 langues de l'interface sont inchangées (pas de hongrois) ; les nouvelles chaînes en FR/IT/ES/PT/DE sont traduites automatiquement et non vérifiées par des locuteurs natifs.
+Nouveau dans la 1.1.0 (Polytopes) : export OBJ de la projection 3D courante (fil de fer), export JSON des sommets/arêtes/faces 4D, code QR de la vue courante (adresse publique + hash d'état ; généré en local) et feuille de style d'impression adaptée au papier. L'interface compte 8 langues (hongrois inclus) ; les nouvelles chaînes en FR/IT/ES/PT/DE/HU sont traduites automatiquement et non vérifiées par des locuteurs natifs.

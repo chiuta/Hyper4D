@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.1.0 · **Última atualização:** 2026-10-14
+**Versão:** 1.2.0 · **Última atualização:** 2026-10-19
+
+Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Explorador interativo de geometria na quarta dimensão: secções de hipercorpos e projeções de politopos regulares.
 
@@ -23,11 +25,11 @@ O Hyper4D é uma aplicação num único ficheiro (`index.html`, SVG + JavaScript
 - Dupla rotação 4D (planos XW e YZ), projeção em perspetiva ou ortográfica, pausa/reprodução, velocidade, «Solid faces».
 - Legenda com valores calculados (corpo, vértices·arestas·faces — etiquetados V·M·F, S·A·F, V·E·F etc., consoante o idioma —, hipervolume V₄, os ângulos ∠XW e ∠YZ).
 - Verificação de Euler para os politopos: `vértices − arestas + faces − células = 0`, com os vértices e as arestas contados a partir da geometria desenhada (inclusive para o duoprisma personalizado P×Q); para os duoprismas contam-se também as faces poligonais das bases, e não apenas as quadradas da legenda. Não é apresentada para o esqueleto em estrela.
-- Atalhos de teclado nos Politopos: `P` ou `Espaço` = pausa/reprodução, `←` `→` = forma anterior/seguinte (dica apresentada na página, em 7 idiomas).
+- Atalhos de teclado nos Politopos: `P` ou `Espaço` = pausa/reprodução, `←` `→` = forma anterior/seguinte (dica apresentada na página, em 8 idiomas).
 - Rotação arrastando com o rato, zoom com a roda ou com dois dedos.
 - Botão «Guardar SVG» (nos Politopos e em «Corpo inteiro + secção atual»): descarrega o diagrama atual como ficheiro SVG autónomo (os estilos calculados são copiados para atributos, com o fundo da aplicação), para trabalhos ou apresentações; faz-se localmente, sem rede.
-- O diagrama do politopo tem agora uma alternativa de texto (`role="img"` com o corpo, V·M·F e uma remissão para a legenda), em 7 idiomas.
-- Interface em 7 idiomas: EN (predefinido), RO, FR, IT, ES, PT, DE.
+- O diagrama do politopo tem agora uma alternativa de texto (`role="img"` com o corpo, V·M·F e uma remissão para a legenda), em 8 idiomas.
+- Interface em 8 idiomas: EN (predefinido), RO, FR, IT, ES, PT, DE, HU.
 - O estado (idioma, categoria, forma, vista) reflete-se no hash do URL, pelo que pode ser guardado nos favoritos ou partilhado.
 
 ## Novidades (1.1.0)
@@ -38,7 +40,7 @@ Em **Politopos**, abaixo do diagrama, uma nova linha de botões (nos 7 idiomas d
 - **Código QR**: o código contém o endereço público da aplicação (`https://chiuta.github.io/Hyper4D/`; quando a página é servida a partir de outro anfitrião HTTPS, o endereço dessa página) mais o hash de estado atual (idioma, categoria, forma, vista). Útil para abrir no telemóvel exatamente a mesma vista. Também é possível copiar o endereço. Gerado localmente; só aparece se o módulo QR estiver no ficheiro.
 - **Impressão**: o botão «Imprimir» (ou Ctrl+P) usa agora uma folha de estilo para papel: fundo branco, linhas escuras, sem separadores, botões nem seletores. Antes era impresso o tema escuro. Os desenhos continuam a ser os do ecrã (o aspeto exato das faces maciças pode diferir do do navegador, consoante a impressora).
 
-Os idiomas da aplicação continuam a ser EN, RO, FR, IT, ES, PT, DE (o húngaro não existe na aplicação; não acrescentei um idioma a meio). As novas traduções em FR/IT/ES/PT/DE são automáticas, **sem verificação nativa**.
+Os idiomas da aplicação são EN, RO, FR, IT, ES, PT, DE, HU. As novas traduções em FR/IT/ES/PT/DE/HU são automáticas, **sem verificação nativa**.
 
 ## O kit «fff-kit»
 
@@ -46,11 +48,11 @@ Módulos colados em `index.html`: `core`, `label`, `bundle`, `qr`. A «Transpar�
 
 ## Testes
 
-`node tests/fff-r8.test.mjs` (Playwright, rede bloqueada; 41 verificações): a exportação OBJ é comparada de forma independente com a rotação 4D calculada a partir dos dados JSON e dos ângulos da legenda (ortográfica e perspetiva), contagens para 5-células…120-células e duoprismas, comprimento das arestas do teseracto, QR descodificado de volta, etiquetas em 7 idiomas, modo de impressão (PDF), axe-core 0 violações (incluindo a caixa de diálogo, ambas as categorias), 360 px, sem o kit.
+`node tests/fff-r8.test.mjs` (Playwright, rede bloqueada; 41 verificações): a exportação OBJ é comparada de forma independente com a rotação 4D calculada a partir dos dados JSON e dos ângulos da legenda (ortográfica e perspetiva), contagens para 5-células…120-células e duoprismas, comprimento das arestas do teseracto, QR descodificado de volta, etiquetas em 8 idiomas, modo de impressão (PDF), axe-core 0 violações (incluindo a caixa de diálogo, ambas as categorias), 360 px, sem o kit.
 
 ## Manual de utilização
 
-1. Escolha o idioma no seletor do canto do cabeçalho (EN / RO / FR / IT / ES / PT / DE).
+1. Escolha o idioma no seletor do canto do cabeçalho (EN / RO / FR / IT / ES / PT / DE / HU).
 2. Escolha a categoria: **Secções transversais** ou **Politopos**.
 3. Nas secções: escolha um corpo (por exemplo «Hiperesfera») e arraste o ponto do perfil r(w) ou mova o controlo deslizante `w` para percorrer o quarto eixo; arraste o corpo para o rodar.
 4. Assinale «Show the cut toward 2D» (no idioma escolhido) para o segundo corte; na hiperesfera experimente as vistas «2 bolas coladas», «2 toros maciços», «2 vermes».
@@ -98,6 +100,6 @@ Alexio — Alexandru-Ionuț Chiuță, contacto: alexio@trom.tf.
 
 ## Resumo em inglês
 
-O Hyper4D é um explorador SVG/JavaScript num único ficheiro da geometria a quatro dimensões: secções de hiperesferas, hipercones, hipercilindros, do teseracto oblíquo e mais, além de projeções 4D → 3D → 2D rotativas de politopos regulares (do 5-células ao 120-células), duoprismas e pirâmides. Interface em 7 idiomas, sem armazenamento, sem rede. Licença MIT.
+O Hyper4D é um explorador SVG/JavaScript num único ficheiro da geometria a quatro dimensões: secções de hiperesferas, hipercones, hipercilindros, do teseracto oblíquo e mais, além de projeções 4D → 3D → 2D rotativas de politopos regulares (do 5-células ao 120-células), duoprismas e pirâmides. Interface em 8 idiomas, sem armazenamento, sem rede. Licença MIT.
 
-Novidades na 1.1.0 (Politopos): exportação OBJ da projeção 3D atual (estrutura de arame), exportação JSON dos vértices/arestas/faces 4D, código QR da vista atual (endereço público + hash de estado; gerado localmente) e uma folha de estilo de impressão adequada ao papel. Os 7 idiomas da interface mantêm-se (sem húngaro); as novas cadeias em FR/IT/ES/PT/DE são traduzidas automaticamente e não foram verificadas por falantes nativos.
+Novidades na 1.1.0 (Politopos): exportação OBJ da projeção 3D atual (estrutura de arame), exportação JSON dos vértices/arestas/faces 4D, código QR da vista atual (endereço público + hash de estado; gerado localmente) e uma folha de estilo de impressão adequada ao papel. A interface tem 8 idiomas (húngaro incluído); as novas cadeias em FR/IT/ES/PT/DE/HU são traduzidas automaticamente e não foram verificadas por falantes nativos.
