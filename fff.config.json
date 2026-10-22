@@ -1,0 +1,1 @@
+{"exceptions":[{"rule":"i18n-parity","reason":"Falsă alarmă: cheile ui.btn.export*/qr/print și ui.toast.* se adaugă la rulare (blocul ro..de de după dicționarul principal, liniile 3768-3774), așa că toate cele 8 limbi sunt complete."}]}

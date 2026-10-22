@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.6 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.2.7 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Module lipite în `index.html`: `core`, `label`, `bundle`, `qr`. „Transparenț
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
 
 ## Istoric / Changelog
+
+### 1.2.7 — 2026-10-23
+
+- Audit fff-kit 1.2.0: avertismentul de paritate i18n este o alarmă falsă (cheile se completează la rulare); documentat ca excepție justificată în `fff.config.json`. Fără schimbări funcționale.
 
 ### 1.2.5 — 2026-10-22
 

@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "hyper4d",
   "name": "Hyper4D",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "updated": "2026-10-23",
   "description": "Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hipercorpurilor și proiecții ale politopilor regulați.",
   "egress": [],
@@ -11,8 +11,8 @@
     "serviceWorker"
   ],
   "storageKeys": [],
-  "sizeBytes": 459773,
-  "sha256": "5d6db9d89a4d6251ecaa60b2037150faeed3dd13909dba9148bcaf4554256f75",
+  "sizeBytes": 460091,
+  "sha256": "d974bf34e1fb88762818c188e952898f2787ba13900f7b74ca68c966b321ac28",
   "csp": {
     "present": true,
     "directives": {
@@ -68,5 +68,11 @@
       "qr"
     ]
   },
-  "selfSerializing": false
+  "selfSerializing": false,
+  "exceptions": [
+    {
+      "rule": "i18n-parity",
+      "reason": "Falsă alarmă: cheile ui.btn.export*/qr/print și ui.toast.* se adaugă la rulare (blocul ro..de de după dicționarul principal, liniile 3768-3774), așa că toate cele 8 limbi sunt complete."
+    }
+  ]
 }

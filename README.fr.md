@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.6 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.2.7 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Modules collés dans `index.html` : `core`, `label`, `bundle`, `qr`. « Transpar
 Téléchargez `index.html` et ouvrez-le dans le navigateur ; il fonctionne entièrement sans internet (le pied de page de l'application indique : « Offline tool, no external dependencies »).
 
 ## Historique / Changelog
+
+### 1.2.7 — 2026-10-23
+
+- Audit fff-kit 1.2.0 : l'avertissement de parité i18n est un faux positif (les clés sont complétées à l'exécution) ; documenté comme exception justifiée dans `fff.config.json`. Aucun changement fonctionnel.
 
 ### 1.2.5 — 2026-10-22
 
