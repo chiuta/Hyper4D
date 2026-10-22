@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.2.4 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.2.5 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ In `index.html` eingefügte Module: `core`, `label`, `bundle`, `qr`. „Transpar
 Lade `index.html` herunter und öffne die Datei im Browser; sie funktioniert vollständig ohne Internet (die Fußzeile der App sagt: „Offline tool, no external dependencies“).
 
 ## Verlauf / Changelog
+
+### 1.2.5 — 2026-10-22
+
+fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße. Touch-Ziele/Text in der App korrigiert.
 
 ### 1.2.4 — 2026-10-22
 

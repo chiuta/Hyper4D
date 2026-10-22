@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.2.4 · **Ultimo aggiornamento:** 2026-10-22
+**Versione:** 1.2.5 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Moduli incollati in `index.html`: `core`, `label`, `bundle`, `qr`. «Trasparenza
 Scarica `index.html` e aprilo nel browser; funziona completamente senza internet (il piè di pagina dell'applicazione dice: «Offline tool, no external dependencies»).
 
 ## Cronologia / Changelog
+
+### 1.2.5 — 2026-10-22
+
+fff-kit 1.1.4: aree tattili e testo minimo. Aree tattili/testo corretti nell’app.
 
 ### 1.2.4 — 2026-10-22
 

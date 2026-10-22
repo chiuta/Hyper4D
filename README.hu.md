@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.4 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.2.5 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Az `index.html`-be beillesztett modulok: `core`, `label`, `bundle`, `qr`. Az „
 Töltsd le az `index.html` fájlt, és nyisd meg böngészőben; teljesen internet nélkül működik (az alkalmazás lábléce ezt mondja: „Offline tool, no external dependencies”).
 
 ## Előzmények / Changelog
+
+### 1.2.5 — 2026-10-22
+
+fff-kit 1.1.4: érintési célok és minimális szövegméret. Érintési célok/szöveg javítva az alkalmazásban.
 
 ### 1.2.4 — 2026-10-22
 
