@@ -25,7 +25,7 @@ await p.click('#poly-play'); await p.click('[data-proj="ortografica"]'); await p
 t('rotația oprită (pauză)', (await p.getAttribute('#poly-play', 'aria-pressed')) === 'false');
 // --- JSON
 const j = await dl(p, '#poly-export-json'); const J = JSON.parse(j.txt);
-t('JSON: nume fișier, format', j.name === 'hyper4d-cell8.json' && J.format === 'hyper4d-polytope' && J.version === '1.2.3', j.name);
+t('JSON: nume fișier, format', j.name === 'hyper4d-cell8.json' && J.format === 'hyper4d-polytope' && J.version === '1.2.4', j.name);
 t('JSON 8-cell: 16 vârfuri, 32 muchii, 24 fețe', J.counts.vertices === 16 && J.counts.edges === 32 && J.counts.faces === 24 && J.vertices.length === 16 && J.edges.length === 32 && J.faces.length === 24, JSON.stringify(J.counts));
 t('JSON: vârfuri 4D de normă 1 (rază circumscrisă 1)', J.vertices.every(v => v.length === 4 && Math.abs(Math.hypot(...v) - 1) < 1e-6));
 const el = J.edges.map(([a, c]) => Math.hypot(...J.vertices[a].map((x, i) => x - J.vertices[c][i]))); t('JSON: toate muchiile teseractului au aceeași lungime (1,0)', Math.max(...el) - Math.min(...el) < 1e-6 && Math.abs(el[0] - 1) < 1e-6, [Math.min(...el), Math.max(...el)]);
