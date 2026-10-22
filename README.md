@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.0 · **Last updated:** 2026-10-19
+**Version:** 1.2.1 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,9 @@ Modules pasted into `index.html`: `core`, `label`, `bundle`, `qr`. "Transparency
 Download `index.html` and open it in a browser; it works fully without internet (the app's footer says: "Offline tool, no external dependencies").
 
 ## History / Changelog
+
+### 1.2.1 — 2026-10-22
+- The label of the glued-balls zone (poles, equator, toward A/B) is now translated and updates when the language changes.
 
 ### 14 October 2026 (v1.1.0)
 - New under Polytopes: OBJ and JSON export, QR code of the state, print stylesheet; the "Transparency" window (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: script hash recalculated.

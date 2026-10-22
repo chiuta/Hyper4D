@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.0 · **Última actualización:** 2026-10-19
+**Versión:** 1.2.1 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,9 @@ Módulos pegados en `index.html`: `core`, `label`, `bundle`, `qr`. «Transparenc
 Descarga `index.html` y ábrelo en el navegador; funciona completamente sin internet (el pie de la aplicación dice: «Offline tool, no external dependencies»).
 
 ## Historial / Changelog
+
+### 1.2.1 — 2026-10-22
+- La etiqueta de la zona de las bolas pegadas (polos, ecuador, hacia A/B) ahora está traducida y se actualiza al cambiar de idioma.
 
 ### 14 de octubre de 2026 (v1.1.0)
 - Novedad en Politopos: exportación OBJ y JSON, código QR del estado, hoja de estilo de impresión; ventana «Transparencia» (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: hash del script recalculado.

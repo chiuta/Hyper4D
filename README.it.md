@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.2.0 · **Ultimo aggiornamento:** 2026-10-19
+**Versione:** 1.2.1 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,9 @@ Moduli incollati in `index.html`: `core`, `label`, `bundle`, `qr`. «Trasparenza
 Scarica `index.html` e aprilo nel browser; funziona completamente senza internet (il piè di pagina dell'applicazione dice: «Offline tool, no external dependencies»).
 
 ## Cronologia / Changelog
+
+### 1.2.1 — 2026-10-22
+- L'etichetta della zona delle sfere incollate (poli, equatore, verso A/B) è ora tradotta e si aggiorna al cambio di lingua.
 
 ### 14 ottobre 2026 (v1.1.0)
 - Novità in Politopi: esportazione OBJ e JSON, codice QR dello stato, foglio di stile di stampa; finestra «Trasparenza» (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: hash dello script ricalcolato.

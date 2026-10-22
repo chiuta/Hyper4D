@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.0 · **Ultima actualizare:** 2026-10-19
+**Versiune:** 1.2.1 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,9 @@ Module lipite în `index.html`: `core`, `label`, `bundle`, `qr`. „Transparenț
 Descarcă `index.html` și deschide-l în browser; funcționează complet fără internet (subsolul aplicației spune: „Offline tool, no external dependencies”).
 
 ## Istoric / Changelog
+
+### 1.2.1 — 2026-10-22
+- Eticheta zonei bilelor lipite (poli, ecuator, spre A/B) este acum tradusă și se actualizează la schimbarea limbii.
 
 ### 14 octombrie 2026 (v1.1.0)
 - Nou la Politopuri: export OBJ și JSON, cod QR al stării, foaie de stil de tipărire; fereastra „Transparență” (fff-kit: core, label, bundle, qr); `tests/fff-r8.test.mjs`. CSP: hash-ul scriptului recalculat.

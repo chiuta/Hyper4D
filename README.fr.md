@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.0 · **Dernière mise à jour :** 2026-10-19
+**Version :** 1.2.1 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,9 @@ Modules collés dans `index.html` : `core`, `label`, `bundle`, `qr`. « Transpar
 Téléchargez `index.html` et ouvrez-le dans le navigateur ; il fonctionne entièrement sans internet (le pied de page de l'application indique : « Offline tool, no external dependencies »).
 
 ## Historique / Changelog
+
+### 1.2.1 — 2026-10-22
+- L'étiquette de la zone des boules collées (pôles, équateur, vers A/B) est désormais traduite et se met à jour au changement de langue.
 
 ### 14 octobre 2026 (v1.1.0)
 - Nouveau dans Polytopes : export OBJ et JSON, code QR de l'état, feuille de style d'impression ; fenêtre « Transparence » (fff-kit : core, label, bundle, qr) ; `tests/fff-r8.test.mjs`. CSP : hachage du script recalculé.
