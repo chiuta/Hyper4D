@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.2 · **Última atualização:** 2026-10-22
+**Versão:** 1.2.3 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Módulos colados em `index.html`: `core`, `label`, `bundle`, `qr`. A «Transpar�
 Descarregue `index.html` e abra-o no navegador; funciona totalmente sem internet (o rodapé da aplicação diz: «Offline tool, no external dependencies»).
 
 ## Histórico / Changelog
+
+### 1.2.3 — 2026-10-22
+- Móvel: o texto tem pelo menos 12 px e os botões e campos têm áreas táteis maiores em ecrãs estreitos.
+- O botão «Buy Me a Coffee» já não flutua sobre os controlos; fica no fim da página.
 
 ### 1.2.2 — 2026-10-22
 - Correção de tradução: a descrição (e o nome) do painel de transparência seguem agora o idioma da interface.

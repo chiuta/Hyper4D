@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.2 · **Última actualización:** 2026-10-22
+**Versión:** 1.2.3 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Módulos pegados en `index.html`: `core`, `label`, `bundle`, `qr`. «Transparenc
 Descarga `index.html` y ábrelo en el navegador; funciona completamente sin internet (el pie de la aplicación dice: «Offline tool, no external dependencies»).
 
 ## Historial / Changelog
+
+### 1.2.3 — 2026-10-22
+- Móvil: el texto mide al menos 12 px y los botones y campos tienen áreas táctiles mayores en pantallas estrechas.
+- El botón «Buy Me a Coffee» ya no flota sobre los controles; está al final de la página.
 
 ### 1.2.2 — 2026-10-22
 - Corrección de traducción: la descripción (y el nombre) del panel de transparencia siguen ahora el idioma de la interfaz.

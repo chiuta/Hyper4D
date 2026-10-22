@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.2 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.2.3 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Modules collés dans `index.html` : `core`, `label`, `bundle`, `qr`. « Transpar
 Téléchargez `index.html` et ouvrez-le dans le navigateur ; il fonctionne entièrement sans internet (le pied de page de l'application indique : « Offline tool, no external dependencies »).
 
 ## Historique / Changelog
+
+### 1.2.3 — 2026-10-22
+- Mobile : le texte fait au moins 12 px et les boutons et champs ont des cibles tactiles plus grandes sur les écrans étroits.
+- Le bouton « Buy Me a Coffee » ne flotte plus au-dessus des commandes ; il se trouve en bas de page.
 
 ### 1.2.2 — 2026-10-22
 - Correctif de traduction : la description (et le nom) du panneau de transparence suivent désormais la langue de l'interface.

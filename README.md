@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.2 · **Last updated:** 2026-10-22
+**Version:** 1.2.3 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Modules pasted into `index.html`: `core`, `label`, `bundle`, `qr`. "Transparency
 Download `index.html` and open it in a browser; it works fully without internet (the app's footer says: "Offline tool, no external dependencies").
 
 ## History / Changelog
+
+### 1.2.3 — 2026-10-22
+- Mobile: text is at least 12 px and buttons and fields have larger touch targets on narrow screens.
+- The “Buy Me a Coffee” button no longer floats over the controls; it sits at the end of the page.
 
 ### 1.2.2 — 2026-10-22
 - Translation fix: the description (and name) in the transparency panel now follow the interface language.

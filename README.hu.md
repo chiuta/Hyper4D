@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.2 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.2.3 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,6 +71,10 @@ Az `index.html`-be beillesztett modulok: `core`, `label`, `bundle`, `qr`. Az „
 Töltsd le az `index.html` fájlt, és nyisd meg böngészőben; teljesen internet nélkül működik (az alkalmazás lábléce ezt mondja: „Offline tool, no external dependencies”).
 
 ## Előzmények / Changelog
+
+### 1.2.3 — 2026-10-22
+- Mobil: a szöveg legalább 12 px, a gombok és mezők érintési felülete pedig nagyobb keskeny képernyőn.
+- A „Buy Me a Coffee” gomb már nem lebeg a vezérlők fölött, hanem az oldal végén található.
 
 ### 1.2.2 — 2026-10-22
 - Fordítási javítás: az átláthatósági panel leírása (és neve) mostantól a felület nyelvét követi.
