@@ -17,7 +17,7 @@ async function mk(w = 1280, h = 800, scheme = 'dark', hash = '') {
   return {ctx, p, errs, net};
 }
 const axeSrc = fs.readFileSync(AXE, 'utf8');
-const runAxe = async p => { if (!(await p.evaluate(() => !!window.axe))) await p.evaluate(axeSrc + '\n;0'); return p.evaluate(async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(v => v.id + ':' + v.nodes.map(n => n.target.join(' ')).join(',').slice(0, 120))); };
+const runAxe = async p => { /* așteaptă animațiile/tranzițiile finite: altfel axe măsoară opacitate parțială sub încărcare */ await p.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running' || a.effect.getComputedTiming().iterations === Infinity), null, {timeout: 20000}); if (!(await p.evaluate(() => !!window.axe))) await p.evaluate(axeSrc + '\n;0'); return p.evaluate(async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(v => v.id + ':' + v.nodes.map(n => n.target.join(' ')).join(',').slice(0, 120))); };
 async function dl(p, sel) { const [d] = await Promise.all([p.waitForEvent('download'), p.click(sel)]); return {name: d.suggestedFilename(), txt: fs.readFileSync(await d.path(), 'utf8')}; }
 const shape = async (p, key) => { await p.click('.pill[data-shape="' + key + '"]'); await p.waitForTimeout(400); };
 
