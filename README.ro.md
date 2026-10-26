@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.8 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -23,6 +23,7 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 - Pentru tesseractul oblic: direcții de tăiere față / muchie / vârf.
 - **Politopi:** 5-cell, 8-cell, 16-cell, 24-cell, 600-cell, 120-cell; duoprisme (3,3), (3,5) și (P,Q) personalizat; piramide peste cub, octaedru, dodecaedru, icosaedru; „star skeleton”.
 - Rotație dublă 4D (planurile XW și YZ), proiecție în perspectivă sau ortografică, pauză/redare, viteză, „Solid faces”.
+- **Tutorial interactiv 4D (v2.0.0):** analogia dimensională cu tabel (punct → segment → pătrat → cub → teseract, numărând vârfuri/muchii/fețe), șase cursoare pentru planurile de rotație XY, XZ, YZ, XW, YW, ZW, rotație automată într-un singur plan (cu planul rămas fix indicat) sau dublă XW + YZ, și trecerea între teseract, 24-cell și 120-cell. Explicații în 8 limbi; valori didactice.
 - Cartuș cu valori calculate (corp, vârfuri·muchii·fețe — etichetată V·M·F, S·A·F, V·E·F etc. după limbă —, hipervolum V₄, unghiurile ∠XW și ∠YZ).
 - Verificare Euler pentru politopi: `vârfuri − muchii + fețe − celule = 0`, cu vârfurile și muchiile numărate din geometria desenată (inclusiv pentru duoprisma personalizată P×Q); pentru duoprisme se numără și fețele poligonale ale bazelor, nu doar cele pătrate din cartuș. Nu se afișează pentru scheletul-stea.
 - Scurtături de tastatură la Politopi: `P` sau `Spațiu` = pauză/redare, `←` `→` = forma anterioară/următoare (indiciu afișat în pagină, în 8 limbi).
