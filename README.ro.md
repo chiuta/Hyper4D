@@ -2,7 +2,9 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.1.0 (anterior: v2.0.0) · **Ultima actualizare:** 2026-10-27
+
+**Stare:** stabil · **Offline:** complet (nu cere internet)
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -18,6 +20,7 @@ Hyper4D este o aplicație single-file (`index.html`, SVG + JavaScript, fără bi
 
 ## Funcții
 
+- **Mai multe politopuri și tragere 4D (v2.1.0):** șase forme noi la Politopuri — **hiperprisme** (poliedru × segment) peste tetraedru, octaedru, dodecaedru și icosaedru (vârfuri·muchii·fețe: 8·16·14, 12·30·28, 40·80·54, 24·72·70), **5-cell rectificat** (10·30·30) și **teseract rectificat** (32·96·88; 64 de triunghiuri + 24 de pătrate). Toate au muchii de lungime egală și verificarea Euler trece (V − E + F − C = 0, cu 6, 10, 14, 22, 10, 24 de celule); textele informative există în română și engleză (celelalte limbi arată engleza). Buton nou **„Tragerea rotește în 4D”**: tragerea schimbă unghiurile XW (orizontal) și YZ (vertical) în loc de camera 3D; cu **Shift** apăsat, la fel pentru o singură tragere; cu tutorialul deschis mișcă cursoarele XW/YZ ale acestuia. Tutorialul introductiv pentru nematematicieni exista deja din v2.0.0. Tragerea nu are echivalent de tastatură; cursoarele tutorialului da.
 - **Secțiuni transversale:** hipersferă, hipercon, hipercilindru, hipercon dublu (bicon), „Piramida STRING”, hipercilindru (construcție), hiperelipsoid, tesseract oblic, desfășurare (net). Profilul r(w) cu punct tras de mouse, corpul întreg cu secțiunea curentă, „a doua tăietură” (sferă ∩ 2D = cerc).
 - Pentru hipersferă, vizualizări: secțiune, „2 bile lipite”, „2 tori plini”, „2 viermi (mărul)” cu număr de viermi selectabil.
 - Pentru tesseractul oblic: direcții de tăiere față / muchie / vârf.
