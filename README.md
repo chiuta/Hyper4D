@@ -2,7 +2,9 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 2.0.0 · **Last updated:** 2026-10-26
+**Version:** 2.1.0 (previous: v2.0.0) · **Last updated:** 2026-10-27
+
+**Status:** stable · **Offline:** complete (no network needed)
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -23,6 +25,7 @@ Hyper4D is a single-file application (`index.html`, SVG + JavaScript, no librari
 - For the oblique tesseract: cutting directions face / edge / vertex.
 - **Polytopes:** 5-cell, 8-cell, 16-cell, 24-cell, 600-cell, 120-cell; duoprisms (3,3), (3,5) and custom (P,Q); pyramids over the cube, octahedron, dodecahedron, icosahedron; "star skeleton".
 - Double 4D rotation (the XW and YZ planes), perspective or orthographic projection, pause/play, speed, "Solid faces".
+- **More polytopes and 4D drag (v2.1.0):** six new shapes under Polytopes — **hyperprisms** (polyhedron × segment) over the tetrahedron, octahedron, dodecahedron and icosahedron (8·16·14, 12·30·28, 40·80·54, 24·72·70 vertices·edges·faces), and the **rectified 5-cell** (10·30·30) and **rectified tesseract** (32·96·88; 64 triangles + 24 squares). All have uniform edge lengths and a passing Euler check (V − E + F − C = 0, with the cell counts 6, 10, 14, 22, 10, 24); the info texts exist in Romanian and English (other languages show English). New button **“Drag rotates in 4D”**: dragging then changes the XW (horizontal) and YZ (vertical) rotation angles instead of the 3D camera; holding **Shift** does the same for one drag; with the tutorial open it moves its XW/YZ sliders. The introductory tutorial for non-mathematicians already existed since v2.0.0 (below). Dragging has no keyboard equivalent; the tutorial sliders do.
 - **Interactive 4D tutorial (v2.0.0):** dimensional analogy with a counting table (point to tesseract), six sliders for the XY, XZ, YZ, XW, YW, ZW rotation planes, automatic single-plane or double XW + YZ rotation, and switching between the tesseract, 24-cell and 120-cell. Texts in 8 languages; didactic values.
 - A title block with computed values (body, vertices·edges·faces — labelled V·M·F, S·A·F, V·E·F etc. depending on the language —, hypervolume V₄, the angles ∠XW and ∠YZ).
 - Euler check for polytopes: `vertices − edges + faces − cells = 0`, with vertices and edges counted from the drawn geometry (including for the custom P×Q duoprism); for duoprisms the polygonal faces of the bases are counted too, not only the square ones from the title block. It is not shown for the star skeleton.
