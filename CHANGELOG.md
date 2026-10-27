@@ -1,5 +1,19 @@
 # Jurnal de modificări — Hyper4D
 
+## 2.2.0 — 2026-10-27
+
+Anterior: v2.1.0. Recenzie 2 (2026-10-27).
+
+- Nou: **hipervolumul V₄ exact** (raza circumscrisă 1, ca la celelalte) pentru toate formele care aveau „—”: hiperprismele (tetraedru 0,3017; octaedru 0,8381; dodecaedru 1,5640; icosaedru 1,6368), 5-cell rectificat (275√5/864 ≈ 0,7117), teseract rectificat (46/27 ≈ 1,7037), hiperpiramidele (cub 0,2227; octaedru 0,1929; dodecaedru 0,3169; icosaedru 0,3669) și duoprismele (inclusiv cel personalizat P×Q; 4×4 = 1,0000 = teseractul). Formule în textul informativ al hiperprismelor și rectificatelor (RO/EN). Scheletul-stea (600v) rămâne „—” (nu are volum definit).
+- Nou: **rotație 4D de la tastatură** — Shift + ←/→ = planul XW, Shift + ↑/↓ = planul YZ (pas 0,08 rad), și în tutorial (mișcă cursoarele); ←/→ simplu schimbă în continuare forma. Indiciul de taste actualizat (RO/EN).
+- Corectat: pentru cele 6 forme din 2.1.0, textul informativ în română apărea în engleză; acum există texte românești.
+- Teste noi: `tests/hipervolum-tastatura.test.mjs` (29 de verificări): fiecare V₄ afișat este comparat cu volumul înfășurătorii convexe 4D calculat INDEPENDENT (algoritm recursiv exact, din vârfurile exportate), plus formele închise, duoprismul personalizat și tastatura.
+- Hash-urile CSP recalculate; versiunea aliniată (`app.json`, `fff-info`, `sw.js`, subsol).
+
+Nu s-a implementat:
+- Politopuri trunchiate/cantelate etc.: neadăugate (definiții simple și verificabile).
+- Textele noi (taste, formule) sunt în română și engleză; celelalte 6 limbi arată engleza / textul vechi. README-urile FR/IT/ES/PT/DE/HU doar cu versiunea aliniată.
+
 ## 2.1.0 — 2026-10-27
 
 Anterior: v2.0.0. Recenzie 2026-10-27.
