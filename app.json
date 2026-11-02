@@ -11,8 +11,8 @@
     "serviceWorker"
   ],
   "storageKeys": [],
-  "sizeBytes": 510973,
-  "sha256": "cfa9181d0ba720ed7b12ffdbb99359bc9da470cb0128a71fc1d40506b39ddbca",
+  "sizeBytes": 607621,
+  "sha256": "70b374ab8f0f8761dedfe04b62a5341218c0e266044d5789b67b1a2487140733",
   "csp": {
     "present": true,
     "directives": {
@@ -54,7 +54,10 @@
       "dialog",
       "label",
       "bundle",
-      "qr"
+      "qr",
+      "p2p",
+      "sync",
+      "history"
     ]
   },
   "kit": {
@@ -65,7 +68,10 @@
       "dialog",
       "label",
       "bundle",
-      "qr"
+      "qr",
+      "p2p",
+      "sync",
+      "history"
     ]
   },
   "selfSerializing": false,
