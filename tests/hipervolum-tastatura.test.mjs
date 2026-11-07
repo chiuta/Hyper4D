@@ -1,4 +1,4 @@
-// Teste v2.2.0: hipervolumul V₄ al formelor noi (calculat INDEPENDENT prin înfășurătoare convexă exactă, recursivă, din vârfurile exportate)
+// Teste v2.2.1: hipervolumul V₄ al formelor noi (calculat INDEPENDENT prin înfășurătoare convexă exactă, recursivă, din vârfurile exportate)
 // și rotația 4D de la tastatură (Shift + săgeți). Rulare: node tests/hipervolum-tastatura.test.mjs (PW_ROOT, CHROMIUM_PATH)
 import {createRequire} from 'module'; import path from 'node:path'; import {fileURLToPath} from 'node:url';
 const require = createRequire(process.env.PW_ROOT || import.meta.url); const {chromium} = require('playwright');
