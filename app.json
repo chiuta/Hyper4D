@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "hyper4d",
   "name": "Hyper4D",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "updated": "2026-11-11",
   "description": "Explorator interactiv de geometrie în a patra dimensiune: secțiuni ale hipercorpurilor și proiecții ale politopilor regulați.",
   "egress": [],
@@ -11,8 +11,8 @@
     "serviceWorker"
   ],
   "storageKeys": [],
-  "sizeBytes": 645271,
-  "sha256": "aecbd0c4198a2b824cfa0b7cbb37c485ab1a3827198b9418bbe446e3a2f4af8d",
+  "sizeBytes": 648154,
+  "sha256": "150fc58e1e5d92be81422effd074a5aed95762acf5a74f95e55ac057c8217a2c",
   "csp": {
     "present": true,
     "directives": {
