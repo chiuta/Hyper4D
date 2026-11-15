@@ -75,7 +75,8 @@ t('pasul 6: rotație dublă selectată', (await p.inputValue('#tut-spin')) === '
 if ((await p.getAttribute('#poly-play', 'aria-pressed')) === 'false') await p.click('#poly-play');
 const d0 = [await p.inputValue('#tut-ang-3'), await p.inputValue('#tut-ang-2')]; await p.waitForTimeout(900);
 t('rotația dublă mișcă XW și YZ', (await p.inputValue('#tut-ang-3')) !== d0[0] && (await p.inputValue('#tut-ang-2')) !== d0[1]);
-t('axe: 0 violări cu tutorialul deschis', (await runAxe(p)).length === 0, await runAxe(p));
+await p.waitForTimeout(800); // tranzițiile CSS ale butoanelor trebuie să se încheie înainte de axe (altfel măsoară culori intermediare)
+{ const ax = await runAxe(p); t('axe: 0 violări cu tutorialul deschis', ax.length === 0, ax); }
 // reset
 await p.click('#tut-reset'); t('reset: toate unghiurile 0, fără rotație automată', (await p.$$eval('#tut-planes input', a => a.every(i => i.value === '0'))) && (await p.inputValue('#tut-spin')) === 'none');
 // limbi: toate cele 8 au cheile
@@ -87,6 +88,7 @@ t('fără erori pe tot parcursul', errs.length === 0, errs);
 // mobil 360
 const mo = await mk(360, 740, 'light', '#lang=en&cat=polytopes&shape=cell24'); await mo.p.click('#tut-toggle'); await mo.p.click('#tut-next'); await mo.p.click('#tut-next');
 t('mobil 360px: fără derulare orizontală', await mo.p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
-t('mobil: axe 0 violări (temă luminoasă)', (await runAxe(mo.p)).length === 0, await runAxe(mo.p));
+await mo.p.waitForTimeout(800); // tranziții CSS încheiate înainte de axe
+{ const ax = await runAxe(mo.p); t('mobil: axe 0 violări (temă luminoasă)', ax.length === 0, ax); }
 await b.close();
 console.log(`\n${ok} ok / ${bad} eșuate`); process.exit(bad ? 1 : 0);
